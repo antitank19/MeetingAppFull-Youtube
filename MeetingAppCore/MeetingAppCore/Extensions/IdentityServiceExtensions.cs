@@ -28,7 +28,7 @@ namespace MeetingAppCore.Extensions
             .AddRoleManager<RoleManager<AppRole>>()
             .AddSignInManager<SignInManager<AppUser>>()
             .AddRoleValidator<RoleValidator<AppRole>>()
-            .AddEntityFrameworkStores<DataContext>();
+            .AddEntityFrameworkStores<DbDataContext>();
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(op =>

@@ -29,7 +29,7 @@ namespace MeetingAppCore.Extensions
 
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
-            services.AddDbContext<DataContext>(options =>
+            services.AddDbContext<DbDataContext>(options =>
             {
                 //Install-Package Microsoft.EntityFrameworkCore.SqlServer || options.UseSqlServer
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));

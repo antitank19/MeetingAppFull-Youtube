@@ -10,15 +10,15 @@ namespace MeetingAppCore.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        DataContext _context;
+        DbDataContext _context;
         IMapper _mapper;
 
-        public UnitOfWork(DataContext context, IMapper mapper)
+        public UnitOfWork(DbDataContext context, IMapper mapper)
         {
+            Console.WriteLine("\t\t"+new String('~', 10));
+            Console.WriteLine("UnitOfWork: ctor(DbDataContext, IMapper)");
             _context = context;
             _mapper = mapper;
-            Console.WriteLine(new String('+', 10));
-            Console.WriteLine("UnitOfWork: ctor");
         }
 
         public IUserRepository UserRepository => new UserRepository(_context, _mapper);
@@ -26,11 +26,15 @@ namespace MeetingAppCore.Data
 
         public async Task<bool> Complete()
         {
+            Console.WriteLine("\t\t" + new String('~', 10));
+            Console.WriteLine("UnitOfWork:Complete()");
             return await _context.SaveChangesAsync() > 0;
         }
 
         public bool HasChanges()
         {
+            Console.WriteLine("\t\t" + new String('~', 10));
+            Console.WriteLine("UnitOfWork:HasChanges()");
             return _context.ChangeTracker.HasChanges();
         }
     }

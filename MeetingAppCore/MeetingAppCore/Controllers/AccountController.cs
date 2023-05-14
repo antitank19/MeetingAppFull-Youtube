@@ -13,17 +13,20 @@ namespace MeetingAppCore.Controllers
 
     public class AccountController : BaseApiController
     {
-        private readonly ITokenService _tokenService;
+        private readonly ITokenService tokenService;
         private readonly IMapper _mapper;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IMapper mapper)
         {
-            _tokenService = tokenService;
+            Console.WriteLine(new String('=', 10));
+            Console.WriteLine("Api/Acount: ctor(UserManager, SignInManager, ITokenService, IMapper)");
+            this.tokenService = tokenService;
             _mapper = mapper;
-            _userManager = userManager;
-            _signInManager = signInManager;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+
         }
 
         [HttpPost("register")]
@@ -40,11 +43,11 @@ namespace MeetingAppCore.Controllers
 
             user.UserName = register.UserName.ToLower();
 
-            var result = await _userManager.CreateAsync(user, register.Password);
+            var result = await userManager.CreateAsync(user, register.Password);
 
             if (!result.Succeeded) return BadRequest(result.Errors);
 
-            var roleResult = await _userManager.AddToRoleAsync(user, "Guest");
+            var roleResult = await userManager.AddToRoleAsync(user, "Guest");
             if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
 
             var userDto = new UserDto
@@ -52,7 +55,7 @@ namespace MeetingAppCore.Controllers
                 UserName = user.UserName,
                 DisplayName = user.DisplayName,
                 LastActive = user.LastActive,
-                Token = await _tokenService.CreateTokenAsync(user),
+                Token = await tokenService.CreateTokenAsync(user),
                 PhotoUrl = null
             };
 
@@ -64,7 +67,7 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Acount: Login(LoginDto)");
-            var user = await _userManager.Users
+            var user = await userManager.Users
                 //.Include(p => p.Photos)
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName.ToLower());
 
@@ -74,7 +77,7 @@ namespace MeetingAppCore.Controllers
             if (user.Locked)//true = locked
                 return BadRequest("This account is loked by admin");
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            var result = await signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
             if (!result.Succeeded) return Unauthorized("Invalid password");
 
@@ -83,7 +86,7 @@ namespace MeetingAppCore.Controllers
                 UserName = user.UserName,
                 DisplayName = user.DisplayName,
                 LastActive = user.LastActive,
-                Token = await _tokenService.CreateTokenAsync(user),
+                Token = await tokenService.CreateTokenAsync(user),
                 PhotoUrl = user.PhotoUrl
             };
             return Ok(userDto);
@@ -94,7 +97,7 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Acount: LoginSocial(LoginSocial)");
-            var user = await _userManager.Users
+            var user = await userManager.Users
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.Email);
             // email = username
             if (user != null)//có rồi thì đăng nhập bình thường
@@ -102,7 +105,7 @@ namespace MeetingAppCore.Controllers
                 if (user.Locked)//true = locked
                     return BadRequest("This account is loked by admin");
 
-                var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Email, false);
+                var result = await signInManager.CheckPasswordSignInAsync(user, loginDto.Email, false);
 
                 if (!result.Succeeded) return Unauthorized("Invalid password");
 
@@ -111,7 +114,7 @@ namespace MeetingAppCore.Controllers
                     UserName = user.UserName,
                     DisplayName = user.DisplayName,
                     LastActive = user.LastActive,
-                    Token = await _tokenService.CreateTokenAsync(user),
+                    Token = await tokenService.CreateTokenAsync(user),
                     PhotoUrl = user.PhotoUrl
                 };
                 return Ok(userDto);
@@ -126,11 +129,11 @@ namespace MeetingAppCore.Controllers
                     PhotoUrl = loginDto.PhotoUrl
                 };
 
-                var result = await _userManager.CreateAsync(appUser, loginDto.Email);//password là email
+                var result = await userManager.CreateAsync(appUser, loginDto.Email);//password là email
 
                 if (!result.Succeeded) return BadRequest(result.Errors);
 
-                var roleResult = await _userManager.AddToRoleAsync(appUser, "Guest");
+                var roleResult = await userManager.AddToRoleAsync(appUser, "Guest");
                 if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
 
                 var userDto = new UserDto
@@ -138,7 +141,7 @@ namespace MeetingAppCore.Controllers
                     UserName = appUser.UserName,
                     DisplayName = appUser.DisplayName,
                     LastActive = appUser.LastActive,
-                    Token = await _tokenService.CreateTokenAsync(appUser),
+                    Token = await tokenService.CreateTokenAsync(appUser),
                     PhotoUrl = loginDto.PhotoUrl
                 };
 
@@ -150,7 +153,7 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine("\t" + new String('+', 10));
             Console.WriteLine("Api/Acount: LoginSocial(LoginSocial)");
-            return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
+            return await userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
     }
 }

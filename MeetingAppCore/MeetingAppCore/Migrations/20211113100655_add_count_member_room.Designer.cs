@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MeetingAppCore.Migrations
 {
-    [DbContext(typeof(DataContext))]
+    [DbContext(typeof(DbDataContext))]
     [Migration("20211113100655_add_count_member_room")]
     partial class add_count_member_room
     {

@@ -16,51 +16,54 @@ namespace MeetingAppCore.SignalR
     public class ChatHub : Hub
     {
         //IMapper _mapper;
-        IHubContext<PresenceHub> _presenceHub;
-        PresenceTracker _presenceTracker;
-        IUnitOfWork _unitOfWork;
-        UserShareScreenTracker _shareScreenTracker;
+        IHubContext<PresenceHub> presenceHubContext;
+        PresenceTracker presenceTracker;
+        IUnitOfWork unitOfWork;
+        UserShareScreenTracker shareScreenTracker;
 
-        public ChatHub(IUnitOfWork unitOfWork, UserShareScreenTracker shareScreenTracker, PresenceTracker presenceTracker, IHubContext<PresenceHub> presenceHub)
+        public ChatHub(IUnitOfWork unitOfWork, UserShareScreenTracker shareScreenTracker, PresenceTracker presenceTracker, IHubContext<PresenceHub> presenceHubContext)
         {
+            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("Hub/Chat: ctor(IUnitOfWork, UserShareScreenTracker, PresenceTracker, PresenceHub)");
+
             //_mapper = mapper;
-            _unitOfWork = unitOfWork;
-            _presenceTracker = presenceTracker;
-            _presenceHub = presenceHub;
-            _shareScreenTracker = shareScreenTracker;
+            this.unitOfWork = unitOfWork;
+            this.presenceTracker = presenceTracker;
+            this.presenceHubContext = presenceHubContext;
+            this.shareScreenTracker = shareScreenTracker;
         }
 
         public override async Task OnConnectedAsync()
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: OnConnectedAsync()");
+            Console.WriteLine("Hub/Chat: OnConnectedAsync()");
             var httpContext = Context.GetHttpContext();
             var roomId = httpContext.Request.Query["roomId"].ToString();
             var roomIdInt = int.Parse(roomId);
             var username = Context.User.GetUsername();            
 
-            await _presenceTracker.UserConnected(new UserConnectionInfo(username, roomIdInt), Context.ConnectionId);
+            await presenceTracker.UserConnected(new UserConnectionInfo(username, roomIdInt), Context.ConnectionId);
 
             await Groups.AddToGroupAsync(Context.ConnectionId, roomId);//khi user click vao room se join vao
             await AddConnectionToGroup(roomIdInt); // luu db DbSet<Connection> de khi disconnect biet
             
             //var usersOnline = await _unitOfWork.UserRepository.GetUsersOnlineAsync(currentUsers);
-            var oneUserOnline = await _unitOfWork.UserRepository.GetMemberAsync(username);
+            var oneUserOnline = await unitOfWork.UserRepository.GetMemberAsync(username);
             await Clients.Group(roomId).SendAsync("UserOnlineInGroup", oneUserOnline);
             
-            var currentUsers = await _presenceTracker.GetOnlineUsers(roomIdInt);
-            await _unitOfWork.RoomRepository.UpdateCountMember(roomIdInt, currentUsers.Length);
-            await _unitOfWork.Complete();
+            var currentUsers = await presenceTracker.GetOnlineUsers(roomIdInt);
+            await unitOfWork.RoomRepository.UpdateCountMember(roomIdInt, currentUsers.Length);
+            await unitOfWork.Complete();
             
-            var currentConnections = await _presenceTracker.GetConnectionsForUser(new UserConnectionInfo(username, roomIdInt));
-            await _presenceHub.Clients.AllExcept(currentConnections).SendAsync("CountMemberInGroup",
+            var currentConnections = await presenceTracker.GetConnectionsForUser(new UserConnectionInfo(username, roomIdInt));
+            await presenceHubContext.Clients.AllExcept(currentConnections).SendAsync("CountMemberInGroup",
                    new { roomId = roomIdInt, countMember = currentUsers.Length });
 
             //share screen user vao sau cung
-            var userIsSharing = await _shareScreenTracker.GetUserIsSharing(roomIdInt);
+            var userIsSharing = await shareScreenTracker.GetUserIsSharing(roomIdInt);
             if(userIsSharing != null)
             {
-                var currentBeginConnectionsUser = await _presenceTracker.GetConnectionsForUser(userIsSharing);
+                var currentBeginConnectionsUser = await presenceTracker.GetConnectionsForUser(userIsSharing);
                 if(currentBeginConnectionsUser.Count > 0)
                     await Clients.Clients(currentBeginConnectionsUser).SendAsync("OnShareScreenLastUser", new { usernameTo = username, isShare = true });
                 await Clients.Caller.SendAsync("OnUserIsSharing", userIsSharing.UserName);
@@ -70,24 +73,24 @@ namespace MeetingAppCore.SignalR
         public override async Task OnDisconnectedAsync(Exception exception)
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: OnDisconnectedAsync(Exception)");
+            Console.WriteLine("Hub/Chat: OnDisconnectedAsync(Exception)");
             var username = Context.User.GetUsername();
             var group = await RemoveConnectionFromGroup();
-            var isOffline = await _presenceTracker.UserDisconnected(new UserConnectionInfo(username, group.RoomId), Context.ConnectionId);
+            var isOffline = await presenceTracker.UserDisconnected(new UserConnectionInfo(username, group.RoomId), Context.ConnectionId);
 
-            await _shareScreenTracker.DisconnectedByUser(username, group.RoomId);
+            await shareScreenTracker.DisconnectedByUser(username, group.RoomId);
             if (isOffline)
             {
                 await Groups.RemoveFromGroupAsync(Context.ConnectionId, group.RoomId.ToString());
-                var temp = await _unitOfWork.UserRepository.GetMemberAsync(username);
+                var temp = await unitOfWork.UserRepository.GetMemberAsync(username);
                 await Clients.Group(group.RoomId.ToString()).SendAsync("UserOfflineInGroup", temp);
 
-                var currentUsers = await _presenceTracker.GetOnlineUsers(group.RoomId);
+                var currentUsers = await presenceTracker.GetOnlineUsers(group.RoomId);
 
-                await _unitOfWork.RoomRepository.UpdateCountMember(group.RoomId, currentUsers.Length);
-                await _unitOfWork.Complete();
+                await unitOfWork.RoomRepository.UpdateCountMember(group.RoomId, currentUsers.Length);
+                await unitOfWork.Complete();
                
-                await _presenceHub.Clients.All.SendAsync("CountMemberInGroup",
+                await presenceHubContext.Clients.All.SendAsync("CountMemberInGroup",
                        new { roomId = group.RoomId, countMember = currentUsers.Length });
             }
             await base.OnDisconnectedAsync(exception);
@@ -96,11 +99,11 @@ namespace MeetingAppCore.SignalR
         public async Task SendMessage(CreateMessageDto createMessageDto)
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: SendMessage(CreateMessageDto)");
+            Console.WriteLine("Hub/Chat: SendMessage(CreateMessageDto)");
             var userName = Context.User.GetUsername();
-            var sender = await _unitOfWork.UserRepository.GetUserByUsernameAsync(userName);
+            var sender = await unitOfWork.UserRepository.GetUserByUsernameAsync(userName);
             
-            var group = await _unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
+            var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
 
             if(group != null)
             {
@@ -121,8 +124,8 @@ namespace MeetingAppCore.SignalR
         public async Task MuteMicro(bool muteMicro)
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: DeleteAllRoom()");
-            var group = await _unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
+            Console.WriteLine("Hub/Chat: MuteMicro(bool)");
+            var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             if (group != null)
             {
                 await Clients.Group(group.RoomId.ToString()).SendAsync("OnMuteMicro", new { username = Context.User.GetUsername(), mute = muteMicro });
@@ -136,8 +139,8 @@ namespace MeetingAppCore.SignalR
         public async Task MuteCamera(bool muteCamera)
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: DeleteAllRoom()");
-            var group = await _unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
+            Console.WriteLine("Hub/Chat: MuteCamera(bool)");
+            var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             if(group != null)
             {
                 await Clients.Group(group.RoomId.ToString()).SendAsync("OnMuteCamera", new { username = Context.User.GetUsername(), mute = muteCamera });
@@ -151,15 +154,15 @@ namespace MeetingAppCore.SignalR
         public async Task ShareScreen(int roomid, bool isShareScreen)
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: DeleteAllRoom()");
+            Console.WriteLine("Hub/Chat: ShareScreen(id, bool)");
             if (isShareScreen)//true is doing share
             {
-                await _shareScreenTracker.UserConnectedToShareScreen(new UserConnectionInfo(Context.User.GetUsername(), roomid));
+                await shareScreenTracker.UserConnectedToShareScreen(new UserConnectionInfo(Context.User.GetUsername(), roomid));
                 await Clients.Group(roomid.ToString()).SendAsync("OnUserIsSharing", Context.User.GetUsername());
             }
             else
             {
-                await _shareScreenTracker.UserDisconnectedShareScreen(new UserConnectionInfo(Context.User.GetUsername(), roomid));
+                await shareScreenTracker.UserDisconnectedShareScreen(new UserConnectionInfo(Context.User.GetUsername(), roomid));
             }
             await Clients.Group(roomid.ToString()).SendAsync("OnShareScreen", isShareScreen);
             //var group = await _unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
@@ -168,8 +171,8 @@ namespace MeetingAppCore.SignalR
         public async Task ShareScreenToUser(int roomid, string username, bool isShare)
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: DeleteAllRoom()");
-            var currentBeginConnectionsUser = await _presenceTracker.GetConnectionsForUser(new UserConnectionInfo(username, roomid));
+            Console.WriteLine("Hub/Chat: ShareScreenToUser(id, username, bool)");
+            var currentBeginConnectionsUser = await presenceTracker.GetConnectionsForUser(new UserConnectionInfo(username, roomid));
             if(currentBeginConnectionsUser.Count > 0)
                 await Clients.Clients(currentBeginConnectionsUser).SendAsync("OnShareScreen", isShare);
         }
@@ -177,12 +180,12 @@ namespace MeetingAppCore.SignalR
         private async Task<Room> RemoveConnectionFromGroup()
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: DeleteAllRoom()");
-            var group = await _unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
+            Console.WriteLine("Hub/Chat: RemoveConnectionFromGroup()");
+            var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             var connection = group.Connections.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId);
-            _unitOfWork.RoomRepository.RemoveConnection(connection);
+            unitOfWork.RoomRepository.RemoveConnection(connection);
 
-            if (await _unitOfWork.Complete()) return group;
+            if (await unitOfWork.Complete()) return group;
 
             throw new HubException("Fail to remove connection from room");
         }
@@ -190,15 +193,15 @@ namespace MeetingAppCore.SignalR
         private async Task<Room> AddConnectionToGroup(int roomId)
         {
             Console.WriteLine("\t" + new String('+', 10));
-            Console.WriteLine("Hub/OnConnectedAsync: DeleteAllRoom()");
-            var group = await _unitOfWork.RoomRepository.GetRoomById(roomId);
+            Console.WriteLine("Hub/Chat: AddConnectionToGroup()");
+            var group = await unitOfWork.RoomRepository.GetRoomById(roomId);
             var connection = new Connection(Context.ConnectionId, Context.User.GetUsername());
             if (group != null)
             {
                 group.Connections.Add(connection);
             }
 
-            if (await _unitOfWork.Complete()) return group;
+            if (await unitOfWork.Complete()) return group;
 
             throw new HubException("Failed to add connection to room");
         }

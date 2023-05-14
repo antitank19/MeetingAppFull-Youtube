@@ -8,10 +8,17 @@ namespace MeetingAppCore.SignalR
 {
     public class PresenceTracker
     {
+        public PresenceTracker()
+        {
+            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("Tracker/Room:ctor()");
+        }
         private static readonly Dictionary<UserConnectionInfo, List<string>> OnlineUsers = new Dictionary<UserConnectionInfo, List<string>>();
 
         public Task<bool> UserConnected(UserConnectionInfo user, string connectionId)
         {
+            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("Tracker/Room:UserConnected(UserConnectionInfo, connectionId)");
             bool isOnline = false;
             lock (OnlineUsers)
             {
@@ -33,6 +40,8 @@ namespace MeetingAppCore.SignalR
 
         public Task<bool> UserDisconnected(UserConnectionInfo user, string connectionId)
         {
+            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("Tracker/Room:UserConnectionInfo(UserConnectionInfo, connectionId)");
             bool isOffline = false;
             lock (OnlineUsers)
             {
@@ -53,6 +62,8 @@ namespace MeetingAppCore.SignalR
 
         public Task<UserConnectionInfo[]> GetOnlineUsers(int roomId)
         {
+            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("Tracker/GetOnlineUsers:ctor(roomId)");
             UserConnectionInfo[] onlineUsers;
             lock (OnlineUsers)
             {
@@ -64,6 +75,8 @@ namespace MeetingAppCore.SignalR
 
         public Task<List<string>> GetConnectionsForUser(UserConnectionInfo user)
         {
+            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("Tracker/Room:GetConnectionsForUser(UserConnectionInfo)");
             List<string> connectionIds = new List<string>();
             lock (OnlineUsers)
             {                
@@ -78,6 +91,8 @@ namespace MeetingAppCore.SignalR
         
         public Task<List<string>> GetConnectionsForUsername(string username)
         {
+            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("Tracker/Room:GetConnectionsForUsername(username)");
             List<string> connectionIds = new List<string>();
             lock (OnlineUsers)
             {

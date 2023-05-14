@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MeetingAppCore.Migrations
 {
-    [DbContext(typeof(DataContext))]
+    [DbContext(typeof(DbDataContext))]
     [Migration("20211117051358_add_locked_column_User")]
     partial class add_locked_column_User
     {

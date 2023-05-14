@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Data
 {
-    public class DataContext : IdentityDbContext<AppUser, AppRole, Guid,
+    public class DbDataContext : IdentityDbContext<AppUser, AppRole, Guid,
         IdentityUserClaim<Guid>, AppUserRole, IdentityUserLogin<Guid>,
         IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
     {
-        public DataContext(DbContextOptions options) : base(options) { }
+        public DbDataContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Connection> Connections { get; set; }

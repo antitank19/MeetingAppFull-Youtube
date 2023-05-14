@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MeetingAppCore.Migrations
 {
-    [DbContext(typeof(DataContext))]
+    [DbContext(typeof(DbDataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

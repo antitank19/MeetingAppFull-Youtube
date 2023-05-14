@@ -23,7 +23,7 @@ namespace MeetingAppCore
             var services = scope.ServiceProvider;
             try
             {
-                var context = services.GetRequiredService<DataContext>();
+                var context = services.GetRequiredService<DbDataContext>();
                 var userManager = services.GetRequiredService<UserManager<AppUser>>();
                 var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
                 await context.Database.MigrateAsync();

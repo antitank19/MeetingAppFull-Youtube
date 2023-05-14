@@ -17,13 +17,13 @@ namespace MeetingAppCore.Controllers
     [Authorize]
     public class RoomController : BaseApiController
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
+        private readonly IUnitOfWork unitOfWork;
+        private readonly IMapper mapper;
 
         public RoomController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
+            this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -31,7 +31,7 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Room: GetAllRooms(RoomParams)");
-            var comments = await _unitOfWork.RoomRepository.GetAllRoomAsync(roomParams);
+            var comments = await unitOfWork.RoomRepository.GetAllRoomAsync(roomParams);
             Response.AddPaginationHeader(comments.CurrentPage, comments.PageSize, comments.TotalCount, comments.TotalPages);
 
             return Ok(comments);
@@ -44,11 +44,11 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("Api/Room: AddRoom(name)");
             var room = new Room { RoomName = name, UserId = User.GetUserId() };
 
-            _unitOfWork.RoomRepository.AddRoom(room);
+            unitOfWork.RoomRepository.AddRoom(room);
 
-            if (await _unitOfWork.Complete())
+            if (await unitOfWork.Complete())
             {
-                return Ok(await _unitOfWork.RoomRepository.GetRoomDtoById(room.RoomId));
+                return Ok(await unitOfWork.RoomRepository.GetRoomDtoById(room.RoomId));
             }
 
             return BadRequest("Problem adding room");
@@ -59,12 +59,12 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Room: EditRoom(id, name)");
-            var room = await _unitOfWork.RoomRepository.EditRoom(id, editName);
+            var room = await unitOfWork.RoomRepository.EditRoom(id, editName);
             if(room != null)
             {
-                if (_unitOfWork.HasChanges())
+                if (unitOfWork.HasChanges())
                 {
-                    if (await _unitOfWork.Complete())
+                    if (await unitOfWork.Complete())
                         return Ok(new RoomDto { RoomId = room.RoomId, RoomName = room.RoomName, UserId = room.UserId.ToString() });
                     return BadRequest("Problem edit room");
                 }
@@ -84,11 +84,11 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Room: DeleteRoom(id)");
-            var entity = await _unitOfWork.RoomRepository.DeleteRoom(id);
+            var entity = await unitOfWork.RoomRepository.DeleteRoom(id);
 
             if(entity != null)
             {
-                if (await _unitOfWork.Complete())
+                if (await unitOfWork.Complete())
                     return Ok(new RoomDto { RoomId = entity.RoomId, RoomName = entity.RoomName, UserId = entity.UserId.ToString() });
                 return BadRequest("Problem delete room");
             }
@@ -103,11 +103,11 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Room: DeleteAllRoom()");
-            await _unitOfWork.RoomRepository.DeleteAllRoom();
+            await unitOfWork.RoomRepository.DeleteAllRoom();
 
-            if (_unitOfWork.HasChanges())
+            if (unitOfWork.HasChanges())
             {
-                if (await _unitOfWork.Complete())
+                if (await unitOfWork.Complete())
                     return Ok();//xoa thanh cong
                 return BadRequest("Problem delete all room");
             }

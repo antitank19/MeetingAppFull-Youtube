@@ -20,12 +20,16 @@ namespace MeetingAppCore.Services
 
         public TokenService(IConfiguration config, UserManager<AppUser> userManager)
         {
+            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("Service/Token: ctor(IConfiguration, UserManager)");
             _userManager = userManager;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
 
         public async Task<string> CreateTokenAsync(AppUser appUser)
         {
+            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("Service/Token: CreateTokenAsync(AppUser)");
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, appUser.Id.ToString()),

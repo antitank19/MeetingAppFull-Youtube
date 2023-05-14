@@ -17,15 +17,15 @@ namespace MeetingAppCore.Controllers
     [Authorize]
     public class MemberController : BaseApiController
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IHubContext<PresenceHub> _presenceHub;
-        private readonly PresenceTracker _presenceTracker;
+        private readonly IUnitOfWork unitOfWork;
+        private readonly IHubContext<PresenceHub> presenceHub;
+        private readonly PresenceTracker presenceTracker;
 
         public MemberController(IUnitOfWork unitOfWork, IHubContext<PresenceHub> presenceHub, PresenceTracker presenceTracker)
         {
-            _unitOfWork = unitOfWork;
-            _presenceHub = presenceHub;
-            _presenceTracker = presenceTracker;
+            this.unitOfWork = unitOfWork;
+            this.presenceHub = presenceHub;
+            this.presenceTracker = presenceTracker;
         }
 
         [HttpGet]
@@ -34,7 +34,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Member: GetAllMembers(UserParams)");
             userParams.CurrentUsername = User.GetUsername();
-            var comments = await _unitOfWork.UserRepository.GetMembersAsync(userParams);
+            var comments = await unitOfWork.UserRepository.GetMembersAsync(userParams);
             Response.AddPaginationHeader(comments.CurrentPage, comments.PageSize, comments.TotalCount, comments.TotalPages);
 
             return Ok(comments);
@@ -45,7 +45,7 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Member: GetMembers(username)");
-            return Ok(await _unitOfWork.UserRepository.GetMemberAsync(username));
+            return Ok(await unitOfWork.UserRepository.GetMemberAsync(username));
         }
 
         [HttpPut("{username}")]
@@ -53,11 +53,11 @@ namespace MeetingAppCore.Controllers
         {
             Console.WriteLine(new String('=', 10));
             Console.WriteLine("Api/Member: LockedUser(username)");
-            var u = await _unitOfWork.UserRepository.UpdateLocked(username);
+            var u = await unitOfWork.UserRepository.UpdateLocked(username);
             if(u != null)
             {
-                var connections = await _presenceTracker.GetConnectionsForUsername(username);
-                await _presenceHub.Clients.Clients(connections).SendAsync("OnLockedUser", true);
+                var connections = await presenceTracker.GetConnectionsForUsername(username);
+                await presenceHub.Clients.Clients(connections).SendAsync("OnLockedUser", true);
                 return NoContent();
             }
             else

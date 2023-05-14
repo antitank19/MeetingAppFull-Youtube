@@ -19,11 +19,15 @@ namespace MeetingAppCore.SignalR
         }
         public override async Task OnConnectedAsync()
         {
+            Console.WriteLine("\t\t" + new String('+', 10));
+            Console.WriteLine("Hub/Presence: OnConnectedAsync()");
             var isOnline = await _tracker.UserConnected(new UserConnectionInfo(Context.User.GetUsername(), 0), Context.ConnectionId);            
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
+            Console.WriteLine("\t\t" + new String('+', 10));
+            Console.WriteLine("Hub/Presence: OnDisconnectedAsync()");
             var isOffline = await _tracker.UserDisconnected(new UserConnectionInfo(Context.User.GetUsername(), 0), Context.ConnectionId);
             await base.OnDisconnectedAsync(exception);
         }
