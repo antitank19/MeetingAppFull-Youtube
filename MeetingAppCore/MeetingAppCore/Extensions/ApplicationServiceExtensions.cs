@@ -19,7 +19,7 @@ namespace MeetingAppCore.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddSingleton<PresenceTracker>();
-            services.AddSingleton<UserShareScreenTracker>();
+            services.AddSingleton<ShareScreenTracker>();
 
             services.AddScoped<ITokenService, TokenService>();
 

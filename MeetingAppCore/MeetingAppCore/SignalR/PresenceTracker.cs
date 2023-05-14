@@ -13,12 +13,12 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("\t\t\t" + new String('~', 10));
             Console.WriteLine("Tracker/Room:ctor()");
         }
-        private static readonly Dictionary<UserConnectionInfo, List<string>> OnlineUsers = new Dictionary<UserConnectionInfo, List<string>>();
+        private static readonly Dictionary<UserConnectionDto, List<string>> OnlineUsers = new Dictionary<UserConnectionDto, List<string>>();
 
-        public Task<bool> UserConnected(UserConnectionInfo user, string connectionId)
+        public Task<bool> UserConnected(UserConnectionDto user, string connectionId)
         {
             Console.WriteLine("\t\t\t" + new String('~', 10));
-            Console.WriteLine("Tracker/Room:UserConnected(UserConnectionInfo, connectionId)");
+            Console.WriteLine("Tracker/Room:UserConnected(UserConnectionDto, connectionId)");
             bool isOnline = false;
             lock (OnlineUsers)
             {
@@ -38,10 +38,10 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(isOnline);
         }
 
-        public Task<bool> UserDisconnected(UserConnectionInfo user, string connectionId)
+        public Task<bool> UserDisconnected(UserConnectionDto user, string connectionId)
         {
             Console.WriteLine("\t\t\t" + new String('~', 10));
-            Console.WriteLine("Tracker/Room:UserConnectionInfo(UserConnectionInfo, connectionId)");
+            Console.WriteLine("Tracker/Room:UserConnectionDto(UserConnectionDto, connectionId)");
             bool isOffline = false;
             lock (OnlineUsers)
             {
@@ -60,11 +60,11 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(isOffline);
         }
 
-        public Task<UserConnectionInfo[]> GetOnlineUsers(int roomId)
+        public Task<UserConnectionDto[]> GetOnlineUsers(int roomId)
         {
             Console.WriteLine("\t\t\t" + new String('~', 10));
             Console.WriteLine("Tracker/GetOnlineUsers:ctor(roomId)");
-            UserConnectionInfo[] onlineUsers;
+            UserConnectionDto[] onlineUsers;
             lock (OnlineUsers)
             {
                 onlineUsers = OnlineUsers.Where(u=>u.Key.RoomId == roomId).Select(k => k.Key).ToArray();
@@ -73,10 +73,10 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(onlineUsers);
         }
 
-        public Task<List<string>> GetConnectionsForUser(UserConnectionInfo user)
+        public Task<List<string>> GetConnectionsForUser(UserConnectionDto user)
         {
             Console.WriteLine("\t\t\t" + new String('~', 10));
-            Console.WriteLine("Tracker/Room:GetConnectionsForUser(UserConnectionInfo)");
+            Console.WriteLine("Tracker/Room:GetConnectionsForUser(UserConnectionDto)");
             List<string> connectionIds = new List<string>();
             lock (OnlineUsers)
             {                

@@ -15,7 +15,7 @@ namespace MeetingAppCore.Interfaces
         Task<MemberDto> GetMemberAsync(string username);
         Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<IEnumerable<MemberDto>> SearchMemberAsync(string displayname);
-        Task<IEnumerable<MemberDto>> GetUsersOnlineAsync(UserConnectionInfo[] userOnlines);
+        Task<IEnumerable<MemberDto>> GetUsersOnlineAsync(UserConnectionDto[] userOnlines);
         Task<AppUser> UpdateLocked(string username);
     }
 }

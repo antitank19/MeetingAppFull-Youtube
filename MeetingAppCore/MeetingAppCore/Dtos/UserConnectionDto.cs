@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Dtos
 {
-    public class UserConnectionInfo
+    public class UserConnectionDto
     {
-        public UserConnectionInfo() { }
-        public UserConnectionInfo(string userName, int roomId)
+        public UserConnectionDto() { }
+        public UserConnectionDto(string userName, int roomId)
         {
             UserName = userName;
             RoomId = roomId;

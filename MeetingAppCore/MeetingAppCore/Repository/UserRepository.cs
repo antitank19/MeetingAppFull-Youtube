@@ -48,10 +48,10 @@ namespace MeetingAppCore.Repository
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<MemberDto>> GetUsersOnlineAsync(UserConnectionInfo[] userOnlines)
+        public async Task<IEnumerable<MemberDto>> GetUsersOnlineAsync(UserConnectionDto[] userOnlines)
         {
             Console.WriteLine("\t\t\t" + new String('~', 10));
-            Console.WriteLine("Repo/Room:GetUsersOnlineAsync(UserConnectionInfo[])");
+            Console.WriteLine("Repo/Room:GetUsersOnlineAsync(UserConnectionDto[])");
             var listUserOnline = new List<MemberDto>();
             foreach (var u in userOnlines)
             {

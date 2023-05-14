@@ -19,9 +19,9 @@ namespace MeetingAppCore.SignalR
         IHubContext<PresenceHub> presenceHubContext;
         PresenceTracker presenceTracker;
         IUnitOfWork unitOfWork;
-        UserShareScreenTracker shareScreenTracker;
+        ShareScreenTracker shareScreenTracker;
 
-        public ChatHub(IUnitOfWork unitOfWork, UserShareScreenTracker shareScreenTracker, PresenceTracker presenceTracker, IHubContext<PresenceHub> presenceHubContext)
+        public ChatHub(IUnitOfWork unitOfWork, ShareScreenTracker shareScreenTracker, PresenceTracker presenceTracker, IHubContext<PresenceHub> presenceHubContext)
         {
             Console.WriteLine("\t" + new String('+', 10));
             Console.WriteLine("Hub/Chat: ctor(IUnitOfWork, UserShareScreenTracker, PresenceTracker, PresenceHub)");
@@ -42,7 +42,7 @@ namespace MeetingAppCore.SignalR
             var roomIdInt = int.Parse(roomId);
             var username = Context.User.GetUsername();            
 
-            await presenceTracker.UserConnected(new UserConnectionInfo(username, roomIdInt), Context.ConnectionId);
+            await presenceTracker.UserConnected(new UserConnectionDto(username, roomIdInt), Context.ConnectionId);
 
             await Groups.AddToGroupAsync(Context.ConnectionId, roomId);//khi user click vao room se join vao
             await AddConnectionToGroup(roomIdInt); // luu db DbSet<Connection> de khi disconnect biet
@@ -55,7 +55,7 @@ namespace MeetingAppCore.SignalR
             await unitOfWork.RoomRepository.UpdateCountMember(roomIdInt, currentUsers.Length);
             await unitOfWork.Complete();
             
-            var currentConnections = await presenceTracker.GetConnectionsForUser(new UserConnectionInfo(username, roomIdInt));
+            var currentConnections = await presenceTracker.GetConnectionsForUser(new UserConnectionDto(username, roomIdInt));
             await presenceHubContext.Clients.AllExcept(currentConnections).SendAsync("CountMemberInGroup",
                    new { roomId = roomIdInt, countMember = currentUsers.Length });
 
@@ -76,7 +76,7 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("Hub/Chat: OnDisconnectedAsync(Exception)");
             var username = Context.User.GetUsername();
             var group = await RemoveConnectionFromGroup();
-            var isOffline = await presenceTracker.UserDisconnected(new UserConnectionInfo(username, group.RoomId), Context.ConnectionId);
+            var isOffline = await presenceTracker.UserDisconnected(new UserConnectionDto(username, group.RoomId), Context.ConnectionId);
 
             await shareScreenTracker.DisconnectedByUser(username, group.RoomId);
             if (isOffline)
@@ -157,12 +157,12 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("Hub/Chat: ShareScreen(id, bool)");
             if (isShareScreen)//true is doing share
             {
-                await shareScreenTracker.UserConnectedToShareScreen(new UserConnectionInfo(Context.User.GetUsername(), roomid));
+                await shareScreenTracker.UserConnectedToShareScreen(new UserConnectionDto(Context.User.GetUsername(), roomid));
                 await Clients.Group(roomid.ToString()).SendAsync("OnUserIsSharing", Context.User.GetUsername());
             }
             else
             {
-                await shareScreenTracker.UserDisconnectedShareScreen(new UserConnectionInfo(Context.User.GetUsername(), roomid));
+                await shareScreenTracker.UserDisconnectedShareScreen(new UserConnectionDto(Context.User.GetUsername(), roomid));
             }
             await Clients.Group(roomid.ToString()).SendAsync("OnShareScreen", isShareScreen);
             //var group = await _unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
@@ -172,7 +172,7 @@ namespace MeetingAppCore.SignalR
         {
             Console.WriteLine("\t" + new String('+', 10));
             Console.WriteLine("Hub/Chat: ShareScreenToUser(id, username, bool)");
-            var currentBeginConnectionsUser = await presenceTracker.GetConnectionsForUser(new UserConnectionInfo(username, roomid));
+            var currentBeginConnectionsUser = await presenceTracker.GetConnectionsForUser(new UserConnectionDto(username, roomid));
             if(currentBeginConnectionsUser.Count > 0)
                 await Clients.Clients(currentBeginConnectionsUser).SendAsync("OnShareScreen", isShare);
         }
