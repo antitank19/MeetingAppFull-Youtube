@@ -151,7 +151,7 @@ namespace MeetingAppCore.Controllers
 
         private async Task<bool> UserExists(string username)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Api/Acount: LoginSocial(LoginSocial)");
             return await userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }

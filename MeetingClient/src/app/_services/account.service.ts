@@ -17,6 +17,7 @@ export class AccountService {
   constructor(private http: HttpClient, private presence: PresenceService) { }
 
   login(model: any){
+    console.log('login(model: any)');
     return this.http.post(this.baseUrl+'Account/login', model).pipe(
       map((res:User)=>{
         const user = res;
@@ -29,6 +30,7 @@ export class AccountService {
   }
 
   loginWithSocial(model: any){
+    console.log('loginWithSocial(model: any)');
     return this.http.post(this.baseUrl+'Account/login-social', model).pipe(
       map((res:User)=>{
         const user = res;
@@ -41,6 +43,7 @@ export class AccountService {
   }
 
   setCurrentUser(user: User){
+    console.log('setCurrentUser(user: User)');
     if(user){
       user.roles = [];
       const roles = this.getDecodedToken(user.token).role;//copy token to jwt.io see .role   
@@ -51,12 +54,14 @@ export class AccountService {
   }
 
   logout(){
+    console.log('logout()');
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
     this.presence.stopHubConnection();
   }
 
   register(model:any){
+    console.log('register(model:any)');
     return this.http.post(this.baseUrl+'Account/register', model).pipe(
       map((res:User)=>{
         if(res){
@@ -69,6 +74,7 @@ export class AccountService {
   }
 
   getDecodedToken(token: string) {
+    console.log('getDecodedToken(token: string)');
     return JSON.parse(atob(token.split('.')[1]));
   }
 }

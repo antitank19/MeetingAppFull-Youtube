@@ -20,7 +20,7 @@ namespace MeetingAppCore.Repository
 
         public RoomRepository(DbDataContext context, IMapper mapper)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:ctor()");
             _context = context;
             _mapper = mapper;
@@ -28,14 +28,14 @@ namespace MeetingAppCore.Repository
 
         public async Task<Room> GetRoomById(int roomId)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:GetRoomById(id)");
             return await _context.Rooms.Include(x => x.Connections).FirstOrDefaultAsync(x => x.RoomId == roomId);
         }
 
         public async Task<RoomDto> GetRoomDtoById(int roomId)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:GetRoomDtoById(id)");
             return await _context.Rooms.Where(r => r.RoomId == roomId).ProjectTo<RoomDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();//using Microsoft.EntityFrameworkCore;
@@ -43,7 +43,7 @@ namespace MeetingAppCore.Repository
 
         public async Task<Room> GetRoomForConnection(string connectionId)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:GetRoomForConnection(connectionId)");
             return await _context.Rooms.Include(x => x.Connections)
                 .Where(x => x.Connections.Any(c => c.ConnectionId == connectionId))
@@ -52,14 +52,14 @@ namespace MeetingAppCore.Repository
 
         public void RemoveConnection(Connection connection)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:RemoveConnection(Connection)");
             _context.Connections.Remove(connection);
         }
 
         public void AddRoom(Room room)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:AddRoom(Room)");
             _context.Rooms.Add(room);
         }
@@ -71,7 +71,7 @@ namespace MeetingAppCore.Repository
         /// <returns></returns>
         public async Task<Room> DeleteRoom(int id)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:DeleteRoom(id)");
             var room = await _context.Rooms.FindAsync(id);
             if(room != null)
@@ -83,7 +83,7 @@ namespace MeetingAppCore.Repository
 
         public async Task<Room> EditRoom(int id, string newName)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:EditRoom(id, name)");
             var room = await _context.Rooms.FindAsync(id);
             if (room != null)
@@ -95,7 +95,7 @@ namespace MeetingAppCore.Repository
 
         public async Task DeleteAllRoom()
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:DeleteAllRoom()");
             var list = await _context.Rooms.ToListAsync();
             _context.RemoveRange(list);
@@ -103,7 +103,7 @@ namespace MeetingAppCore.Repository
 
         public async Task<PagedList<RoomDto>> GetAllRoomAsync(RoomParams roomParams)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:GetAllRoomAsync(RoomParams)");
             var list = _context.Rooms.AsQueryable();
             //using AutoMapper.QueryableExtensions; list.ProjectTo<RoomDto>
@@ -112,7 +112,7 @@ namespace MeetingAppCore.Repository
 
         public async Task UpdateCountMember(int roomId, int count)
         {
-            Console.WriteLine("\t\t\t" + new String('~', 10));
+            Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Repo/Room:UpdateCountMember(id, count)");
             var room = await _context.Rooms.FindAsync(roomId);
             if(room != null)

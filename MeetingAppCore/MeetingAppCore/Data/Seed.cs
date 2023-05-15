@@ -38,7 +38,7 @@ namespace MeetingAppCore.Data
             foreach (var user in users)
             {
                 //user.UserName = user.UserName.ToLower();
-                await userManager.CreateAsync(user, "admin@123");
+                await userManager.CreateAsync(user, "123456");
                 await userManager.AddToRoleAsync(user, "Guest");
             }
 

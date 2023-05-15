@@ -15,7 +15,7 @@ namespace MeetingAppCore.Data
 
         public UnitOfWork(DbDataContext context, IMapper mapper)
         {
-            Console.WriteLine("\t\t"+new String('~', 10));
+            Console.WriteLine("3.      "+new String('~', 50));
             Console.WriteLine("UnitOfWork: ctor(DbDataContext, IMapper)");
             _context = context;
             _mapper = mapper;
@@ -26,14 +26,14 @@ namespace MeetingAppCore.Data
 
         public async Task<bool> Complete()
         {
-            Console.WriteLine("\t\t" + new String('~', 10));
+            Console.WriteLine("3.      " + new String('~', 50));
             Console.WriteLine("UnitOfWork:Complete()");
             return await _context.SaveChangesAsync() > 0;
         }
 
         public bool HasChanges()
         {
-            Console.WriteLine("\t\t" + new String('~', 10));
+            Console.WriteLine("3.      " + new String('~', 50));
             Console.WriteLine("UnitOfWork:HasChanges()");
             return _context.ChangeTracker.HasChanges();
         }

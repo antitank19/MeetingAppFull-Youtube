@@ -23,7 +23,7 @@ namespace MeetingAppCore.SignalR
 
         public ChatHub(IUnitOfWork unitOfWork, ShareScreenTracker shareScreenTracker, PresenceTracker presenceTracker, IHubContext<PresenceHub> presenceHubContext)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: ctor(IUnitOfWork, UserShareScreenTracker, PresenceTracker, PresenceHub)");
 
             //_mapper = mapper;
@@ -35,7 +35,7 @@ namespace MeetingAppCore.SignalR
 
         public override async Task OnConnectedAsync()
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: OnConnectedAsync()");
             var httpContext = Context.GetHttpContext();
             var roomId = httpContext.Request.Query["roomId"].ToString();
@@ -72,7 +72,7 @@ namespace MeetingAppCore.SignalR
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: OnDisconnectedAsync(Exception)");
             var username = Context.User.GetUsername();
             var group = await RemoveConnectionFromGroup();
@@ -98,7 +98,7 @@ namespace MeetingAppCore.SignalR
 
         public async Task SendMessage(CreateMessageDto createMessageDto)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: SendMessage(CreateMessageDto)");
             var userName = Context.User.GetUsername();
             var sender = await unitOfWork.UserRepository.GetUserByUsernameAsync(userName);
@@ -123,7 +123,7 @@ namespace MeetingAppCore.SignalR
 
         public async Task MuteMicro(bool muteMicro)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: MuteMicro(bool)");
             var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             if (group != null)
@@ -138,7 +138,7 @@ namespace MeetingAppCore.SignalR
 
         public async Task MuteCamera(bool muteCamera)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: MuteCamera(bool)");
             var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             if(group != null)
@@ -153,7 +153,7 @@ namespace MeetingAppCore.SignalR
 
         public async Task ShareScreen(int roomid, bool isShareScreen)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: ShareScreen(id, bool)");
             if (isShareScreen)//true is doing share
             {
@@ -170,7 +170,7 @@ namespace MeetingAppCore.SignalR
 
         public async Task ShareScreenToUser(int roomid, string username, bool isShare)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: ShareScreenToUser(id, username, bool)");
             var currentBeginConnectionsUser = await presenceTracker.GetConnectionsForUser(new UserConnectionDto(username, roomid));
             if(currentBeginConnectionsUser.Count > 0)
@@ -179,7 +179,7 @@ namespace MeetingAppCore.SignalR
 
         private async Task<Room> RemoveConnectionFromGroup()
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: RemoveConnectionFromGroup()");
             var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             var connection = group.Connections.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId);
@@ -192,7 +192,7 @@ namespace MeetingAppCore.SignalR
 
         private async Task<Room> AddConnectionToGroup(int roomId)
         {
-            Console.WriteLine("\t" + new String('+', 10));
+            Console.WriteLine("2.   " + new String('+', 10));
             Console.WriteLine("Hub/Chat: AddConnectionToGroup()");
             var group = await unitOfWork.RoomRepository.GetRoomById(roomId);
             var connection = new Connection(Context.ConnectionId, Context.User.GetUsername());
