@@ -40,14 +40,25 @@ namespace MeetingAppCore
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("https://localhost:4200")
+                                      builder
+                                      .WithOrigins("https://localhost:4200")
+                                      //.AllowAnyOrigin()
                                       .AllowAnyHeader()
                                       .AllowAnyMethod()
                                       .AllowCredentials();
+
                                   });
+                options.AddPolicy("signalr",
+                    builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+
+                    .AllowCredentials()
+                    .SetIsOriginAllowed(hostName => true));
+
             });
 
-            services.AddIdentityServices(Configuration);
+            services.AddCustomeIdentityServices(Configuration);
             services.AddSignalR();
 
             services.AddSwaggerGen(c =>
@@ -70,7 +81,8 @@ namespace MeetingAppCore
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(MyAllowSpecificOrigins);
+            //app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors("signalr");
 
             app.UseAuthentication();
             app.UseAuthorization();

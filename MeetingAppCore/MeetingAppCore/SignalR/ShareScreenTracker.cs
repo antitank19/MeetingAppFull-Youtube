@@ -1,4 +1,5 @@
-﻿using MeetingAppCore.Dtos;
+﻿using MeetingAppCore.DebugTracker;
+using MeetingAppCore.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace MeetingAppCore.SignalR
         public ShareScreenTracker()
         {
             Console.WriteLine("4.         " + new String('~', 50));
-            Console.WriteLine("Tracker/ShareScreen:ctor()");
+            Console.WriteLine("4.         Tracker/ShareScreen: ctor()");
 
         }
         private static readonly List<UserConnectionDto> usersShareScreen = new List<UserConnectionDto>();
@@ -19,7 +20,8 @@ namespace MeetingAppCore.SignalR
         public Task<bool> UserConnectedToShareScreen(UserConnectionDto user)
         {
             Console.WriteLine("4.         " + new String('~', 50));
-            Console.WriteLine("Tracker/ShareScreen:UserConnectedToShareScreen(UserConnectionDto)");
+            Console.WriteLine("4.         Tracker/ShareScreen: UserConnectedToShareScreen(UserConnectionDto)");
+            FunctionTracker.Instance().AddTrackerFunc("Tracker/ShareScreen: UserConnectedToShareScreen(UserConnectionDto)");
             bool isOnline = false;
             lock (usersShareScreen)
             {
@@ -37,7 +39,8 @@ namespace MeetingAppCore.SignalR
         public Task<bool> UserDisconnectedShareScreen(UserConnectionDto user)
         {
             Console.WriteLine("4.         " + new String('~', 50));
-            Console.WriteLine("Tracker/ShareScreen:UserDisconnectedShareScreen(UserConnectionDto)");
+            Console.WriteLine("4.         Tracker/ShareScreen: UserDisconnectedShareScreen(UserConnectionDto)");
+            FunctionTracker.Instance().AddTrackerFunc("Tracker/ShareScreen: UserDisconnectedShareScreen(UserConnectionDto)");
             bool isOffline = false;
             lock (usersShareScreen)
             {
@@ -56,7 +59,8 @@ namespace MeetingAppCore.SignalR
         public Task<UserConnectionDto> GetUserIsSharing(int roomId)
         {
             Console.WriteLine("4.         " + new String('~', 50));
-            Console.WriteLine("Tracker/ShareScreen:GetUserIsSharing(roomId)");
+            Console.WriteLine("4.         Tracker/ShareScreen: GetUserIsSharing(roomId)");
+            FunctionTracker.Instance().AddTrackerFunc("Tracker/ShareScreen: GetUserIsSharing(roomId)");
             UserConnectionDto temp = null;
             lock (usersShareScreen)
             {
@@ -68,7 +72,8 @@ namespace MeetingAppCore.SignalR
         public Task<bool> DisconnectedByUser(string username, int roomId)
         {
             Console.WriteLine("4.         " + new String('~', 50));
-            Console.WriteLine("Tracker/ShareScreen:DisconnectedByUser(username, roomId)");
+            Console.WriteLine("4.         Tracker/ShareScreen: DisconnectedByUser(username, roomId)");
+            FunctionTracker.Instance().AddTrackerFunc("Tracker/ShareScreen: DisconnectedByUser(username, roomId)");
             bool isOffline = false;
             lock (usersShareScreen)
             {

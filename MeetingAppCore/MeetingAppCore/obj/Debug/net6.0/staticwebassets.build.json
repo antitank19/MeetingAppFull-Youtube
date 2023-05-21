@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/ugTAL663LA/BxWSmpbYABqRUmwpx9Po9NZLsQgo8c8=",
+  "Hash": "eRomt2pEdR9SUDmI2QOBxPD24uqHz2ehmsXDh1d+/8E=",
   "Source": "MeetingAppCore",
   "BasePath": "_content/MeetingAppCore",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\hoainam10th_2023-1-35.webm",
+      "Identity": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-14.webm",
       "SourceId": "MeetingAppCore",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\",
       "BasePath": "_content/MeetingAppCore",
-      "RelativePath": "UploadedRecordFiles/hoainam10th_2023-1-35.webm",
+      "RelativePath": "UploadedRecordFiles/ubuntu_2023-5-14.webm",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\UploadedRecordFiles\\hoainam10th_2023-1-35.webm"
+      "OriginalItemSpec": "wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-14.webm"
     },
     {
-      "Identity": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-1-31.webm",
+      "Identity": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-49.webm",
       "SourceId": "MeetingAppCore",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\",
       "BasePath": "_content/MeetingAppCore",
-      "RelativePath": "UploadedRecordFiles/ubuntu_2023-1-31.webm",
+      "RelativePath": "UploadedRecordFiles/ubuntu_2023-5-49.webm",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,7 +48,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\UploadedRecordFiles\\ubuntu_2023-1-31.webm"
+      "OriginalItemSpec": "wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-49.webm"
+    },
+    {
+      "Identity": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-51.webm",
+      "SourceId": "MeetingAppCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\",
+      "BasePath": "_content/MeetingAppCore",
+      "RelativePath": "UploadedRecordFiles/ubuntu_2023-5-51.webm",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-51.webm"
+    },
+    {
+      "Identity": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-57.webm",
+      "SourceId": "MeetingAppCore",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\",
+      "BasePath": "_content/MeetingAppCore",
+      "RelativePath": "UploadedRecordFiles/ubuntu_2023-5-57.webm",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-57.webm"
     }
   ]
 }

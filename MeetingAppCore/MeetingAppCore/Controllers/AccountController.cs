@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MeetingAppCore.DebugTracker;
 using MeetingAppCore.Dtos;
 using MeetingAppCore.Entities;
 using MeetingAppCore.Interfaces;
@@ -20,8 +21,8 @@ namespace MeetingAppCore.Controllers
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IMapper mapper)
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/Acount: ctor(UserManager, SignInManager, ITokenService, IMapper)");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/Acount: ctor(UserManager, SignInManager, ITokenService, IMapper)");
             this.tokenService = tokenService;
             _mapper = mapper;
             this.userManager = userManager;
@@ -33,8 +34,9 @@ namespace MeetingAppCore.Controllers
         //api/account/register?username=Test&password=hoainam10th with Register(string username, string password)
         public async Task<ActionResult<UserDto>> Register(RegisterDto register)
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/Acount: Register(RegisterDto)");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/Acount: Register(RegisterDto)");
+            FunctionTracker.Instance().AddApiFunc("Api/Acount: Api/Acount: Register(RegisterDto)");
 
             if (await UserExists(register.UserName))
                 return BadRequest("Username is taken");
@@ -65,8 +67,9 @@ namespace MeetingAppCore.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/Acount: Login(LoginDto)");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/Acount: Login(LoginDto)");
+            FunctionTracker.Instance().AddApiFunc("Api/Acount: Login(LoginDto)");
             var user = await userManager.Users
                 //.Include(p => p.Photos)
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName.ToLower());
@@ -95,8 +98,9 @@ namespace MeetingAppCore.Controllers
         [HttpPost("login-social")]
         public async Task<ActionResult<UserDto>> LoginSocial(LoginSocialDto loginDto)
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/Acount: LoginSocial(LoginSocial)");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/Acount: LoginSocial(LoginSocial)");
+            FunctionTracker.Instance().AddApiFunc("Api/Acount: LoginSocial(LoginSocial)");
             var user = await userManager.Users
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.Email);
             // email = username
@@ -151,8 +155,8 @@ namespace MeetingAppCore.Controllers
 
         private async Task<bool> UserExists(string username)
         {
-            Console.WriteLine("2.   " + new String('+', 10));
-            Console.WriteLine("Api/Acount: LoginSocial(LoginSocial)");
+            Console.WriteLine("1." + new String('=', 50));
+            Console.WriteLine("1.Api/Acount: UserExists(username");
             return await userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
     }

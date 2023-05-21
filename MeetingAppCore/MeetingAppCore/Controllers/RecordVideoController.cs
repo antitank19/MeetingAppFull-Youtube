@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MeetingAppCore.DebugTracker;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,8 +21,9 @@ namespace MeetingAppCore.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveRecoredFile()
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/RecordVideo: SaveRecoredFile()");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/RecordVideo: SaveRecoredFile()");
+            FunctionTracker.Instance().AddApiFunc("Api/RecordVideo: SaveRecoredFile()");
             var formCollection = await Request.ReadFormAsync();
             var files = formCollection.Files;
             if (files.Any())

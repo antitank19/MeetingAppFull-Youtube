@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MeetingAppCore.DebugTracker;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,8 +12,9 @@ namespace MeetingAppCore.Controllers
     {
         public IActionResult Index()
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Web/Fallback: Index()");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Web/Fallback: Index()"); 
+            FunctionTracker.Instance().AddApiFunc("Web/Fallback: Index()");
             return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html"), "text/HTML");
         }
     }

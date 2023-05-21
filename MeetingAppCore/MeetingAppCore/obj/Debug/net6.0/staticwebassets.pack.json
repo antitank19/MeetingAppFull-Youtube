@@ -1,12 +1,20 @@
 {
   "Files": [
     {
-      "Id": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\hoainam10th_2023-1-35.webm",
-      "PackagePath": "staticwebassets\\UploadedRecordFiles\\hoainam10th_2023-1-35.webm"
+      "Id": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-14.webm",
+      "PackagePath": "staticwebassets\\UploadedRecordFiles\\ubuntu_2023-5-14.webm"
     },
     {
-      "Id": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-1-31.webm",
-      "PackagePath": "staticwebassets\\UploadedRecordFiles\\ubuntu_2023-1-31.webm"
+      "Id": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-49.webm",
+      "PackagePath": "staticwebassets\\UploadedRecordFiles\\ubuntu_2023-5-49.webm"
+    },
+    {
+      "Id": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-51.webm",
+      "PackagePath": "staticwebassets\\UploadedRecordFiles\\ubuntu_2023-5-51.webm"
+    },
+    {
+      "Id": "D:\\MinhKhoiSave\\FPT\\23.2SU\\Capstone\\DemoCode\\MeetingAppFull-Youtube\\MeetingAppCore\\MeetingAppCore\\wwwroot\\UploadedRecordFiles\\ubuntu_2023-5-57.webm",
+      "PackagePath": "staticwebassets\\UploadedRecordFiles\\ubuntu_2023-5-57.webm"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MeetingAppCore.Microsoft.AspNetCore.StaticWebAssets.props",

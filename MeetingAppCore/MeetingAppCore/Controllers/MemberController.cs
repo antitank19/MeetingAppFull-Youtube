@@ -1,4 +1,5 @@
-﻿using MeetingAppCore.Dtos;
+﻿using MeetingAppCore.DebugTracker;
+using MeetingAppCore.Dtos;
 using MeetingAppCore.Extensions;
 using MeetingAppCore.Helpers;
 using MeetingAppCore.Interfaces;
@@ -31,8 +32,9 @@ namespace MeetingAppCore.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetAllMembers([FromQuery] UserParams userParams)
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/Member: GetAllMembers(UserParams)");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/Member: GetAllMembers(UserParams)");
+            FunctionTracker.Instance().AddApiFunc("Api/Acount: LoginSocial(LoginSocial)");
             userParams.CurrentUsername = User.GetUsername();
             var comments = await unitOfWork.UserRepository.GetMembersAsync(userParams);
             Response.AddPaginationHeader(comments.CurrentPage, comments.PageSize, comments.TotalCount, comments.TotalPages);
@@ -43,16 +45,18 @@ namespace MeetingAppCore.Controllers
         [HttpGet("{username}")] // member/username
         public async Task<ActionResult<MemberDto>> GetMember(string username)
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/Member: GetMembers(username)");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/Member: GetMembers(username)");
+            FunctionTracker.Instance().AddApiFunc("1.Api/Member: GetMembers(username)");
             return Ok(await unitOfWork.UserRepository.GetMemberAsync(username));
         }
 
         [HttpPut("{username}")]
         public async Task<ActionResult> LockedUser(string username)
         {
-            Console.WriteLine(new String('=', 10));
-            Console.WriteLine("Api/Member: LockedUser(username)");
+            Console.WriteLine("1."+new String('=', 50));
+            Console.WriteLine("1.Api/Member: LockedUser(username)");
+            FunctionTracker.Instance().AddApiFunc("1.Api/Member: LockedUser(username)");
             var u = await unitOfWork.UserRepository.UpdateLocked(username);
             if(u != null)
             {

@@ -1,4 +1,5 @@
-﻿using MeetingAppCore.Entities;
+﻿using MeetingAppCore.DebugTracker;
+using MeetingAppCore.Entities;
 using MeetingAppCore.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -20,16 +21,17 @@ namespace MeetingAppCore.Services
 
         public TokenService(IConfiguration config, UserManager<AppUser> userManager)
         {
-            Console.WriteLine("2.   " + new String('+', 10));
-            Console.WriteLine("Service/Token: ctor(IConfiguration, UserManager)");
+            Console.WriteLine("2.   " + new String('+', 50));
+            Console.WriteLine("2.   Service/Token: ctor(IConfiguration, UserManager)");
             _userManager = userManager;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
 
         public async Task<string> CreateTokenAsync(AppUser appUser)
         {
-            Console.WriteLine("2.   " + new String('+', 10));
-            Console.WriteLine("Service/Token: CreateTokenAsync(AppUser)");
+            Console.WriteLine("2.   " + new String('+', 50));
+            Console.WriteLine("2.   Service/Token: CreateTokenAsync(AppUser)");
+            FunctionTracker.Instance().AddServicceFunc("Service/Token: CreateTokenAsync(AppUser)");
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, appUser.Id.ToString()),
