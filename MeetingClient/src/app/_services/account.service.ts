@@ -93,7 +93,7 @@ function logForTrack(funcName: string) {
     }
     //Get Text
     var text = document.getElementById("modalText");
-    text.innerHTML += `account.service\n${funcName}}`;
+    text.innerHTML += `<br>account.service\n${funcName}}`;
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0] as HTMLElement;

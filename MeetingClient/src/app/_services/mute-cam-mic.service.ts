@@ -66,8 +66,8 @@ export class MuteCamMicService {
   }
 }
 function logForTrack(funcName: string) {
-    console.log(`busy.service\n${funcName}}`);
-    alert(`busy.service\n${funcName}}`);
+    console.log(`mute-cam-mic.service\n${funcName}}`);
+    alert(`mute-cam-mic.service\n${funcName}}`);
     // alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
@@ -79,7 +79,7 @@ function logForTrack(funcName: string) {
     }
     //Get Text
     var text = document.getElementById("modalText");
-    text.innerHTML += `account.service\n${funcName}}`;
+    text.innerHTML += `<br>mute-cam-mic.service\n${funcName}}`;
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0] as HTMLElement;
