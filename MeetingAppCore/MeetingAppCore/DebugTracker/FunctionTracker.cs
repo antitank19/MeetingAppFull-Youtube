@@ -53,17 +53,17 @@ namespace MeetingAppCore.DebugTracker
         public void AddTrackerFunc(string apiFunc)
         {
             All.Add(apiFunc);
-            Api.Add(apiFunc);
+            Tracker.Add(apiFunc);
         }
         public void AddServicceFunc(string apiFunc)
         {
             All.Add(apiFunc);
-            Api.Add(apiFunc);
+            Service.Add(apiFunc);
         }
         public void AddRepoFunc(string apiFunc)
         {
             All.Add(apiFunc);
-            Api.Add(apiFunc);
+            Repo.Add(apiFunc);
         }
     }
 }

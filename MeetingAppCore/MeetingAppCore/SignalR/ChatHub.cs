@@ -129,7 +129,7 @@ namespace MeetingAppCore.SignalR
         {
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: MuteMicro(bool)");
-            FunctionTracker.Instance().AddHubFunc("");
+            FunctionTracker.Instance().AddHubFunc("Hub/Chat: MuteMicro(bool)");
             var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             if (group != null)
             {
@@ -179,7 +179,7 @@ namespace MeetingAppCore.SignalR
         {
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: ShareScreenToUser(id, username, bool)");
-            FunctionTracker.Instance().AddHubFunc("");
+            FunctionTracker.Instance().AddHubFunc("Hub/Chat: ShareScreenToUser(id, username, bool)");
             var currentBeginConnectionsUser = await presenceTracker.GetConnectionsForUser(new UserConnectionDto(username, roomid));
             if(currentBeginConnectionsUser.Count > 0)
                 await Clients.Clients(currentBeginConnectionsUser).SendAsync("OnShareScreen", isShare);
@@ -189,7 +189,7 @@ namespace MeetingAppCore.SignalR
         {
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: RemoveConnectionFromGroup()");
-            FunctionTracker.Instance().AddHubFunc("");
+            FunctionTracker.Instance().AddHubFunc("Hub/Chat: RemoveConnectionFromGroup()");
             var group = await unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
             var connection = group.Connections.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId);
             unitOfWork.RoomRepository.RemoveConnection(connection);

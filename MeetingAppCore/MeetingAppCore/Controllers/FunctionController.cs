@@ -15,6 +15,17 @@ namespace MeetingAppCore.Controllers
         {
             return Ok(FunctionTracker.Instance().All);
         }
+        [HttpGet("Clear")]
+        public  IActionResult Clear ()
+        {
+            FunctionTracker.Instance().All.Clear();
+            FunctionTracker.Instance().Api.Clear();
+            FunctionTracker.Instance().Service.Clear();
+            FunctionTracker.Instance().Repo.Clear();
+            FunctionTracker.Instance().Hub.Clear();    
+            FunctionTracker.Instance().Tracker.Clear();
+            return Ok();
+        }
 
         // GET: api/<FunctionController>
         [HttpGet("Api")]
