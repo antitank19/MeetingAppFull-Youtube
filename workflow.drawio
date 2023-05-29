@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-28T14:31:09.901Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="pYWnQBcqZmu5TtWb6XPF" version="21.3.5" type="device" pages="14">
+<mxfile host="app.diagrams.net" modified="2023-05-29T04:24:45.787Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="Mbdb4pX6s7xg6J_CMQaW" version="21.3.5" type="device" pages="15">
   <diagram id="YBFd6rH3R7wROtdOC6Sx" name="BE">
-    <mxGraphModel dx="2265" dy="951" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="592" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1426,117 +1426,241 @@
       <root>
         <mxCell id="kFonB-cYq7ItXpoMh1My-0" />
         <mxCell id="kFonB-cYq7ItXpoMh1My-1" parent="kFonB-cYq7ItXpoMh1My-0" />
-        <mxCell id="kFonB-cYq7ItXpoMh1My-2" value="Actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-2" value="Actor" style="swimlane;whiteSpace=wrap" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="174.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-3" value="account.service &#xa;login(model: any)}" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-2">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-3" value="account.service &#xa;login(model: any)}" style="" parent="kFonB-cYq7ItXpoMh1My-2" vertex="1">
           <mxGeometry x="85" y="40" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-4" value="account.service &#xa;setCurrentUser&#xa;(user: User)}" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-2">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-4" value="account.service &#xa;setCurrentUser&#xa;(user: User)}" style="" parent="kFonB-cYq7ItXpoMh1My-2" vertex="1">
           <mxGeometry x="57.5" y="142" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-5" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="kFonB-cYq7ItXpoMh1My-2" source="kFonB-cYq7ItXpoMh1My-3" target="kFonB-cYq7ItXpoMh1My-4">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-5" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="kFonB-cYq7ItXpoMh1My-2" source="kFonB-cYq7ItXpoMh1My-3" target="kFonB-cYq7ItXpoMh1My-4" edge="1">
           <mxGeometry x="110" y="50" as="geometry">
             <mxPoint x="365.5" y="75" as="targetPoint" />
             <mxPoint x="205.5" y="75" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-6" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-2">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-6" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" parent="kFonB-cYq7ItXpoMh1My-2" vertex="1">
           <mxGeometry x="57.5" y="222" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-7" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-2">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-7" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" parent="kFonB-cYq7ItXpoMh1My-2" vertex="1">
           <mxGeometry x="75.5" y="312" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-8" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-2">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-8" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" parent="kFonB-cYq7ItXpoMh1My-2" vertex="1">
           <mxGeometry x="75.5" y="392" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-9" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="kFonB-cYq7ItXpoMh1My-2" source="kFonB-cYq7ItXpoMh1My-4" target="kFonB-cYq7ItXpoMh1My-6">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-9" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="kFonB-cYq7ItXpoMh1My-2" source="kFonB-cYq7ItXpoMh1My-4" target="kFonB-cYq7ItXpoMh1My-6" edge="1">
           <mxGeometry x="-44.5" y="-68" as="geometry">
             <mxPoint x="150" y="152" as="targetPoint" />
             <mxPoint x="150" y="100" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="454.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-11" value="Api/Acount: &#xa;Login(LoginDto)" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-10">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-11" value="Api/Acount: &#xa;Login(LoginDto)" style="" parent="kFonB-cYq7ItXpoMh1My-10" vertex="1">
           <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-12" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-10">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-12" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" parent="kFonB-cYq7ItXpoMh1My-10" vertex="1">
           <mxGeometry x="35.5" y="302" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-13" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-10">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-13" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" parent="kFonB-cYq7ItXpoMh1My-10" vertex="1">
           <mxGeometry x="35.5" y="392" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-14" value="Hub" style="swimlane;whiteSpace=wrap" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-14" value="Hub" style="swimlane;whiteSpace=wrap" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="734.5" y="138" width="280" height="570" as="geometry">
             <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-15" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-14">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-15" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" parent="kFonB-cYq7ItXpoMh1My-14" vertex="1">
           <mxGeometry x="57.5" y="302" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-16" value="Tracker" style="swimlane;whiteSpace=wrap" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-16" value="Tracker" style="swimlane;whiteSpace=wrap" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="1014.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-17" value="Repo" style="swimlane;whiteSpace=wrap" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-17" value="Repo" style="swimlane;whiteSpace=wrap" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="1574.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-18" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-17">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-18" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" parent="kFonB-cYq7ItXpoMh1My-17" vertex="1">
           <mxGeometry x="85" y="392" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-19" value="Service" style="swimlane;whiteSpace=wrap" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-19" value="Service" style="swimlane;whiteSpace=wrap" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="1294.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-20" value="Service/Token: &#xa;CreateTokenAsync&#xa;(AppUser)" style="" vertex="1" parent="kFonB-cYq7ItXpoMh1My-19">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-20" value="Service/Token: &#xa;CreateTokenAsync&#xa;(AppUser)" style="" parent="kFonB-cYq7ItXpoMh1My-19" vertex="1">
           <mxGeometry x="45.5" y="40" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="kFonB-cYq7ItXpoMh1My-1" source="kFonB-cYq7ItXpoMh1My-3" target="kFonB-cYq7ItXpoMh1My-11">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="kFonB-cYq7ItXpoMh1My-1" source="kFonB-cYq7ItXpoMh1My-3" target="kFonB-cYq7ItXpoMh1My-11" edge="1">
           <mxGeometry x="274.5" y="178" as="geometry">
             <mxPoint x="289.5" y="248" as="targetPoint" />
             <mxPoint x="329.5" y="203" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="kFonB-cYq7ItXpoMh1My-1" source="kFonB-cYq7ItXpoMh1My-11" target="kFonB-cYq7ItXpoMh1My-20">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" parent="kFonB-cYq7ItXpoMh1My-1" source="kFonB-cYq7ItXpoMh1My-11" target="kFonB-cYq7ItXpoMh1My-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-23" value="Other actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-23" value="Other actor" style="swimlane;whiteSpace=wrap" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="1854.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Hub/Chat: ShareScreen(id, bool)&quot;,&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Tracker/ShareScreen: UserDisconnectedShareScreen(UserConnectionDto)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Hub/Chat: ShareScreen(id, bool)&quot;,&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Tracker/ShareScreen: UserDisconnectedShareScreen(UserConnectionDto)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1">
           <mxGeometry x="530" y="-310" width="810" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-25" value="" style="group" vertex="1" connectable="0" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-25" value="" style="group" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1" connectable="0">
           <mxGeometry x="-380" y="-280" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-26" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;chat-hub.service shareScreen(roomId: number, isShareScreen: boolean)}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;chat-hub.service hubConnection.on(&#39;OnShareScreen&#39;, (isShareScreen) =&amp;gt;}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-25">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-26" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;chat-hub.service shareScreen(roomId: number, isShareScreen: boolean)}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;chat-hub.service hubConnection.on(&#39;OnShareScreen&#39;, (isShareScreen) =&amp;gt;}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="kFonB-cYq7ItXpoMh1My-25" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-25">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" parent="kFonB-cYq7ItXpoMh1My-25" vertex="1">
           <mxGeometry x="190" y="40" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-28" value="" style="group" vertex="1" connectable="0" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-28" value="" style="group" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1" connectable="0">
           <mxGeometry x="1440" y="-290" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-29" value="" style="group" vertex="1" connectable="0" parent="kFonB-cYq7ItXpoMh1My-28">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-29" value="" style="group" parent="kFonB-cYq7ItXpoMh1My-28" vertex="1" connectable="0">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-29">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="kFonB-cYq7ItXpoMh1My-29" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-29">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="kFonB-cYq7ItXpoMh1My-29" vertex="1">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-32" value="" style="group" vertex="1" connectable="0" parent="kFonB-cYq7ItXpoMh1My-1">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-32" value="" style="group" parent="kFonB-cYq7ItXpoMh1My-1" vertex="1" connectable="0">
           <mxGeometry x="2160" y="-300" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-33" value="" style="group" vertex="1" connectable="0" parent="kFonB-cYq7ItXpoMh1My-32">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-33" value="" style="group" parent="kFonB-cYq7ItXpoMh1My-32" vertex="1" connectable="0">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;chat-hub.service hubConnection.on(&#39;OnShareScreen&#39;, (isShareScreen) =&amp;gt;}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-33">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;chat-hub.service hubConnection.on(&#39;OnShareScreen&#39;, (isShareScreen) =&amp;gt;}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="kFonB-cYq7ItXpoMh1My-33" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="kFonB-cYq7ItXpoMh1My-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="kFonB-cYq7ItXpoMh1My-33">
+        <mxCell id="kFonB-cYq7ItXpoMh1My-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="kFonB-cYq7ItXpoMh1My-33" vertex="1">
+          <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="chat" id="L5IOsDSAl93_La3dizN6">
+    <mxGraphModel dx="9944" dy="1332" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-0" />
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-1" parent="t9GhLbmUJ8o3XD876c5V-0" />
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-2" value="Actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="174.5" y="138" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-3" value="account.service &#xa;login(model: any)}" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-2">
+          <mxGeometry x="85" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-4" value="account.service &#xa;setCurrentUser&#xa;(user: User)}" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-2">
+          <mxGeometry x="57.5" y="142" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-5" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="t9GhLbmUJ8o3XD876c5V-2" source="t9GhLbmUJ8o3XD876c5V-3" target="t9GhLbmUJ8o3XD876c5V-4">
+          <mxGeometry x="110" y="50" as="geometry">
+            <mxPoint x="365.5" y="75" as="targetPoint" />
+            <mxPoint x="205.5" y="75" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-6" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-2">
+          <mxGeometry x="57.5" y="222" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-7" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-2">
+          <mxGeometry x="75.5" y="312" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-8" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-2">
+          <mxGeometry x="75.5" y="392" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-9" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="t9GhLbmUJ8o3XD876c5V-2" source="t9GhLbmUJ8o3XD876c5V-4" target="t9GhLbmUJ8o3XD876c5V-6">
+          <mxGeometry x="-44.5" y="-68" as="geometry">
+            <mxPoint x="150" y="152" as="targetPoint" />
+            <mxPoint x="150" y="100" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="454.5" y="138" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-11" value="Api/Acount: &#xa;Login(LoginDto)" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-10">
+          <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-12" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-10">
+          <mxGeometry x="35.5" y="302" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-13" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-10">
+          <mxGeometry x="35.5" y="392" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-14" value="Hub" style="swimlane;whiteSpace=wrap" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="734.5" y="138" width="280" height="570" as="geometry">
+            <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-15" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-14">
+          <mxGeometry x="57.5" y="302" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-16" value="Tracker" style="swimlane;whiteSpace=wrap" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="1014.5" y="138" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-17" value="Repo" style="swimlane;whiteSpace=wrap" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="1574.5" y="138" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-18" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-17">
+          <mxGeometry x="85" y="392" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-19" value="Service" style="swimlane;whiteSpace=wrap" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="1294.5" y="138" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-20" value="Service/Token: &#xa;CreateTokenAsync&#xa;(AppUser)" style="" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-19">
+          <mxGeometry x="45.5" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="t9GhLbmUJ8o3XD876c5V-1" source="t9GhLbmUJ8o3XD876c5V-3" target="t9GhLbmUJ8o3XD876c5V-11">
+          <mxGeometry x="274.5" y="178" as="geometry">
+            <mxPoint x="289.5" y="248" as="targetPoint" />
+            <mxPoint x="329.5" y="203" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="t9GhLbmUJ8o3XD876c5V-1" source="t9GhLbmUJ8o3XD876c5V-11" target="t9GhLbmUJ8o3XD876c5V-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-23" value="Other actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="1854.5" y="138" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Hub/Chat: SendMessage(CreateMessageDto)&quot;,&lt;br/&gt;  &quot;Repo/User: GetUserByUsernameAsync(username)&quot;,&lt;br/&gt;  &quot;Repo/Room: GetRoomForConnection(connectionId)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="530" y="-310" width="810" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-25" value="" style="group" vertex="1" connectable="0" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="-380" y="-280" width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="KoESMi_47BGrwCrLv1v0-0" value="" style="group" vertex="1" connectable="0" parent="t9GhLbmUJ8o3XD876c5V-25">
+          <mxGeometry width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-26" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;chat-hub.service sendMessage(content: string)}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;chat-hub.service hubConnection.on(&#39;NewMessage&#39;, message =&amp;gt;}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;message-count-stream.service set MessageCount(value: number)}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="KoESMi_47BGrwCrLv1v0-0">
+          <mxGeometry width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="KoESMi_47BGrwCrLv1v0-0">
+          <mxGeometry x="190" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-28" value="&#xa;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;chat-hub.service hubConnection.on(&#39;NewMessage&#39;, message =&amp;gt;}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;message-count-stream.service get MessageCount()}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;message-count-stream.service set MessageCount(value: number)}&lt;/span&gt;&#xa;&#xa;" style="group" vertex="1" connectable="0" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="1440" y="-290" width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-29" value="" style="group" vertex="1" connectable="0" parent="t9GhLbmUJ8o3XD876c5V-28">
+          <mxGeometry width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;chat-hub.service hubConnection.on(&#39;NewMessage&#39;, message =&amp;gt;}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;message-count-stream.service get MessageCount()}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;message-count-stream.service set MessageCount(value: number)}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-29">
+          <mxGeometry width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài chat tab" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-29">
+          <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-32" value="" style="group" vertex="1" connectable="0" parent="t9GhLbmUJ8o3XD876c5V-1">
+          <mxGeometry x="2160" y="-300" width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-33" value="" style="group" vertex="1" connectable="0" parent="t9GhLbmUJ8o3XD876c5V-32">
+          <mxGeometry width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;chat-hub.service hubConnection.on(&#39;NewMessage&#39;, message =&amp;gt;}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;message-count-stream.service set MessageCount(value: number)}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-33">
+          <mxGeometry width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="t9GhLbmUJ8o3XD876c5V-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="t9GhLbmUJ8o3XD876c5V-33">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
         </mxCell>
       </root>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from './models/user';
 import { AccountService } from './_services/account.service';
-import { PresenceService } from './_services/presence.service';
+import { PresenceHubService } from './_services/presence-hub.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   title = 'MeetingClient';
 
-  constructor(private router: Router, private accountService: AccountService, private presence: PresenceService){}
+  constructor(private router: Router, private accountService: AccountService, private presence: PresenceHubService){}
 
   ngOnInit(): void {
     this.setCurrentUser();

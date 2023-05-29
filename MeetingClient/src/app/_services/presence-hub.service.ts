@@ -8,7 +8,7 @@ import { UtilityStreamService } from './utility-stream.service';
 @Injectable({
     providedIn: 'root'
 })
-export class PresenceService {
+export class PresenceHubService {
     hubUrl = environment.hubUrl;
     private hubConnection: HubConnection;
     private onlineUsersSource = new BehaviorSubject<string[]>([]);

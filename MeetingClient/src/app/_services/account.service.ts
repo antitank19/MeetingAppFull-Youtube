@@ -4,7 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators';
-import { PresenceService } from './presence.service';
+import { PresenceHubService } from './presence-hub.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +15,7 @@ export class AccountService {
     private currentUserSource = new ReplaySubject<User>(1);
     currentUser$ = this.currentUserSource.asObservable();
 
-    constructor(private http: HttpClient, private presence: PresenceService) { }
+    constructor(private http: HttpClient, private presence: PresenceHubService) { }
 
     login(model: any) {
         logForTrack('login(model: any)');
