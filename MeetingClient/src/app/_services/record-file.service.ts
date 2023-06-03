@@ -67,8 +67,8 @@ export class RecordFileService {
 }
 function logForTrack(funcName: string) {
     console.log(`record.service\n${funcName}}`);
-    alert(`record.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`record.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

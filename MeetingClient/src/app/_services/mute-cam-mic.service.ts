@@ -67,8 +67,8 @@ export class MuteCamMicService {
 }
 function logForTrack(funcName: string) {
     console.log(`mute-cam-mic.service\n${funcName}}`);
-    alert(`mute-cam-mic.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`mute-cam-mic.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

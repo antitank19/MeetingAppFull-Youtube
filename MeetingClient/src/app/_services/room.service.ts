@@ -40,8 +40,8 @@ export class RoomService {
 }
 function logForTrack(funcName: string) {
     console.log(`room.service\n${funcName}}`);
-    alert(`room.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`room.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

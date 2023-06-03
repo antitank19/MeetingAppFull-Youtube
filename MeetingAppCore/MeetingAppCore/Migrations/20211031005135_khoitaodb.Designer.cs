@@ -21,7 +21,7 @@ namespace MeetingAppCore.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MeetingAppCore.Entities.AppRole", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.AppRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace MeetingAppCore.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.AppUser", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.AppUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,7 +124,7 @@ namespace MeetingAppCore.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.AppUserRole", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.AppUserRole", b =>
                 {
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -139,7 +139,7 @@ namespace MeetingAppCore.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.Connection", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.Connection", b =>
                 {
                     b.Property<string>("ConnectionId")
                         .HasColumnType("nvarchar(450)");
@@ -157,7 +157,7 @@ namespace MeetingAppCore.Migrations
                     b.ToTable("Connections");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.Room", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.Room", b =>
                 {
                     b.Property<int>("RoomId")
                         .ValueGeneratedOnAdd()
@@ -263,15 +263,15 @@ namespace MeetingAppCore.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.AppUserRole", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.AppUserRole", b =>
                 {
-                    b.HasOne("MeetingAppCore.Entities.AppRole", "Role")
+                    b.HasOne("MeetingAppCore.Entitiess.AppRole", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MeetingAppCore.Entities.AppUser", "User")
+                    b.HasOne("MeetingAppCore.Entitiess.AppUser", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -282,16 +282,16 @@ namespace MeetingAppCore.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.Connection", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.Connection", b =>
                 {
-                    b.HasOne("MeetingAppCore.Entities.Room", null)
+                    b.HasOne("MeetingAppCore.Entitiess.Room", null)
                         .WithMany("Connections")
                         .HasForeignKey("RoomId");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.Room", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.Room", b =>
                 {
-                    b.HasOne("MeetingAppCore.Entities.AppUser", "AppUser")
+                    b.HasOne("MeetingAppCore.Entitiess.AppUser", "AppUser")
                         .WithMany("Rooms")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -302,7 +302,7 @@ namespace MeetingAppCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("MeetingAppCore.Entities.AppRole", null)
+                    b.HasOne("MeetingAppCore.Entitiess.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -311,7 +311,7 @@ namespace MeetingAppCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("MeetingAppCore.Entities.AppUser", null)
+                    b.HasOne("MeetingAppCore.Entitiess.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -320,7 +320,7 @@ namespace MeetingAppCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("MeetingAppCore.Entities.AppUser", null)
+                    b.HasOne("MeetingAppCore.Entitiess.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -329,26 +329,26 @@ namespace MeetingAppCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("MeetingAppCore.Entities.AppUser", null)
+                    b.HasOne("MeetingAppCore.Entitiess.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.AppRole", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.AppRole", b =>
                 {
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.AppUser", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.AppUser", b =>
                 {
                     b.Navigation("Rooms");
 
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("MeetingAppCore.Entities.Room", b =>
+            modelBuilder.Entity("MeetingAppCore.Entitiess.Room", b =>
                 {
                     b.Navigation("Connections");
                 });

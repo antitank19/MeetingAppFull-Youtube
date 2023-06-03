@@ -141,8 +141,8 @@ export class ChatHubService {
 }
 function logForTrack(funcName: string) {
     console.log(`chat-hub.service\n${funcName}}`);
-    alert(`chat-hub.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`chat-hub.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

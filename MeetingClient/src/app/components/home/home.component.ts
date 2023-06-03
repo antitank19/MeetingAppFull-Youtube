@@ -263,7 +263,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.localvideoPlayer.nativeElement.play();
         } catch (error) {
             console.error(error);
-            alert(`Can't join room, error ${error}`);
+            //alert(`Can't join room, error ${error}`);
         }
     }
 
@@ -367,8 +367,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 }
 function logForTrack(funcName: string) {
     console.log(`home.component\n${funcName}}`);
-    alert(`home.component\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`home.component\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

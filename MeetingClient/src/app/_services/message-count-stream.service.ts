@@ -35,8 +35,8 @@ export class MessageCountStreamService {
 }
 function logForTrack(funcName: string) {
     console.log(`message-count-stream.service\n${funcName}}`);
-    alert(`message-count-stream.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`message-count-stream.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

@@ -66,8 +66,8 @@ export class PresenceHubService {
 }
 function logForTrack(funcName: string) {
     console.log(`presense.service\n${funcName}}`);
-    alert(`presense.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`presense.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

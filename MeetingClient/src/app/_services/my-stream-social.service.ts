@@ -49,8 +49,8 @@ export class MyStreamSocialService {
 }
 function logForTrack(funcName: string) {
     console.log(`my-stream-social.service\n${funcName}}`);
-    alert(`my-stream-social.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`my-stream-social.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";

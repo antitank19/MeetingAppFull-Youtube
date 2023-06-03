@@ -81,8 +81,8 @@ export class AccountService {
 }
 function logForTrack(funcName: string) {
     console.log(`account.service\n${funcName}}`);
-    alert(`account.service\n${funcName}}`);
-    // alert(`account.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
+    //alert(`account.service\n${funcName}}`);
     // Get the modal
     var modal = document.getElementById("myPopUpModal");
     // modal.style.display = "block";
