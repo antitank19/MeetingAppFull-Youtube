@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-29T04:24:45.787Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="Mbdb4pX6s7xg6J_CMQaW" version="21.3.5" type="device" pages="15">
+<mxfile host="app.diagrams.net" modified="2023-06-04T14:57:40.651Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="1LQBddGYVeKLI_QrITUi" version="21.3.7" type="device" pages="15">
   <diagram id="YBFd6rH3R7wROtdOC6Sx" name="BE">
-    <mxGraphModel dx="592" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1674" dy="796" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -121,7 +121,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="login" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
-    <mxGraphModel dx="453" dy="1597" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1102" dy="1597" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -143,7 +143,7 @@
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-59" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" parent="2" vertex="1">
           <mxGeometry x="57.5" y="222" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-8ZnuHl4JHoOOj9CxjV9-60" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" parent="2" vertex="1">
+        <mxCell id="-8ZnuHl4JHoOOj9CxjV9-60" value="presensehub.service &#xa;createHubConnection&#xa;(user: User)}" style="" parent="2" vertex="1">
           <mxGeometry x="75.5" y="312" width="165" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-66" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" parent="2" vertex="1">
@@ -161,9 +161,6 @@
         <mxCell id="7" value="Api/Acount: &#xa;Login(LoginDto)" style="" parent="3" vertex="1">
           <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-8ZnuHl4JHoOOj9CxjV9-61" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" parent="3" vertex="1">
-          <mxGeometry x="35.5" y="302" width="165" height="50" as="geometry" />
-        </mxCell>
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-70" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" parent="3" vertex="1">
           <mxGeometry x="35.5" y="392" width="165" height="50" as="geometry" />
         </mxCell>
@@ -172,17 +169,20 @@
             <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="-8ZnuHl4JHoOOj9CxjV9-65" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" parent="4" vertex="1">
-          <mxGeometry x="57.5" y="302" width="165" height="50" as="geometry" />
+        <mxCell id="-8ZnuHl4JHoOOj9CxjV9-61" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" parent="4" vertex="1">
+          <mxGeometry x="65.5" y="312" width="165" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-41" value="Tracker" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
           <mxGeometry x="1004.5" y="128" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="-8ZnuHl4JHoOOj9CxjV9-65" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" parent="-8ZnuHl4JHoOOj9CxjV9-41" vertex="1">
+          <mxGeometry x="57.5" y="312" width="165" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-47" value="Repo" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
           <mxGeometry x="1564.5" y="128" width="280" height="570" as="geometry" />
         </mxCell>
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-74" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" parent="-8ZnuHl4JHoOOj9CxjV9-47" vertex="1">
-          <mxGeometry x="85" y="392" width="110" height="50" as="geometry" />
+          <mxGeometry x="75.5" y="392" width="164.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-51" value="Service" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
           <mxGeometry x="1284.5" y="128" width="280" height="570" as="geometry" />
@@ -202,447 +202,375 @@
         <mxCell id="-8ZnuHl4JHoOOj9CxjV9-71" value="Other actor" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
           <mxGeometry x="1844.5" y="128" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="5Yjrw2bjJRWgCLY-LoVa-10" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Api/Acount: Login(LoginDto)&quot;,&lt;br/&gt;  &quot;Service/Token: CreateTokenAsync(AppUser)&quot;,&lt;br/&gt;  &quot;Api/Room: GetAllRooms(RoomParams)&quot;,&lt;br/&gt;  &quot;Repo/Room: GetAllRoomAsync(RoomParams)&quot;,&lt;br/&gt;  &quot;Repo/Room: GetRoomById(id)&quot;,&lt;br/&gt;  &quot;3.      Hub/Presence: OnConnectedAsync()&quot;,&lt;br/&gt;  &quot;Tracker/Presence: UserConnected(UserConnectionDto, connectionId)&quot;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+        <mxCell id="5Yjrw2bjJRWgCLY-LoVa-10" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Api/Acount: Login(LoginDto)&quot;,&lt;br/&gt;  &quot;Service/Token: CreateTokenAsync(AppUser)&quot;,&lt;br/&gt;  &quot;Api/Room: GetAllRooms(RoomParams)&quot;,&lt;br/&gt;  &quot;Repo/Room: GetAllRoomAsync(RoomParams)&quot;,&lt;br/&gt;  &quot;Repo/Room: GetRoomById(id)&quot;,&lt;br/&gt;  &quot;3.      Hub/Presence: OnConnectedAsync()&quot;,&lt;br/&gt;  &quot;Tracker/Presence: UserConnected(UserConnectionDto, connectionId)&quot;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
           <mxGeometry x="1790" y="-300" width="810" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="5Yjrw2bjJRWgCLY-LoVa-12" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;account.service login(model: any)}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;account.service setCurrentUser(user: User)}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;account.service getDecodedToken(token: string)}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;presense.service createHubConnection(user: User)}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;room.service getRooms(pageNumber, pageSize)}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+        <mxCell id="5Yjrw2bjJRWgCLY-LoVa-12" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;account.service login(model: any)}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;account.service setCurrentUser(user: User)}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;account.service getDecodedToken(token: string)}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;presense-hub.service createHubConnection(user: User)}&lt;/span&gt;&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;span style=&quot;color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;room.service getRooms(pageNumber, pageSize)}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
           <mxGeometry x="50" y="-280" width="570" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="5nRGGHvdNMyKfXM4DfN_-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-8ZnuHl4JHoOOj9CxjV9-60" target="-8ZnuHl4JHoOOj9CxjV9-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5nRGGHvdNMyKfXM4DfN_-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-8ZnuHl4JHoOOj9CxjV9-61" target="-8ZnuHl4JHoOOj9CxjV9-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5nRGGHvdNMyKfXM4DfN_-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-8ZnuHl4JHoOOj9CxjV9-66" target="-8ZnuHl4JHoOOj9CxjV9-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5nRGGHvdNMyKfXM4DfN_-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-8ZnuHl4JHoOOj9CxjV9-70" target="-8ZnuHl4JHoOOj9CxjV9-74">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Tạo phòng" id="5rUZINwaIQJ0LwusYDwF">
-    <mxGraphModel dx="3661" dy="1872" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3173" dy="2228" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="-wq3NrYOHyIMyVq0zOvD-0" />
         <mxCell id="-wq3NrYOHyIMyVq0zOvD-1" parent="-wq3NrYOHyIMyVq0zOvD-0" />
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-2" value="Actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-2" value="Actor" style="swimlane;whiteSpace=wrap" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="174.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-3" value="account.service &#xa;login(model: any)}" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-2">
-          <mxGeometry x="85" y="40" width="110" height="50" as="geometry" />
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-3" value="room.service &#xa;addRoom(name: string)}" style="" parent="-wq3NrYOHyIMyVq0zOvD-2" vertex="1">
+          <mxGeometry x="50" y="40" width="145" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-4" value="account.service &#xa;setCurrentUser&#xa;(user: User)}" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-2">
-          <mxGeometry x="57.5" y="142" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-5" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="-wq3NrYOHyIMyVq0zOvD-2" source="-wq3NrYOHyIMyVq0zOvD-3" target="-wq3NrYOHyIMyVq0zOvD-4">
-          <mxGeometry x="110" y="50" as="geometry">
-            <mxPoint x="365.5" y="75" as="targetPoint" />
-            <mxPoint x="205.5" y="75" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-6" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-2">
-          <mxGeometry x="57.5" y="222" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-7" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-2">
-          <mxGeometry x="75.5" y="312" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-8" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-2">
-          <mxGeometry x="75.5" y="392" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-9" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="-wq3NrYOHyIMyVq0zOvD-2" source="-wq3NrYOHyIMyVq0zOvD-4" target="-wq3NrYOHyIMyVq0zOvD-6">
-          <mxGeometry x="-44.5" y="-68" as="geometry">
-            <mxPoint x="150" y="152" as="targetPoint" />
-            <mxPoint x="150" y="100" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="454.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-11" value="Api/Acount: &#xa;Login(LoginDto)" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-10">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-11" value="&quot;Api/Room: &#xa;AddRoom(name)&quot;, &#xa;" style="" parent="-wq3NrYOHyIMyVq0zOvD-10" vertex="1">
           <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-12" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-10">
-          <mxGeometry x="35.5" y="302" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-13" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-10">
-          <mxGeometry x="35.5" y="392" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-14" value="Hub" style="swimlane;whiteSpace=wrap" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-14" value="Hub" style="swimlane;whiteSpace=wrap" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="734.5" y="138" width="280" height="570" as="geometry">
             <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-15" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-14">
-          <mxGeometry x="57.5" y="302" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-16" value="Tracker" style="swimlane;whiteSpace=wrap" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-16" value="Tracker" style="swimlane;whiteSpace=wrap" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="1014.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-17" value="Repo" style="swimlane;whiteSpace=wrap" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-17" value="Repo" style="swimlane;whiteSpace=wrap" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="1574.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-18" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-17">
-          <mxGeometry x="85" y="392" width="110" height="50" as="geometry" />
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-18" value=" &quot;Repo/Room: &#xa;GetRoomDtoById(id)&quot;, &#xa;" style="" parent="-wq3NrYOHyIMyVq0zOvD-17" vertex="1">
+          <mxGeometry x="53" y="302" width="155" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-19" value="Service" style="swimlane;whiteSpace=wrap" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-20" value="&quot;Api/Room: &#xa;AddRoom(name)&quot;, &#xa;" style="" parent="-wq3NrYOHyIMyVq0zOvD-17" vertex="1">
+          <mxGeometry x="75.5" y="62" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vB2u0VXf2wNAmpRa6dpe-0" value=" &quot;Repo/Room: &#xa;GetRoomById(id)&quot;" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-17">
+          <mxGeometry x="53" y="442" width="155" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-19" value="Service" style="swimlane;whiteSpace=wrap" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="1294.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-20" value="Service/Token: &#xa;CreateTokenAsync&#xa;(AppUser)" style="" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-19">
-          <mxGeometry x="45.5" y="40" width="110" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="-wq3NrYOHyIMyVq0zOvD-1" source="-wq3NrYOHyIMyVq0zOvD-3" target="-wq3NrYOHyIMyVq0zOvD-11">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="-wq3NrYOHyIMyVq0zOvD-1" source="-wq3NrYOHyIMyVq0zOvD-3" target="-wq3NrYOHyIMyVq0zOvD-11" edge="1">
           <mxGeometry x="274.5" y="178" as="geometry">
             <mxPoint x="289.5" y="248" as="targetPoint" />
             <mxPoint x="329.5" y="203" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="-wq3NrYOHyIMyVq0zOvD-1" source="-wq3NrYOHyIMyVq0zOvD-11" target="-wq3NrYOHyIMyVq0zOvD-20">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" parent="-wq3NrYOHyIMyVq0zOvD-1" source="-wq3NrYOHyIMyVq0zOvD-11" target="-wq3NrYOHyIMyVq0zOvD-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-23" value="Other actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-23" value="Other actor" style="swimlane;whiteSpace=wrap" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="1854.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Api/Room: AddRoom(name)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: AddRoom(Room)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomDtoById(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Api/Room: AddRoom(name)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: AddRoom(Room)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomDtoById(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1">
           <mxGeometry x="530" y="-310" width="810" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-25" value="" style="group" vertex="1" connectable="0" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-25" value="" style="group" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1" connectable="0">
           <mxGeometry x="-380" y="-280" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-26" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;room.service addRoom(name: string)}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-25">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-26" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;room.service addRoom(name: string)}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="-wq3NrYOHyIMyVq0zOvD-25" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-25">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" parent="-wq3NrYOHyIMyVq0zOvD-25" vertex="1">
           <mxGeometry x="190" y="40" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-28" value="" style="group" vertex="1" connectable="0" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-28" value="" style="group" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1" connectable="0">
           <mxGeometry x="1440" y="-290" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-29" value="" style="group" vertex="1" connectable="0" parent="-wq3NrYOHyIMyVq0zOvD-28">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-29" value="" style="group" parent="-wq3NrYOHyIMyVq0zOvD-28" vertex="1" connectable="0">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-29">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="-wq3NrYOHyIMyVq0zOvD-29" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-29">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="-wq3NrYOHyIMyVq0zOvD-29" vertex="1">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-32" value="" style="group" vertex="1" connectable="0" parent="-wq3NrYOHyIMyVq0zOvD-1">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-32" value="" style="group" parent="-wq3NrYOHyIMyVq0zOvD-1" vertex="1" connectable="0">
           <mxGeometry x="2160" y="-300" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-33" value="" style="group" vertex="1" connectable="0" parent="-wq3NrYOHyIMyVq0zOvD-32">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-33" value="" style="group" parent="-wq3NrYOHyIMyVq0zOvD-32" vertex="1" connectable="0">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-33">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="-wq3NrYOHyIMyVq0zOvD-33" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="-wq3NrYOHyIMyVq0zOvD-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="-wq3NrYOHyIMyVq0zOvD-33">
+        <mxCell id="-wq3NrYOHyIMyVq0zOvD-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="-wq3NrYOHyIMyVq0zOvD-33" vertex="1">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vB2u0VXf2wNAmpRa6dpe-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="-wq3NrYOHyIMyVq0zOvD-1" source="-wq3NrYOHyIMyVq0zOvD-11" target="-wq3NrYOHyIMyVq0zOvD-18">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Edit phòng" id="WEskDuHhZtke6Cey9BKU">
-    <mxGraphModel dx="2415" dy="1349" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2743" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="GhuKli6xuumff6IDDwZy-0" />
         <mxCell id="GhuKli6xuumff6IDDwZy-1" parent="GhuKli6xuumff6IDDwZy-0" />
-        <mxCell id="GhuKli6xuumff6IDDwZy-2" value="Actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-2" value="Actor" style="swimlane;whiteSpace=wrap" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="174.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-3" value="account.service &#xa;login(model: any)}" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-2">
-          <mxGeometry x="85" y="40" width="110" height="50" as="geometry" />
+        <mxCell id="GhuKli6xuumff6IDDwZy-3" value="room.service &#xa;editRoom(id: number, name: string)}" style="" parent="GhuKli6xuumff6IDDwZy-2" vertex="1">
+          <mxGeometry x="20" y="40" width="230" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-4" value="account.service &#xa;setCurrentUser&#xa;(user: User)}" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-2">
-          <mxGeometry x="57.5" y="142" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-5" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="GhuKli6xuumff6IDDwZy-2" source="GhuKli6xuumff6IDDwZy-3" target="GhuKli6xuumff6IDDwZy-4">
-          <mxGeometry x="110" y="50" as="geometry">
-            <mxPoint x="365.5" y="75" as="targetPoint" />
-            <mxPoint x="205.5" y="75" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-6" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-2">
-          <mxGeometry x="57.5" y="222" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-7" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-2">
-          <mxGeometry x="75.5" y="312" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-8" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-2">
-          <mxGeometry x="75.5" y="392" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-9" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="GhuKli6xuumff6IDDwZy-2" source="GhuKli6xuumff6IDDwZy-4" target="GhuKli6xuumff6IDDwZy-6">
-          <mxGeometry x="-44.5" y="-68" as="geometry">
-            <mxPoint x="150" y="152" as="targetPoint" />
-            <mxPoint x="150" y="100" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="454.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-11" value="Api/Acount: &#xa;Login(LoginDto)" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-10">
-          <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
+        <mxCell id="GhuKli6xuumff6IDDwZy-11" value="&quot;Api/Room: &#xa;EditRoom(id, name)&quot;, &#xa;" style="" parent="GhuKli6xuumff6IDDwZy-10" vertex="1">
+          <mxGeometry x="75.5" y="40" width="144.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-12" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-10">
-          <mxGeometry x="35.5" y="302" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-13" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-10">
-          <mxGeometry x="35.5" y="392" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-14" value="Hub" style="swimlane;whiteSpace=wrap" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-14" value="Hub" style="swimlane;whiteSpace=wrap" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="734.5" y="138" width="280" height="570" as="geometry">
             <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-15" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-14">
-          <mxGeometry x="57.5" y="302" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-16" value="Tracker" style="swimlane;whiteSpace=wrap" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-16" value="Tracker" style="swimlane;whiteSpace=wrap" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="1014.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-17" value="Repo" style="swimlane;whiteSpace=wrap" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-17" value="Repo" style="swimlane;whiteSpace=wrap" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="1574.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-18" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-17">
+        <mxCell id="GhuKli6xuumff6IDDwZy-18" value=" &quot;Repo/Room: &#xa;GetRoomById(id)&quot;" style="" parent="GhuKli6xuumff6IDDwZy-17" vertex="1">
           <mxGeometry x="85" y="392" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-19" value="Service" style="swimlane;whiteSpace=wrap" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-20" value=" &quot;Repo/Room: &#xa;EditRoom(id, name)&quot;, &#xa;" style="" parent="GhuKli6xuumff6IDDwZy-17" vertex="1">
+          <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GhuKli6xuumff6IDDwZy-19" value="Service" style="swimlane;whiteSpace=wrap" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="1294.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-20" value="Service/Token: &#xa;CreateTokenAsync&#xa;(AppUser)" style="" vertex="1" parent="GhuKli6xuumff6IDDwZy-19">
-          <mxGeometry x="45.5" y="40" width="110" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="GhuKli6xuumff6IDDwZy-1" source="GhuKli6xuumff6IDDwZy-3" target="GhuKli6xuumff6IDDwZy-11">
+        <mxCell id="GhuKli6xuumff6IDDwZy-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="GhuKli6xuumff6IDDwZy-1" source="GhuKli6xuumff6IDDwZy-3" target="GhuKli6xuumff6IDDwZy-11" edge="1">
           <mxGeometry x="274.5" y="178" as="geometry">
             <mxPoint x="289.5" y="248" as="targetPoint" />
             <mxPoint x="329.5" y="203" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="GhuKli6xuumff6IDDwZy-1" source="GhuKli6xuumff6IDDwZy-11" target="GhuKli6xuumff6IDDwZy-20">
+        <mxCell id="GhuKli6xuumff6IDDwZy-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" parent="GhuKli6xuumff6IDDwZy-1" source="GhuKli6xuumff6IDDwZy-11" target="GhuKli6xuumff6IDDwZy-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-23" value="Other actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-23" value="Other actor" style="swimlane;whiteSpace=wrap" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="1854.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Api/Room: EditRoom(id, name)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: EditRoom(id, name)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Api/Room: EditRoom(id, name)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: EditRoom(id, name)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="GhuKli6xuumff6IDDwZy-1" vertex="1">
           <mxGeometry x="530" y="-310" width="810" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-25" value="" style="group" vertex="1" connectable="0" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-25" value="" style="group" parent="GhuKli6xuumff6IDDwZy-1" vertex="1" connectable="0">
           <mxGeometry x="-380" y="-280" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-26" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;room.service editRoom(id: number, name: string)}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="GhuKli6xuumff6IDDwZy-25">
+        <mxCell id="GhuKli6xuumff6IDDwZy-26" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;room.service editRoom(id: number, name: string)}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="GhuKli6xuumff6IDDwZy-25" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="GhuKli6xuumff6IDDwZy-25">
+        <mxCell id="GhuKli6xuumff6IDDwZy-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" parent="GhuKli6xuumff6IDDwZy-25" vertex="1">
           <mxGeometry x="190" y="40" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-28" value="" style="group" vertex="1" connectable="0" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-28" value="" style="group" parent="GhuKli6xuumff6IDDwZy-1" vertex="1" connectable="0">
           <mxGeometry x="1440" y="-290" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-29" value="" style="group" vertex="1" connectable="0" parent="GhuKli6xuumff6IDDwZy-28">
+        <mxCell id="GhuKli6xuumff6IDDwZy-29" value="" style="group" parent="GhuKli6xuumff6IDDwZy-28" vertex="1" connectable="0">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="GhuKli6xuumff6IDDwZy-29">
+        <mxCell id="GhuKli6xuumff6IDDwZy-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GhuKli6xuumff6IDDwZy-29" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="GhuKli6xuumff6IDDwZy-29">
+        <mxCell id="GhuKli6xuumff6IDDwZy-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GhuKli6xuumff6IDDwZy-29" vertex="1">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-32" value="" style="group" vertex="1" connectable="0" parent="GhuKli6xuumff6IDDwZy-1">
+        <mxCell id="GhuKli6xuumff6IDDwZy-32" value="" style="group" parent="GhuKli6xuumff6IDDwZy-1" vertex="1" connectable="0">
           <mxGeometry x="2160" y="-300" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-33" value="" style="group" vertex="1" connectable="0" parent="GhuKli6xuumff6IDDwZy-32">
+        <mxCell id="GhuKli6xuumff6IDDwZy-33" value="" style="group" parent="GhuKli6xuumff6IDDwZy-32" vertex="1" connectable="0">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="GhuKli6xuumff6IDDwZy-33">
+        <mxCell id="GhuKli6xuumff6IDDwZy-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GhuKli6xuumff6IDDwZy-33" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="GhuKli6xuumff6IDDwZy-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="GhuKli6xuumff6IDDwZy-33">
+        <mxCell id="GhuKli6xuumff6IDDwZy-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="GhuKli6xuumff6IDDwZy-33" vertex="1">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Delete phòng" id="Ak0ghcsYVZpI8PdZNlOS">
-    <mxGraphModel dx="4284" dy="2134" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3173" dy="2228" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="Yu0tRxaP1Kqijk7BbZrz-0" />
         <mxCell id="Yu0tRxaP1Kqijk7BbZrz-1" parent="Yu0tRxaP1Kqijk7BbZrz-0" />
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-2" value="Actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-2" value="Actor" style="swimlane;whiteSpace=wrap" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1">
           <mxGeometry x="174.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-3" value="account.service &#xa;login(model: any)}" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-2">
-          <mxGeometry x="85" y="40" width="110" height="50" as="geometry" />
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-3" value="room.service &#xa;deleteRoom(id: number)}" style="" parent="Yu0tRxaP1Kqijk7BbZrz-2" vertex="1">
+          <mxGeometry x="62.5" y="40" width="155" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-4" value="account.service &#xa;setCurrentUser&#xa;(user: User)}" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-2">
-          <mxGeometry x="57.5" y="142" width="165" height="50" as="geometry" />
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-4" value="room.service &#xa;getRooms(pageNumber, pageSize)}" style="" parent="Yu0tRxaP1Kqijk7BbZrz-2" vertex="1">
+          <mxGeometry x="38.75" y="232" width="202.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-5" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="Yu0tRxaP1Kqijk7BbZrz-2" source="Yu0tRxaP1Kqijk7BbZrz-3" target="Yu0tRxaP1Kqijk7BbZrz-4">
-          <mxGeometry x="110" y="50" as="geometry">
-            <mxPoint x="365.5" y="75" as="targetPoint" />
-            <mxPoint x="205.5" y="75" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-6" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-2">
-          <mxGeometry x="57.5" y="222" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-7" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-2">
-          <mxGeometry x="75.5" y="312" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-8" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-2">
-          <mxGeometry x="75.5" y="392" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-9" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="Yu0tRxaP1Kqijk7BbZrz-2" source="Yu0tRxaP1Kqijk7BbZrz-4" target="Yu0tRxaP1Kqijk7BbZrz-6">
-          <mxGeometry x="-44.5" y="-68" as="geometry">
-            <mxPoint x="150" y="152" as="targetPoint" />
-            <mxPoint x="150" y="100" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-10" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1">
           <mxGeometry x="454.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-11" value="Api/Acount: &#xa;Login(LoginDto)" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-10">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-11" value="&quot;Api/Room: &#xa;DeleteRoom(id)&quot;, &#xa;" style="" parent="Yu0tRxaP1Kqijk7BbZrz-10" vertex="1">
           <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-12" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-10">
-          <mxGeometry x="35.5" y="302" width="165" height="50" as="geometry" />
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-12" value=" &quot;Api/Room: &#xa;GetAllRooms(RoomParams)&quot;, &#xa;" style="" parent="Yu0tRxaP1Kqijk7BbZrz-10" vertex="1">
+          <mxGeometry x="105.5" y="232" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-13" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-10">
-          <mxGeometry x="35.5" y="392" width="165" height="50" as="geometry" />
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-19" value="Service" style="swimlane;whiteSpace=wrap" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1">
+          <mxGeometry x="734.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-14" value="Hub" style="swimlane;whiteSpace=wrap" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
-          <mxGeometry x="734.5" y="138" width="280" height="570" as="geometry">
-            <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-15" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-14">
-          <mxGeometry x="57.5" y="302" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-16" value="Tracker" style="swimlane;whiteSpace=wrap" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
-          <mxGeometry x="1014.5" y="138" width="280" height="570" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-17" value="Repo" style="swimlane;whiteSpace=wrap" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
-          <mxGeometry x="1574.5" y="138" width="280" height="570" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-18" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-17">
-          <mxGeometry x="85" y="392" width="110" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-19" value="Service" style="swimlane;whiteSpace=wrap" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
-          <mxGeometry x="1294.5" y="138" width="280" height="570" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-20" value="Service/Token: &#xa;CreateTokenAsync&#xa;(AppUser)" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-19">
-          <mxGeometry x="45.5" y="40" width="110" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="Yu0tRxaP1Kqijk7BbZrz-1" source="Yu0tRxaP1Kqijk7BbZrz-3" target="Yu0tRxaP1Kqijk7BbZrz-11">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-21" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="Yu0tRxaP1Kqijk7BbZrz-1" source="Yu0tRxaP1Kqijk7BbZrz-3" target="Yu0tRxaP1Kqijk7BbZrz-11" edge="1">
           <mxGeometry x="274.5" y="178" as="geometry">
             <mxPoint x="289.5" y="248" as="targetPoint" />
             <mxPoint x="329.5" y="203" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" edge="1" parent="Yu0tRxaP1Kqijk7BbZrz-1" source="Yu0tRxaP1Kqijk7BbZrz-11" target="Yu0tRxaP1Kqijk7BbZrz-20">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-22" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" parent="Yu0tRxaP1Kqijk7BbZrz-1" source="Yu0tRxaP1Kqijk7BbZrz-11" target="Yu0tRxaP1Kqijk7BbZrz-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-23" value="Other actor" style="swimlane;whiteSpace=wrap" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-23" value="Other actor" style="swimlane;whiteSpace=wrap" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1">
           <mxGeometry x="1854.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Api/Room: DeleteRoom(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: DeleteRoom(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Api/Room: GetAllRooms(RoomParams)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetAllRoomAsync(RoomParams)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-1">
-          <mxGeometry x="530" y="-310" width="810" height="360" as="geometry" />
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-24" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;Api/Room: DeleteRoom(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: DeleteRoom(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Api/Room: GetAllRooms(RoomParams)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetAllRoomAsync(RoomParams)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: GetRoomById(id)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1">
+          <mxGeometry x="430" y="-420" width="810" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-25" value="" style="group" vertex="1" connectable="0" parent="Yu0tRxaP1Kqijk7BbZrz-1">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-25" value="" style="group" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1" connectable="0">
           <mxGeometry x="-380" y="-280" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-26" value="room.service deleteRoom(id: number)}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;room.service getRooms(pageNumber, pageSize)}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-25">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-26" value="room.service deleteRoom(id: number)}&lt;br style=&quot;box-sizing: border-box; color: rgb(33, 37, 41); font-family: system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Noto Sans&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;room.service getRooms(pageNumber, pageSize)}&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="Yu0tRxaP1Kqijk7BbZrz-25" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-25">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-27" value="Actor hành động" style="rounded=1;whiteSpace=wrap;html=1;" parent="Yu0tRxaP1Kqijk7BbZrz-25" vertex="1">
           <mxGeometry x="190" y="40" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-28" value="" style="group" vertex="1" connectable="0" parent="Yu0tRxaP1Kqijk7BbZrz-1">
-          <mxGeometry x="1440" y="-290" width="680" height="360" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-29" value="" style="group" vertex="1" connectable="0" parent="Yu0tRxaP1Kqijk7BbZrz-28">
-          <mxGeometry width="680" height="360" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-29">
-          <mxGeometry width="680" height="360" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-29">
-          <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-32" value="" style="group" vertex="1" connectable="0" parent="Yu0tRxaP1Kqijk7BbZrz-1">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-32" value="" style="group" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1" connectable="0">
           <mxGeometry x="2160" y="-300" width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-33" value="" style="group" vertex="1" connectable="0" parent="Yu0tRxaP1Kqijk7BbZrz-32">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-33" value="" style="group" parent="Yu0tRxaP1Kqijk7BbZrz-32" vertex="1" connectable="0">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-33">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-34" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="Yu0tRxaP1Kqijk7BbZrz-33" vertex="1">
           <mxGeometry width="680" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-33">
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-35" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="Yu0tRxaP1Kqijk7BbZrz-33" vertex="1">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-16" value="Tracker" style="swimlane;whiteSpace=wrap" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1">
+          <mxGeometry x="1300" y="140" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-14" value="Hub" style="swimlane;whiteSpace=wrap" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1">
+          <mxGeometry x="1020" y="140" width="280" height="570" as="geometry">
+            <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-29" value="" style="group" parent="Yu0tRxaP1Kqijk7BbZrz-1" vertex="1" connectable="0">
+          <mxGeometry x="1440" y="-290" width="680" height="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-17" value="Repo" style="swimlane;whiteSpace=wrap" parent="Yu0tRxaP1Kqijk7BbZrz-29" vertex="1">
+          <mxGeometry x="140" y="430" width="280" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-18" value=" &quot;Repo/Room: &#xa;GetRoomById(id)&quot;, &#xa;" style="" parent="Yu0tRxaP1Kqijk7BbZrz-17" vertex="1">
+          <mxGeometry x="85" y="200" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-20" value=" &quot;Repo/Room: &#xa;DeleteRoom(id)&quot;, &#xa;" style="" parent="Yu0tRxaP1Kqijk7BbZrz-17" vertex="1">
+          <mxGeometry x="55.5" y="52" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_Cth4t2EHtKumMrJZlpy-1" value=" &quot;Repo/Room: &#xa;GetAllRoomAsync(RoomParams)&quot;, &#xa;" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-17">
+          <mxGeometry x="37.5" y="320" width="205" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_Cth4t2EHtKumMrJZlpy-2" value=" &quot;Repo/Room: &#xa;GetRoomById(id)&quot;, &#xa;" style="" vertex="1" parent="Yu0tRxaP1Kqijk7BbZrz-17">
+          <mxGeometry x="80" y="450" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_Cth4t2EHtKumMrJZlpy-0" value="" style="group" vertex="1" connectable="0" parent="Yu0tRxaP1Kqijk7BbZrz-1">
+          <mxGeometry x="1390" y="-550" width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-30" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="_Cth4t2EHtKumMrJZlpy-0" vertex="1">
+          <mxGeometry width="680" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Yu0tRxaP1Kqijk7BbZrz-31" value="Actor bị ảnh hưởng&lt;br&gt;Ngoài phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="_Cth4t2EHtKumMrJZlpy-0" vertex="1">
+          <mxGeometry x="400" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_Cth4t2EHtKumMrJZlpy-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="Yu0tRxaP1Kqijk7BbZrz-1" source="Yu0tRxaP1Kqijk7BbZrz-4" target="Yu0tRxaP1Kqijk7BbZrz-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Cth4t2EHtKumMrJZlpy-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="Yu0tRxaP1Kqijk7BbZrz-1" source="Yu0tRxaP1Kqijk7BbZrz-12" target="_Cth4t2EHtKumMrJZlpy-1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Join phòng" id="aBaK2xoqv5gYhradriTY">
-    <mxGraphModel dx="2415" dy="1349" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2400" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="EyjbYn9G8KFN57_fWncN-0" />
         <mxCell id="EyjbYn9G8KFN57_fWncN-1" parent="EyjbYn9G8KFN57_fWncN-0" />
         <mxCell id="-Am8iBmlFEAz_VgErBwT-24" value="Actor" style="swimlane;whiteSpace=wrap" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
           <mxGeometry x="174.5" y="138" width="280" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-25" value="account.service &#xa;login(model: any)}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
-          <mxGeometry x="85" y="40" width="110" height="50" as="geometry" />
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-25" value="chat-hub.service &#xa;createHubConnection(user: User, roomId: string)}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
+          <mxGeometry x="5" y="40" width="270" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-26" value="account.service &#xa;setCurrentUser&#xa;(user: User)}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
-          <mxGeometry x="57.5" y="142" width="165" height="50" as="geometry" />
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-26" value="chat-hub.service hubConnection.&#xa;on(&#39;UserOnlineInGroup&#39;, (user: Member) =&gt;}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
+          <mxGeometry x="20" y="142" width="260" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-27" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="-Am8iBmlFEAz_VgErBwT-24" source="-Am8iBmlFEAz_VgErBwT-25" target="-Am8iBmlFEAz_VgErBwT-26" edge="1">
-          <mxGeometry x="110" y="50" as="geometry">
-            <mxPoint x="365.5" y="75" as="targetPoint" />
-            <mxPoint x="205.5" y="75" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-28" value="account.service &#xa;getDecodedToken&#xa;(token: string)}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
-          <mxGeometry x="57.5" y="222" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-29" value="presense.service &#xa;createHubConnection&#xa;(user: User)}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
-          <mxGeometry x="75.5" y="312" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-30" value="room.service getRooms&#xa;(pageNumber, pageSize)}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
-          <mxGeometry x="75.5" y="392" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-31" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="-Am8iBmlFEAz_VgErBwT-24" source="-Am8iBmlFEAz_VgErBwT-26" target="-Am8iBmlFEAz_VgErBwT-28" edge="1">
-          <mxGeometry x="-44.5" y="-68" as="geometry">
-            <mxPoint x="150" y="152" as="targetPoint" />
-            <mxPoint x="150" y="100" as="sourcePoint" />
-          </mxGeometry>
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-28" value="presense.service hubConnection.&#xa;on(&#39;CountMemberInGroup&#39;, ({ roomId, countMember })}" style="" parent="-Am8iBmlFEAz_VgErBwT-24" vertex="1">
+          <mxGeometry x="-60" y="275" width="335" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-Am8iBmlFEAz_VgErBwT-32" value="API" style="swimlane;whiteSpace=wrap;startSize=23;" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
           <mxGeometry x="454.5" y="138" width="280" height="570" as="geometry" />
-        </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-33" value="Api/Acount: &#xa;Login(LoginDto)" style="" parent="-Am8iBmlFEAz_VgErBwT-32" vertex="1">
-          <mxGeometry x="75.5" y="40" width="110" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-34" value="Hub/Presence: &#xa;OnConnectedAsync()" style="" parent="-Am8iBmlFEAz_VgErBwT-32" vertex="1">
-          <mxGeometry x="35.5" y="302" width="165" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-35" value="Api/Room:&#xa; GetAllRooms(RoomParams)" style="" parent="-Am8iBmlFEAz_VgErBwT-32" vertex="1">
-          <mxGeometry x="35.5" y="392" width="165" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-Am8iBmlFEAz_VgErBwT-36" value="Hub" style="swimlane;whiteSpace=wrap" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
           <mxGeometry x="734.5" y="138" width="280" height="570" as="geometry">
             <mxRectangle x="724.5" y="128" width="60" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-37" value="Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)" style="" parent="-Am8iBmlFEAz_VgErBwT-36" vertex="1">
-          <mxGeometry x="57.5" y="302" width="165" height="50" as="geometry" />
+        <mxCell id="JmRLI84aorwk5gLxFUiv-3" value="2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="-Am8iBmlFEAz_VgErBwT-36" source="-Am8iBmlFEAz_VgErBwT-33" target="JmRLI84aorwk5gLxFUiv-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-33" value="Hub/Chat: &#xa;OnConnectedAsync()&quot;, &#xa;" style="" parent="-Am8iBmlFEAz_VgErBwT-36" vertex="1">
+          <mxGeometry x="55.5" y="242" width="134.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JmRLI84aorwk5gLxFUiv-1" value=" &quot;Hub/Chat: &#xa;AddConnectionToGroup(roomId)&quot;," style="" vertex="1" parent="-Am8iBmlFEAz_VgErBwT-36">
+          <mxGeometry x="40" y="102" width="200" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-Am8iBmlFEAz_VgErBwT-38" value="Tracker" style="swimlane;whiteSpace=wrap" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
-          <mxGeometry x="1014.5" y="138" width="280" height="570" as="geometry" />
+          <mxGeometry x="1014.5" y="138" width="304.5" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-42" value=" &quot;Tracker/Presence: &#xa;UserConnected&#xa;(UserConnectionDto, connectionId)&quot;, &#xa;" style="" parent="-Am8iBmlFEAz_VgErBwT-38" vertex="1">
+          <mxGeometry x="37.25" y="31" width="230" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-37" value=" &quot;Tracker/Presence: &#xa;GetConnectionsForUser&#xa;(UserConnectionDto)&quot;,&#xa;" style="verticalAlign=bottom;" parent="-Am8iBmlFEAz_VgErBwT-38" vertex="1">
+          <mxGeometry x="45.5" y="340" width="242.5" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="JmRLI84aorwk5gLxFUiv-0" value=" &quot;Tracker/ShareScreen: &#xa;GetUserIsSharing(roomId)&quot;" style="" vertex="1" parent="-Am8iBmlFEAz_VgErBwT-38">
+          <mxGeometry x="15.5" y="472" width="165" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-12" value=" &quot;Tracker/Presence: &#xa;GetOnlineUsers(roomId)&quot;,&#xa;" style="" vertex="1" parent="-Am8iBmlFEAz_VgErBwT-38">
+          <mxGeometry x="114.75" y="250" width="165" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-Am8iBmlFEAz_VgErBwT-39" value="Repo" style="swimlane;whiteSpace=wrap" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
-          <mxGeometry x="1574.5" y="138" width="280" height="570" as="geometry" />
+          <mxGeometry x="1319" y="138" width="340" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-40" value="room.service &#xa;getRooms&#xa;(pageNumber, pageSize)}" style="" parent="-Am8iBmlFEAz_VgErBwT-39" vertex="1">
-          <mxGeometry x="85" y="392" width="110" height="50" as="geometry" />
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-34" value="&quot;Repo/Room: &#xa;GetRoomById(id)&quot;, &#xa;" style="" parent="-Am8iBmlFEAz_VgErBwT-39" vertex="1">
+          <mxGeometry x="71" y="92" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-41" value="Service" style="swimlane;whiteSpace=wrap" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
-          <mxGeometry x="1294.5" y="138" width="280" height="570" as="geometry" />
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-35" value=" &quot;Repo/User: &#xa;GetMemberAsync(username)&quot;,&#xa;" style="" parent="-Am8iBmlFEAz_VgErBwT-39" vertex="1">
+          <mxGeometry x="81" y="162" width="165" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-42" value="Service/Token: &#xa;CreateTokenAsync&#xa;(AppUser)" style="" parent="-Am8iBmlFEAz_VgErBwT-41" vertex="1">
-          <mxGeometry x="45.5" y="40" width="110" height="50" as="geometry" />
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-15" value=" &quot;Repo/Room: &#xa;UpdateCountMember(id, count)&quot;,&#xa;" style="" vertex="1" parent="-Am8iBmlFEAz_VgErBwT-39">
+          <mxGeometry x="81" y="342" width="192.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-Am8iBmlFEAz_VgErBwT-43" value="" style="elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-25" target="-Am8iBmlFEAz_VgErBwT-33" edge="1">
           <mxGeometry x="274.5" y="178" as="geometry">
@@ -650,11 +578,22 @@
             <mxPoint x="329.5" y="203" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="-Am8iBmlFEAz_VgErBwT-44" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="-Am8iBmlFEAz_VgErBwT-42" edge="1">
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-44" value="" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="-Am8iBmlFEAz_VgErBwT-42" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="JmRLI84aorwk5gLxFUiv-2" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="-Am8iBmlFEAz_VgErBwT-44">
+          <mxGeometry x="-0.3007" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="-Am8iBmlFEAz_VgErBwT-45" value="Other actor" style="swimlane;whiteSpace=wrap" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
-          <mxGeometry x="1854.5" y="138" width="280" height="570" as="geometry" />
+          <mxGeometry x="1659" y="138" width="336" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="-Am8iBmlFEAz_VgErBwT-40" value="chat-hub.service hubConnection.&#xa;on(&#39;UserOnlineInGroup&#39;, (user: Member) =&gt;}" style="" parent="-Am8iBmlFEAz_VgErBwT-45" vertex="1">
+          <mxGeometry x="21" y="242" width="255" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JmRLI84aorwk5gLxFUiv-4" value="presense.service hubConnection.&#xa;on(&#39;CountMemberInGroup&#39;, ({ roomId, countMember })}" style="" vertex="1" parent="-Am8iBmlFEAz_VgErBwT-45">
+          <mxGeometry x="27" y="412" width="309" height="50" as="geometry" />
         </mxCell>
         <mxCell id="-Am8iBmlFEAz_VgErBwT-46" value="&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;[&lt;br/&gt;  &quot;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;Hub/Chat: OnConnectedAsync()&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Tracker/Presence: UserConnected(UserConnectionDto, connectionId)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Hub/Chat: AddConnectionToGroup(roomId)&quot;,&lt;br/&gt;  &quot;Repo/Room: GetRoomById(id)&quot;,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/User: GetMemberAsync(username)&quot;,&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Tracker/Presence: GetOnlineUsers(roomId)&quot;,&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Repo/Room: UpdateCountMember(id, count)&quot;,&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Tracker/Presence: GetConnectionsForUser(UserConnectionDto)&quot;,&lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 254); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&amp;nbsp;&quot;Tracker/ShareScreen: GetUserIsSharing(roomId)&quot;&lt;br/&gt;]&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="EyjbYn9G8KFN57_fWncN-1" vertex="1">
           <mxGeometry x="530" y="-310" width="810" height="360" as="geometry" />
@@ -692,11 +631,86 @@
         <mxCell id="-Am8iBmlFEAz_VgErBwT-58" value="Actor bị ảnh hưởng&lt;br&gt;Trong phòng" style="rounded=1;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="-Am8iBmlFEAz_VgErBwT-56" vertex="1">
           <mxGeometry x="360" y="10" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-0" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="JmRLI84aorwk5gLxFUiv-1" target="-Am8iBmlFEAz_VgErBwT-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="-Am8iBmlFEAz_VgErBwT-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-2" value="3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wZFvIqkyU-3-cAWBlM9Y-1">
+          <mxGeometry x="-0.3424" y="4" relative="1" as="geometry">
+            <mxPoint x="-100" y="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="-Am8iBmlFEAz_VgErBwT-40">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="380" as="sourcePoint" />
+            <mxPoint x="1410" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1270" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-11" value="4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wZFvIqkyU-3-cAWBlM9Y-3">
+          <mxGeometry x="-0.8837" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="-Am8iBmlFEAz_VgErBwT-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-6" value="7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wZFvIqkyU-3-cAWBlM9Y-5">
+          <mxGeometry x="-0.5679" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="JmRLI84aorwk5gLxFUiv-0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="947" y="324" as="sourcePoint" />
+            <mxPoint x="1116" y="423" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-8" value="9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wZFvIqkyU-3-cAWBlM9Y-7">
+          <mxGeometry x="-0.5679" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="JmRLI84aorwk5gLxFUiv-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="947" y="324" as="sourcePoint" />
+            <mxPoint x="1080" y="460" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1020" y="575" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-10" value="8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wZFvIqkyU-3-cAWBlM9Y-9">
+          <mxGeometry x="-0.5679" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-13" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="wZFvIqkyU-3-cAWBlM9Y-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="440" as="sourcePoint" />
+            <mxPoint x="1062" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-14" value="5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wZFvIqkyU-3-cAWBlM9Y-13">
+          <mxGeometry x="-0.5679" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wZFvIqkyU-3-cAWBlM9Y-16" value="6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="EyjbYn9G8KFN57_fWncN-1" source="-Am8iBmlFEAz_VgErBwT-33" target="wZFvIqkyU-3-cAWBlM9Y-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="415" as="sourcePoint" />
+            <mxPoint x="1139" y="423" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Rời phòng" id="2-yIcFfr6snbKLM28MN4">
-    <mxGraphModel dx="2635" dy="1441" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2031" dy="1597" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="Up9zt2mju1SKY8RUuWWM-0" />
         <mxCell id="Up9zt2mju1SKY8RUuWWM-1" parent="Up9zt2mju1SKY8RUuWWM-0" />

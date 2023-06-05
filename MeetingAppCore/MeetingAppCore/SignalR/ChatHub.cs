@@ -58,6 +58,7 @@ namespace MeetingAppCore.SignalR
             await unitOfWork.Complete();
             
             var currentConnections = await presenceTracker.GetConnectionsForUser(new UserConnectionDto(username, roomIdInt));
+            
             await presenceHubContext.Clients.AllExcept(currentConnections).SendAsync("CountMemberInGroup",
                    new { roomId = roomIdInt, countMember = currentUsers.Length });
 
