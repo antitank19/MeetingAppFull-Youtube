@@ -8,7 +8,7 @@ namespace MeetingAppCore.Interfaces
     public interface IUnitOfWork
     {
         IUserRepository UserRepository { get; }
-        IRoomRepository RoomRepository { get; }
+        IRoomRepository MeetingRepository { get; }
         Task<bool> Complete();
         bool HasChanges();
     }

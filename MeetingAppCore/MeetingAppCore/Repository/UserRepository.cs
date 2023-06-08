@@ -20,8 +20,6 @@ namespace MeetingAppCore.Repository
         private readonly IMapper _mapper;
         public UserRepository(DbDataContext context, IMapper mapper)
         {
-            Console.WriteLine("4.         " + new String('~', 50));
-            Console.WriteLine("4.         Repo/User: ctor(DbDataContext, IMapper)");
             _context = context;
             _mapper = mapper;
         }

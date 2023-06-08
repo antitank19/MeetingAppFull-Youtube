@@ -15,7 +15,7 @@ namespace MeetingAppCore.Data
     {
         public DbDataContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Meeting> Rooms { get; set; }
         public DbSet<Connection> Connections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -35,7 +35,7 @@ namespace MeetingAppCore.Data
                 .IsRequired();
 
             //Tbl User and Room: 1 user has many room (1-n)
-            builder.Entity<Room>()
+            builder.Entity<Meeting>()
             .HasOne(s => s.AppUser)
             .WithMany(g => g.Rooms)
             .HasForeignKey(s => s.UserId);

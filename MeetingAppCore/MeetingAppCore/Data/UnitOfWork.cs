@@ -15,26 +15,20 @@ namespace MeetingAppCore.Data
 
         public UnitOfWork(DbDataContext context, IMapper mapper)
         {
-            Console.WriteLine("3.      "+new String('~', 50));
-            Console.WriteLine("UnitOfWork: ctor(DbDataContext, IMapper)");
             _context = context;
             _mapper = mapper;
         }
 
         public IUserRepository UserRepository => new UserRepository(_context, _mapper);
-        public IRoomRepository RoomRepository => new RoomRepository(_context, _mapper);
+        public IRoomRepository MeetingRepository => new RoomRepository(_context, _mapper);
 
         public async Task<bool> Complete()
         {
-            Console.WriteLine("3.      " + new String('~', 50));
-            Console.WriteLine("UnitOfWork:Complete()");
             return await _context.SaveChangesAsync() > 0;
         }
 
         public bool HasChanges()
         {
-            Console.WriteLine("3.      " + new String('~', 50));
-            Console.WriteLine("UnitOfWork:HasChanges()");
             return _context.ChangeTracker.HasChanges();
         }
     }

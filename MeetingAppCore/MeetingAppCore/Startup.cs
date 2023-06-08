@@ -94,8 +94,8 @@ namespace MeetingAppCore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<PresenceHub>("hubs/presence");
-                endpoints.MapHub<ChatHub>("hubs/chathub");
+                endpoints.MapHub<GroupHub>("hubs/presence");
+                endpoints.MapHub<MeetingHub>("hubs/chathub");
                 endpoints.MapFallbackToController("Index", "Fallback");//publish
             });
         }

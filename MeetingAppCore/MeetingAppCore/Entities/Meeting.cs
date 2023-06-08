@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Entities
 {
-    public class Room
+    [Table("Rooms")]
+    public class Meeting
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -31,5 +32,8 @@ namespace MeetingAppCore.Entities
         [Key]
         public string ConnectionId { get; set; }
         public string UserName { get; set; }
+        public int RoomId { get; set; }
+        [ForeignKey(nameof(RoomId))]
+        public Meeting meeting { get; set; }
     }
 }

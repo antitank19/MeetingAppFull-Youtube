@@ -19,10 +19,11 @@ namespace MeetingAppCore.Controllers
     public class MemberController : BaseApiController
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IHubContext<PresenceHub> presenceHub;
+        private readonly IHubContext<GroupHub> presenceHub;
+        private readonly MeetingHub chatHub;
         private readonly PresenceTracker presenceTracker;
 
-        public MemberController(IUnitOfWork unitOfWork, IHubContext<PresenceHub> presenceHub, PresenceTracker presenceTracker)
+        public MemberController(IUnitOfWork unitOfWork, IHubContext<GroupHub> presenceHub, PresenceTracker presenceTracker)
         {
             this.unitOfWork = unitOfWork;
             this.presenceHub = presenceHub;

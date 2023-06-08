@@ -11,12 +11,14 @@ using System.Threading.Tasks;
 namespace MeetingAppCore.SignalR
 {
     [Authorize]
-    public class PresenceHub : Hub
+    public class GroupHub : Hub
     {
+        public static string CountMemberInGroupMsg = "CountMemberInGroup";
+
         private readonly PresenceTracker presnceTracker;
-        public PresenceHub(PresenceTracker tracker)
+        public GroupHub(PresenceTracker presnceTracker)
         {
-            presnceTracker = tracker;
+            this.presnceTracker = presnceTracker;
         }
         public override async Task OnConnectedAsync()
         {

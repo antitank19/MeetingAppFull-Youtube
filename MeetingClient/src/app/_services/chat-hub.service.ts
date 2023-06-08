@@ -110,31 +110,31 @@ export class ChatHubService {
     }
 
     async sendMessage(content: string) {
-        logForTrack('sendMessage(content: string)');
+        logForTrack(`invoke('SendMessage', { content })`);
         return this.chatHubConnection.invoke('SendMessage', { content })
             .catch(error => console.log(error));
     }
 
     async muteMicroPhone(mute: boolean) {
-        logForTrack('muteMicroPhone(mute: boolean)');
+        logForTrack(`invoke('MuteMicro', mute)`);
         return this.chatHubConnection.invoke('MuteMicro', mute)
             .catch(error => console.log(error));
     }
 
     async muteCamera(mute: boolean) {
-        logForTrack('muteCamera(mute: boolean)');
+        logForTrack(`invoke('MuteCamera', mute)`);
         return this.chatHubConnection.invoke('MuteCamera', mute)
             .catch(error => console.log(error));
     }
 
     async shareScreen(roomId: number, isShareScreen: boolean) {
-        logForTrack('shareScreen(roomId: number, isShareScreen: boolean)');
+        logForTrack(`invoke('ShareScreen', roomId, isShareScreen)`);
         return this.chatHubConnection.invoke('ShareScreen', roomId, isShareScreen)
             .catch(error => console.log(error));
     }
 
     async shareScreenToUser(roomId: number, username: string, isShareScreen: boolean) {
-        logForTrack('shareScreenToUser(roomId: number, username: string, isShareScreen: boolean)');
+        logForTrack(`invoke('ShareScreenToUser', roomId, username, isShareScreen)`);
         return this.chatHubConnection.invoke('ShareScreenToUser', roomId, username, isShareScreen)
             .catch(error => console.log(error));
     }

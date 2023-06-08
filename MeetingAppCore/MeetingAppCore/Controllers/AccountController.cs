@@ -21,8 +21,6 @@ namespace MeetingAppCore.Controllers
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IMapper mapper)
         {
-            Console.WriteLine("1."+new String('=', 50));
-            Console.WriteLine("1.Api/Acount: ctor(UserManager, SignInManager, ITokenService, IMapper)");
             this.tokenService = tokenService;
             _mapper = mapper;
             this.userManager = userManager;

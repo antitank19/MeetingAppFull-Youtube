@@ -9,11 +9,6 @@ namespace MeetingAppCore.SignalR
 {
     public class PresenceTracker
     {
-        public PresenceTracker()
-        {
-            Console.WriteLine("4.         " + new String('~', 50));
-            Console.WriteLine("4.         Tracker/Presence:ctor()");
-        }
         private static readonly Dictionary<UserConnectionDto, List<string>> OnlineUsers = new Dictionary<UserConnectionDto, List<string>>();
 
         public Task<bool> UserConnected(UserConnectionDto user, string connectionId)
@@ -24,7 +19,7 @@ namespace MeetingAppCore.SignalR
             bool isOnline = false;
             lock (OnlineUsers)
             {
-                var temp = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
+                KeyValuePair<UserConnectionDto, List<string>> temp = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
                 
                 if(temp.Key == null)//chua co online
                 {
@@ -48,7 +43,7 @@ namespace MeetingAppCore.SignalR
             bool isOffline = false;
             lock (OnlineUsers)
             {
-                var temp = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
+                KeyValuePair<UserConnectionDto, List<string>> temp = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
                 if (temp.Key == null) 
                     return Task.FromResult(isOffline);
 
@@ -63,21 +58,21 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(isOffline);
         }
 
-        public Task<UserConnectionDto[]> GetOnlineUsers(int roomId)
+        public Task<UserConnectionDto[]> GetOnlineUsersInRoom(int roomId)
         {
             Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Tracker/GetOnlineUsers: GetOnlineUsers(roomId)");
             FunctionTracker.Instance().AddTrackerFunc("Tracker/Presence: GetOnlineUsers(roomId)");
-            UserConnectionDto[] onlineUsers;
+            UserConnectionDto[] userInRoom;
             lock (OnlineUsers)
             {
-                onlineUsers = OnlineUsers.Where(u=>u.Key.RoomId == roomId).Select(k => k.Key).ToArray();
+                userInRoom = OnlineUsers.Where(u=>u.Key.RoomId == roomId).Select(k => k.Key).ToArray();
             }
 
-            return Task.FromResult(onlineUsers);
+            return Task.FromResult(userInRoom);
         }
 
-        public Task<List<string>> GetConnectionsForUser(UserConnectionDto user)
+        public Task<List<string>> GetConnectionIdsForUser(UserConnectionDto user)
         {
             Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/Presence: GetConnectionsForUser(UserConnectionDto)");

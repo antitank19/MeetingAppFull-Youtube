@@ -10,15 +10,15 @@ namespace MeetingAppCore.Interfaces
 {
     public interface IRoomRepository
     {
-        Task<Room> GetRoomById(int roomId);
-        Task<Room> GetRoomForConnection(string connectionId);
+        Task<Meeting> GetRoomById(int roomId);
+        Task<Meeting> GetMeetingForConnection(string connectionId);
         void RemoveConnection(Connection connection);
-        void AddRoom(Room room);
-        Task<Room> DeleteRoom(int id);
-        Task<Room> EditRoom(int id, string newName);
+        void AddRoom(Meeting room);
+        Task<Meeting> DeleteRoom(int id);
+        Task<Meeting> EditRoom(int id, string newName);
         Task DeleteAllRoom();
-        Task<PagedList<RoomDto>> GetAllRoomAsync(RoomParams roomParams);
-        Task<RoomDto> GetRoomDtoById(int roomId);
+        Task<PagedList<MeetingDto>> GetAllRoomAsync(RoomParams roomParams);
+        Task<MeetingDto> GetRoomDtoById(int roomId);
         Task UpdateCountMember(int roomId, int count);
     }
 }

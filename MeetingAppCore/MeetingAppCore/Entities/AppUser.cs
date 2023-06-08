@@ -15,6 +15,6 @@ namespace MeetingAppCore.Entities
 
         public string? PhotoUrl { get; set; }//Nullable<string>
         public ICollection<AppUserRole> UserRoles { get; set; }
-        public ICollection<Room> Rooms { get; set; }
+        public ICollection<Meeting> Rooms { get; set; }
     }
 }

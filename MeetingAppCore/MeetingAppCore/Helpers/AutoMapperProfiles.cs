@@ -16,7 +16,7 @@ namespace MeetingAppCore.Helpers
 
             CreateMap<RegisterDto, AppUser>();
 
-            CreateMap<Room, RoomDto>()
+            CreateMap<Meeting, MeetingDto>()
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.AppUser.DisplayName))
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.AppUser.UserName));
         }

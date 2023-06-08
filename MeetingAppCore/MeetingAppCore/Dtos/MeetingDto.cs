@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Dtos
 {
-    public class RoomDto
+    public class MeetingDto
     {
         public int RoomId { get; set; }
         public string RoomName { get; set; }
