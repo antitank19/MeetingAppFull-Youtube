@@ -31,7 +31,7 @@ namespace MeetingAppCore.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetAllMembers([FromQuery] UserParams userParams)
+        public async Task<ActionResult<IEnumerable<MemberSignalrDto>>> GetAllMembers([FromQuery] UserParams userParams)
         {
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Member: GetAllMembers(UserParams)");
@@ -44,7 +44,7 @@ namespace MeetingAppCore.Controllers
         }
 
         [HttpGet("{username}")] // member/username
-        public async Task<ActionResult<MemberDto>> GetMember(string username)
+        public async Task<ActionResult<MemberSignalrDto>> GetMember(string username)
         {
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Member: GetMembers(username)");
@@ -61,7 +61,7 @@ namespace MeetingAppCore.Controllers
             var u = await unitOfWork.UserRepository.UpdateLocked(username);
             if(u != null)
             {
-                var connections = await presenceTracker.GetConnectionsForUsername(username);
+                var connections = await presenceTracker.GetConnectionIdsForUsername(username);
                 await presenceHub.Clients.Clients(connections).SendAsync("OnLockedUser", true);
                 return NoContent();
             }

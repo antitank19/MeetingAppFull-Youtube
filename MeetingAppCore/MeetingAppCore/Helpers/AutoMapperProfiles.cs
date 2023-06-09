@@ -12,7 +12,7 @@ namespace MeetingAppCore.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<AppUser, MemberDto>();
+            CreateMap<AppUser, MemberSignalrDto>();
 
             CreateMap<RegisterDto, AppUser>();
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Dtos
 {
-    public class MemberDto
+    public class MemberSignalrDto
     {
         public string UserName { get; set; }
         public string DisplayName { get; set; }

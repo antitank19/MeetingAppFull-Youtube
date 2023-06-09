@@ -48,9 +48,9 @@ export class PresenceHubService {
           this.onlineUsersSource.next(usernames);
         }) */
 
-        this.hubConnection.on('CountMemberInGroup', ({ roomId, countMember }) => {
-        logForTrack(`hubConnection.on('CountMemberInGroup', ({ roomId, countMember })`);
-        this.utility.RoomCount = { roomId, countMember }
+        this.hubConnection.on('CountMemberInGroup', ({ meetingId, countMember }) => {
+        logForTrack(`hubConnection.on('CountMemberInGroup', ({ meetingId, countMember })`);
+        this.utility.RoomCount = { roomId: meetingId, countMember }
         })
 
         this.hubConnection.on('OnLockedUser', (val: boolean) => {

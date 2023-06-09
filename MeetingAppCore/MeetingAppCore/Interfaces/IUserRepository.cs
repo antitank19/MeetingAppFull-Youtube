@@ -12,10 +12,10 @@ namespace MeetingAppCore.Interfaces
     {
         Task<AppUser> GetUserByIdAsync(Guid id);
         Task<AppUser> GetUserByUsernameAsync(string username);
-        Task<MemberDto> GetMemberAsync(string username);
-        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
-        Task<IEnumerable<MemberDto>> SearchMemberAsync(string displayname);
-        Task<IEnumerable<MemberDto>> GetUsersOnlineAsync(UserConnectionDto[] userOnlines);
+        Task<MemberSignalrDto> GetMemberAsync(string username);
+        Task<PagedList<MemberSignalrDto>> GetMembersAsync(UserParams userParams);
+        Task<IEnumerable<MemberSignalrDto>> SearchMemberAsync(string displayname);
+        Task<IEnumerable<MemberSignalrDto>> GetUsersOnlineAsync(UserConnectionDto[] userOnlines);
         Task<AppUser> UpdateLocked(string username);
     }
 }
