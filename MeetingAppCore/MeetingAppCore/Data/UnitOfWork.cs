@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Data
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IRepoWrapper
     {
         DbDataContext _context;
         IMapper _mapper;

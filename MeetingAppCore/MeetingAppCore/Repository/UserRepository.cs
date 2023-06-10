@@ -50,7 +50,7 @@ namespace MeetingAppCore.Repository
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<MemberSignalrDto>> GetUsersOnlineAsync(UserConnectionDto[] userOnlines)
+        public async Task<IEnumerable<MemberSignalrDto>> GetUsersOnlineAsync(UserConnectionSignalrDto[] userOnlines)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Repo/User: GetUsersOnlineAsync(UserConnectionDto[])");

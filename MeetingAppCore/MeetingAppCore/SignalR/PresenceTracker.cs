@@ -12,7 +12,7 @@ namespace MeetingAppCore.SignalR
     {
         //Key dạng UserConnectionDto chứa Username và MeetingId
         //Value chứa list các MeetingHub và GroupHub ContextConnectionId
-        private static readonly Dictionary<UserConnectionDto, List<string>> OnlineUsers = new Dictionary<UserConnectionDto, List<string>>();
+        private static readonly Dictionary<UserConnectionSignalrDto, List<string>> OnlineUsers = new Dictionary<UserConnectionSignalrDto, List<string>>();
 
         /// <summary>
         /// Thêm connection cho người và meeting    <br/>
@@ -23,7 +23,7 @@ namespace MeetingAppCore.SignalR
         /// <param name="user"></param>
         /// <param name="connectionId"></param>
         /// <returns>(ko quan trọng) true nếu người đang connect vào meeting</returns>
-        public Task<bool> UserConnected(UserConnectionDto user, string connectionId)
+        public Task<bool> UserConnected(UserConnectionSignalrDto user, string connectionId)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/Presence: UserConnected(UserConnectionDto, connectionId)");
@@ -31,7 +31,7 @@ namespace MeetingAppCore.SignalR
             bool isOnline = false;
             lock (OnlineUsers)
             {
-                KeyValuePair<UserConnectionDto, List<string>> temp = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
+                KeyValuePair<UserConnectionSignalrDto, List<string>> temp = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
                 
                 if(temp.Key == null)//chua co online
                 {
@@ -59,7 +59,7 @@ namespace MeetingAppCore.SignalR
         /// <param name="user"></param>
         /// <param name="connectionId"></param>
         /// <returns>True nếu không còn HubConnection nào cho (username và meetingId) </returns>
-        public Task<bool> UserDisconnected(UserConnectionDto user, string connectionId)
+        public Task<bool> UserDisconnected(UserConnectionSignalrDto user, string connectionId)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/Presence: UserDisconnected(UserConnectionDto, connectionId)");
@@ -67,7 +67,7 @@ namespace MeetingAppCore.SignalR
             bool isOffline = false;
             lock (OnlineUsers)
             {
-                KeyValuePair<UserConnectionDto, List<string>> userMeetingValue = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
+                KeyValuePair<UserConnectionSignalrDto, List<string>> userMeetingValue = OnlineUsers.FirstOrDefault(x => x.Key.UserName == user.UserName && x.Key.RoomId == user.RoomId);
                 if (userMeetingValue.Key == null)
                 {
                     return Task.FromResult(isOffline);
@@ -90,12 +90,12 @@ namespace MeetingAppCore.SignalR
         /// </summary>
         /// <param name="roomId"></param>
         /// <returns></returns>
-        public Task<UserConnectionDto[]> GetOnlineUsersInRoom(int roomId)
+        public Task<UserConnectionSignalrDto[]> GetOnlineUsersInRoom(int roomId)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Tracker/GetOnlineUsers: GetOnlineUsersInRoom(roomId)");
             FunctionTracker.Instance().AddTrackerFunc("Tracker/Presence: GetOnlineUsersInRoom(roomId)");
-            UserConnectionDto[] userInRoom;
+            UserConnectionSignalrDto[] userInRoom;
             lock (OnlineUsers)
             {
                 userInRoom = OnlineUsers.Where(u=>u.Key.RoomId == roomId).Select(k => k.Key).ToArray();
@@ -109,7 +109,7 @@ namespace MeetingAppCore.SignalR
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public Task<List<string>> GetConnectionIdsForUser(UserConnectionDto user)
+        public Task<List<string>> GetConnectionIdsForUser(UserConnectionSignalrDto user)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/Presence: GetConnectionIdsForUser(UserConnectionDto)");
@@ -144,7 +144,7 @@ namespace MeetingAppCore.SignalR
                 var listTemp = OnlineUsers.Where(x => x.Key.UserName == username).ToList();
                 if (listTemp.Count > 0)
                 {
-                    foreach(KeyValuePair<UserConnectionDto, List<string>> userConnections in listTemp)
+                    foreach(KeyValuePair<UserConnectionSignalrDto, List<string>> userConnections in listTemp)
                     {
                         connectionIds.AddRange(userConnections.Value);
                     }

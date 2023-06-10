@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Dtos
 {
-    public class CreateMessageDto
+    public class MessageSignalrCreateDto
     {
         public string Content { get; set; }
     }

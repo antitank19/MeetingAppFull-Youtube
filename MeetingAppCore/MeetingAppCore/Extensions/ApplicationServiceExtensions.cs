@@ -23,7 +23,7 @@ namespace MeetingAppCore.Extensions
 
             services.AddScoped<ITokenService, TokenService>();
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IRepoWrapper, UnitOfWork>();
 
             services.AddScoped<LogUserActivity>();
 

@@ -19,7 +19,7 @@ export class PresenceHubService {
     createHubConnection(user: User) {
         logForTrack('createHubConnection(user: User)');
         this.hubConnection = new HubConnectionBuilder()
-            .withUrl(this.hubUrl + 'presence', {
+            .withUrl(this.hubUrl + 'grouphub', {
 
                 accessTokenFactory: () => user.token
             })
@@ -56,6 +56,17 @@ export class PresenceHubService {
         this.hubConnection.on('OnLockedUser', (val: boolean) => {
         logForTrack(`hubConnection.on('OnLockedUser', (val: boolean)`);
         this.utility.KickedOutUser = val;
+        })
+
+        //For tesOnly
+        this.hubConnection.on('OnConnectMeetHubSuccessfully',  (msg : String) =>{
+            console.log(msg);
+            alert(msg);
+            this.hubConnection.invoke("TestReceiveInvoke", "Go fuck your self")
+        })
+        this.hubConnection.on('OnTestReceiveInvoke',  (msg : String) =>{
+            console.log(msg);
+            alert(msg);
         })
     }
 

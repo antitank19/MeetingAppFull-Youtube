@@ -18,10 +18,10 @@ namespace MeetingAppCore.Controllers
     [Authorize]
     public class RoomController : BaseApiController
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IRepoWrapper unitOfWork;
         private readonly IMapper mapper;
 
-        public RoomController(IUnitOfWork unitOfWork, IMapper mapper)
+        public RoomController(IRepoWrapper unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;

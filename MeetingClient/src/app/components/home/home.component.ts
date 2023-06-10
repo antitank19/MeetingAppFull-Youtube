@@ -195,7 +195,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             })
         )
 
-        // bat dau share stream toi user vao sau cung tu user xuat phat stream
+        // bắt đầu share stream tới user vao sau cùng từ user xuất phát stream
         this.subscriptions.add(this.shareScreenService.lastShareScreen$.subscribe(val => {
             if (val.isShare) {//true = share screen        
                 this.chatHub.shareScreenToUser(Number.parseInt(this.roomId), val.username, true)

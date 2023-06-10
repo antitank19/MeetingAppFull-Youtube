@@ -38,7 +38,7 @@ export class ChatHubService {
         alert(user.token);
         logForTrack('createHubConnection(user: User, roomId: string)');
         this.chatHubConnection = new HubConnectionBuilder()
-            .withUrl(this.hubUrl + 'chathub?roomId=' + roomId, {
+            .withUrl(this.hubUrl + 'meetinghub?meetingId=' + roomId, {
                 accessTokenFactory: () => user.token
             }).withAutomaticReconnect().build()
 
@@ -60,15 +60,15 @@ export class ChatHubService {
             })
         })
 
-        this.chatHubConnection.on('UserOnlineInGroup', (user: Member) => {
-        logForTrack(`hubConnection.on('UserOnlineInGroup', (user: Member) =>`);
+        this.chatHubConnection.on('UserOnlineInMeeting', (user: Member) => {
+        logForTrack(`hubConnection.on('UserOnlineInMeeting', (user: Member) =>`);
         //this.onlineUsersSource.next(users);
             this.oneOnlineUserSource.next(user);
             this.toastr.success(user.displayName + ' has join room!')
         })
 
-        this.chatHubConnection.on('UserOfflineInGroup', (user: Member) => {
-        logForTrack(`hubConnection.on('UserOfflineInGroup', (user: Member) =>`);
+        this.chatHubConnection.on('UserOfflineInMeeting', (user: Member) => {
+        logForTrack(`hubConnection.on('UserOfflineInMeeting', (user: Member) =>`);
         // this.onlineUsers$.pipe(take(1)).subscribe(users => {
             //   this.onlineUsersSource.next([...users.filter(x => x.userName !== user.userName)])
             // })
@@ -99,6 +99,17 @@ export class ChatHubService {
         this.chatHubConnection.on('OnUserIsSharing', currentUsername => {
         logForTrack(`hubConnection.on('OnUserIsSharing', currentUsername =>`);
         this.muteCamMicService.UserIsSharing = currentUsername
+        })
+
+        //For tesOnly
+        this.chatHubConnection.on('OnConnectMeetHubSuccessfully',  (msg : String) =>{
+            console.log(msg);
+            alert(msg);
+            this.chatHubConnection.invoke("TestReceiveInvoke", "Go fuck your self")
+        })
+        this.chatHubConnection.on('OnTestReceiveInvoke',  (msg : String) =>{
+            console.log(msg);
+            alert(msg);
         })
     }
 

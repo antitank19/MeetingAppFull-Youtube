@@ -13,7 +13,9 @@ namespace MeetingAppCore.SignalR
     [Authorize]
     public class GroupHub : Hub
     {
-        public static string CountMemberInGroupMsg = "CountMemberInGroup";
+        //BE: SendAsync(GroupHub.CountMemberInGroupMsg, new { meetingId: int, countMember: int })
+        public static string CountMemberInGroupMsg => "CountMemberInGroup";
+        public static string OnLockedUserMsg => "OnLockedUser";
 
         private readonly PresenceTracker presnceTracker;
         public GroupHub(PresenceTracker presnceTracker)
@@ -25,7 +27,11 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("3.      " + new String('+', 50));
             Console.WriteLine("3.      Hub/Presence: OnConnectedAsync()");
             FunctionTracker.Instance().AddHubFunc("3.      Hub/Presence: OnConnectedAsync()");
-            var isOnline = await presnceTracker.UserConnected(new UserConnectionDto(Context.User.GetUsername(), 0), Context.ConnectionId);            
+           
+            //Test
+            await Clients.Caller.SendAsync("OnConnectMeetHubSuccessfully", $"Connect meethub dc r! Fucck you! Tao vô dc r ae ơi!!!");
+
+            var isOnline = await presnceTracker.UserConnected(new UserConnectionSignalrDto(Context.User.GetUsername(), 0), Context.ConnectionId);            
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
@@ -33,8 +39,16 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("3.      " + new String('+', 50));
             Console.WriteLine("3.      Hub/Presence: OnDisconnectedAsync(Exception)");
             FunctionTracker.Instance().AddHubFunc("3.      Hub/Presence: OnDisconnectedAsync(Exception)");
-            var isOffline = await presnceTracker.UserDisconnected(new UserConnectionDto(Context.User.GetUsername(), 0), Context.ConnectionId);
+            var isOffline = await presnceTracker.UserDisconnected(new UserConnectionSignalrDto(Context.User.GetUsername(), 0), Context.ConnectionId);
             await base.OnDisconnectedAsync(exception);
+        }
+
+        //TestOnly
+        public async Task TestReceiveInvoke(string msg)
+        {
+            Console.WriteLine("+++++++++++==================== " + msg + " ReceiveInvoke successfull");
+            //int meetId = presenceTracker.
+            Clients.Caller.SendAsync("OnTestReceiveInvoke", "invoke dc rồi ae ơi " + msg);
         }
     }
 }

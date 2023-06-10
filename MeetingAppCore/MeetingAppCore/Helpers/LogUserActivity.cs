@@ -17,7 +17,7 @@ namespace MeetingAppCore.Helpers
             if (!resultContext.HttpContext.User.Identity.IsAuthenticated) return;
 
             var userId = resultContext.HttpContext.User.GetUserId();
-            var repo = resultContext.HttpContext.RequestServices.GetService<IUnitOfWork>();
+            var repo = resultContext.HttpContext.RequestServices.GetService<IRepoWrapper>();
             //GetService: Microsoft.Extensions.DependencyInjection
             var user = await repo.UserRepository.GetUserByIdAsync(userId);
             user.LastActive = DateTime.Now;

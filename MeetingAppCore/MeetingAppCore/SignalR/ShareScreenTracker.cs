@@ -10,10 +10,10 @@ namespace MeetingAppCore.SignalR
     public class ShareScreenTracker
     {
         // chứa xem user ở meeting nào đang shareScreen
-        private static readonly List<UserConnectionDto> usersSharingScreen = new List<UserConnectionDto>();
+        private static readonly List<UserConnectionSignalrDto> usersSharingScreen = new List<UserConnectionSignalrDto>();
 
         //Add user ở meeting nào đang shareScreen
-        public Task<bool> AddUserSharingScreen(UserConnectionDto user)
+        public Task<bool> AddUserSharingScreen(UserConnectionSignalrDto user)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/ShareScreen: UserConnectedToShareScreen(UserConnectionDto)");
@@ -21,7 +21,7 @@ namespace MeetingAppCore.SignalR
             bool isOnline = false;
             lock (usersSharingScreen)
             {
-                UserConnectionDto temp = usersSharingScreen.FirstOrDefault(x => x.UserName == user.UserName && x.RoomId == user.RoomId);
+                UserConnectionSignalrDto temp = usersSharingScreen.FirstOrDefault(x => x.UserName == user.UserName && x.RoomId == user.RoomId);
 
                 if (temp == null)//chua co online
                 {
@@ -32,7 +32,7 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(isOnline);
         }
 
-        public Task<bool> RemoveUserShareScreen(UserConnectionDto user)
+        public Task<bool> RemoveUserShareScreen(UserConnectionSignalrDto user)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/ShareScreen: UserDisconnectedShareScreen(UserConnectionDto)");
@@ -70,12 +70,12 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(isOffline);
         }
 
-        public Task<UserConnectionDto> GetUserIsSharingScreenForMeeting(int roomId)
+        public Task<UserConnectionSignalrDto> GetUserIsSharingScreenForMeeting(int roomId)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/ShareScreen: GetUserIsSharing(roomId)");
             FunctionTracker.Instance().AddTrackerFunc("Tracker/ShareScreen: GetUserIsSharing(roomId)");
-            UserConnectionDto temp = null;
+            UserConnectionSignalrDto temp = null;
             lock (usersSharingScreen)
             {
                 temp = usersSharingScreen.FirstOrDefault(x => x.RoomId == roomId);                               

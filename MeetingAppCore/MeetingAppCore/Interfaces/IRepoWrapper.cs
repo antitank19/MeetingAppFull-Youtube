@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MeetingAppCore.Interfaces
 {
-    public interface IUnitOfWork
+    public interface IRepoWrapper
     {
         IUserRepository UserRepository { get; }
         IRoomRepository MeetingRepository { get; }
