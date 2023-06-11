@@ -19,7 +19,7 @@ export class PresenceHubService {
     createHubConnection(user: User) {
         logForTrack('createHubConnection(user: User)');
         this.hubConnection = new HubConnectionBuilder()
-            .withUrl(this.hubUrl + 'grouphub', {
+            .withUrl(this.hubUrl + 'grouphub?groupId=1', {
 
                 accessTokenFactory: () => user.token
             })
@@ -48,8 +48,8 @@ export class PresenceHubService {
           this.onlineUsersSource.next(usernames);
         }) */
 
-        this.hubConnection.on('CountMemberInGroup', ({ meetingId, countMember }) => {
-        logForTrack(`hubConnection.on('CountMemberInGroup', ({ meetingId, countMember })`);
+        this.hubConnection.on('CountMemberInMeeting', ({ meetingId, countMember }) => {
+        logForTrack(`hubConnection.on('CountMemberInMeeting', ({ meetingId, countMember })`);
         this.utility.RoomCount = { roomId: meetingId, countMember }
         })
 

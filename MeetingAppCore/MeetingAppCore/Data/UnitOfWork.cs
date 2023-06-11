@@ -19,8 +19,8 @@ namespace MeetingAppCore.Data
             _mapper = mapper;
         }
 
-        public IUserRepository UserRepository => new UserRepository(_context, _mapper);
-        public IRoomRepository MeetingRepository => new RoomRepository(_context, _mapper);
+        public IUserRepository Accounts => new UserRepository(_context, _mapper);
+        public IMeetingRepository Meetings => new MeetingRepository(_context, _mapper);
 
         public async Task<bool> Complete()
         {

@@ -88,9 +88,9 @@ namespace MeetingAppCore.SignalR
         /// <summary>
         /// Lấy danh sách UserConnectionDto những người trong meeting
         /// </summary>
-        /// <param name="roomId"></param>
+        /// <param name="meetingId"></param>
         /// <returns></returns>
-        public Task<UserConnectionSignalrDto[]> GetOnlineUsersInRoom(int roomId)
+        public Task<UserConnectionSignalrDto[]> GetOnlineUsersInMeet(int meetingId)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("Tracker/GetOnlineUsers: GetOnlineUsersInRoom(roomId)");
@@ -98,7 +98,7 @@ namespace MeetingAppCore.SignalR
             UserConnectionSignalrDto[] userInRoom;
             lock (OnlineUsers)
             {
-                userInRoom = OnlineUsers.Where(u=>u.Key.RoomId == roomId).Select(k => k.Key).ToArray();
+                userInRoom = OnlineUsers.Where(u=>u.Key.RoomId == meetingId).Select(k => k.Key).ToArray();
             }
 
             return Task.FromResult(userInRoom);

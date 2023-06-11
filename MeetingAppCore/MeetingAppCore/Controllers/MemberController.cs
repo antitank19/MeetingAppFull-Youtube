@@ -37,7 +37,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("1.Api/Member: GetAllMembers(UserParams)");
             FunctionTracker.Instance().AddApiFunc("Api/Acount: LoginSocial(LoginSocial)");
             userParams.CurrentUsername = User.GetUsername();
-            var comments = await unitOfWork.UserRepository.GetMembersAsync(userParams);
+            var comments = await unitOfWork.Accounts.GetMembersAsync(userParams);
             Response.AddPaginationHeader(comments.CurrentPage, comments.PageSize, comments.TotalCount, comments.TotalPages);
 
             return Ok(comments);
@@ -49,7 +49,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Member: GetMembers(username)");
             FunctionTracker.Instance().AddApiFunc("1.Api/Member: GetMembers(username)");
-            return Ok(await unitOfWork.UserRepository.GetMemberAsync(username));
+            return Ok(await unitOfWork.Accounts.GetMemberSignalrAsync(username));
         }
 
         [HttpPut("{username}")]
@@ -58,7 +58,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Member: LockedUser(username)");
             FunctionTracker.Instance().AddApiFunc("1.Api/Member: LockedUser(username)");
-            var u = await unitOfWork.UserRepository.UpdateLocked(username);
+            var u = await unitOfWork.Accounts.UpdateLocked(username);
             if(u != null)
             {
                 var connections = await presenceTracker.GetConnectionIdsForUsername(username);

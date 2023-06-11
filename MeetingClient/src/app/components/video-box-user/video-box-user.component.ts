@@ -18,7 +18,7 @@ export class VideoBoxUserComponent implements OnInit, OnDestroy {
   constructor(private muteService: MuteCamMicService) { }
 
   ngOnInit(): void {
-    //Neu ko lay dc danh sach thiet bi thi mute het
+    //Nếu ko lấy dc danh sách thiết bị thì mute hết
     this.enableMicro = this.userVideo.srcObject.getAudioTracks()[0]? this.userVideo.srcObject.getAudioTracks()[0].enabled : false
     this.enableCamera = this.userVideo.srcObject.getVideoTracks()[0] ? this.userVideo.srcObject.getVideoTracks()[0].enabled : false
 

@@ -19,7 +19,7 @@ namespace MeetingAppCore.Helpers
             var userId = resultContext.HttpContext.User.GetUserId();
             var repo = resultContext.HttpContext.RequestServices.GetService<IRepoWrapper>();
             //GetService: Microsoft.Extensions.DependencyInjection
-            var user = await repo.UserRepository.GetUserByIdAsync(userId);
+            var user = await repo.Accounts.GetUserByIdAsync(userId);
             user.LastActive = DateTime.Now;
             await repo.Complete();//add this: services.AddScoped<LogUserActivity>(); [ServiceFilter(typeof(LogUserActivity))] dat truoc controller base
         }

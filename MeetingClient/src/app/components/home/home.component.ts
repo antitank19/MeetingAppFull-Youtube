@@ -180,12 +180,15 @@ export class HomeComponent implements OnInit, OnDestroy {
             })
         );
 
-        // bat che do share 1 man hinh len, nhan tu chatHub
+        // bật chế độ share 1 màn hình lên, nhận từ chatHub
         this.subscriptions.add(
-            this.shareScreenService.shareScreen$.subscribe(val => {
-                if (val) {//true = share screen
+            this.shareScreenService.shareScreen$.subscribe(hasUserSharing => {
+                //Nếu có người đang share screen thì làm 1 số cái như tắt nút shareScreen,
+                // lưu local storage
+                //Đổi status Screen để làm đó (tao BE đọc ko hiểu)
+                if (hasUserSharing) {//true = share screen
                     this.statusScreen = eMeet.SHARESCREEN
-                    this.enableShareScreen = false;
+                    this.enableShareScreen = false;// enable or disable button sharescreen
                     localStorage.setItem('share-screen', JSON.stringify(this.enableShareScreen));
                 } else {// false = stop share
                     this.statusScreen = eMeet.NONE

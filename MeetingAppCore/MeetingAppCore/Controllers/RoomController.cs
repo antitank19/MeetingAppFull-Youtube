@@ -33,7 +33,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Room: GetAllRooms(RoomParams)");
             FunctionTracker.Instance().AddApiFunc("Api/Room: GetAllRooms(RoomParams)");
-            var comments = await unitOfWork.MeetingRepository.GetAllRoomAsync(roomParams);
+            var comments = await unitOfWork.Meetings.GetAllRoomAsync(roomParams);
             Response.AddPaginationHeader(comments.CurrentPage, comments.PageSize, comments.TotalCount, comments.TotalPages);
 
             return Ok(comments);
@@ -47,11 +47,11 @@ namespace MeetingAppCore.Controllers
             FunctionTracker.Instance().AddApiFunc("Api/Room: AddRoom(name)");
             var room = new Meeting { RoomName = name, UserId = User.GetUserId() };
 
-            unitOfWork.MeetingRepository.AddRoom(room);
+            unitOfWork.Meetings.AddMeeting(room);
 
             if (await unitOfWork.Complete())
             {
-                return Ok(await unitOfWork.MeetingRepository.GetRoomDtoById(room.RoomId));
+                return Ok(await unitOfWork.Meetings.GetRoomDtoById(room.RoomId));
             }
 
             return BadRequest("Problem adding room");
@@ -63,7 +63,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Room: EditRoom(id, name)");
             FunctionTracker.Instance().AddApiFunc("Api/Room: EditRoom(id, name)");
-            var room = await unitOfWork.MeetingRepository.EditRoom(id, editName);
+            var room = await unitOfWork.Meetings.EditRoom(id, editName);
             if(room != null)
             {
                 if (unitOfWork.HasChanges())
@@ -89,7 +89,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Room: DeleteRoom(id)");
             FunctionTracker.Instance().AddApiFunc("Api/Room: DeleteRoom(id)");
-            var entity = await unitOfWork.MeetingRepository.DeleteRoom(id);
+            var entity = await unitOfWork.Meetings.DeleteRoom(id);
 
             if(entity != null)
             {
@@ -109,7 +109,7 @@ namespace MeetingAppCore.Controllers
             Console.WriteLine("1."+new String('=', 50));
             Console.WriteLine("1.Api/Room: DeleteAllRoom()");
             FunctionTracker.Instance().AddApiFunc("Api/Room: DeleteAllRoom()");
-            await unitOfWork.MeetingRepository.DeleteAllRoom();
+            await unitOfWork.Meetings.DeleteAllRoom();
 
             if (unitOfWork.HasChanges())
             {

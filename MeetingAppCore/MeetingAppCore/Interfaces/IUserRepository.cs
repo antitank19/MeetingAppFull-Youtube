@@ -11,8 +11,8 @@ namespace MeetingAppCore.Interfaces
     public interface IUserRepository
     {
         Task<AppUser> GetUserByIdAsync(Guid id);
-        Task<AppUser> GetUserByUsernameAsync(string username);
-        Task<MemberSignalrDto> GetMemberAsync(string username);
+        Task<AppUser> GetUserByUsernameSignalrAsync(string username);
+        Task<MemberSignalrDto> GetMemberSignalrAsync(string username);
         Task<PagedList<MemberSignalrDto>> GetMembersAsync(UserParams userParams);
         Task<IEnumerable<MemberSignalrDto>> SearchMemberAsync(string displayname);
         Task<IEnumerable<MemberSignalrDto>> GetUsersOnlineAsync(UserConnectionSignalrDto[] userOnlines);

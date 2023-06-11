@@ -7,8 +7,8 @@ namespace MeetingAppCore.Interfaces
 {
     public interface IRepoWrapper
     {
-        IUserRepository UserRepository { get; }
-        IRoomRepository MeetingRepository { get; }
+        IUserRepository Accounts { get; }
+        IMeetingRepository Meetings { get; }
         Task<bool> Complete();
         bool HasChanges();
     }

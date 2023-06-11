@@ -32,7 +32,7 @@ namespace MeetingAppCore.Repository
             return await _context.Users.FindAsync(id);
         }
 
-        public async Task<AppUser> GetUserByUsernameAsync(string username)
+        public async Task<AppUser> GetUserByUsernameSignalrAsync(string username)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Repo/User: GetUserByUsernameAsync(username)");
@@ -40,7 +40,7 @@ namespace MeetingAppCore.Repository
             return await _context.Users.SingleOrDefaultAsync(u => u.UserName == username);
         }
 
-        public async Task<MemberSignalrDto> GetMemberAsync(string username)
+        public async Task<MemberSignalrDto> GetMemberSignalrAsync(string username)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Repo/User: GetMemberAsync(username)");

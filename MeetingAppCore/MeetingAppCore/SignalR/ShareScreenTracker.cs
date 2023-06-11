@@ -13,7 +13,7 @@ namespace MeetingAppCore.SignalR
         private static readonly List<UserConnectionSignalrDto> usersSharingScreen = new List<UserConnectionSignalrDto>();
 
         //Add user ở meeting nào đang shareScreen
-        public Task<bool> AddUserSharingScreen(UserConnectionSignalrDto user)
+        public Task<bool> AddUserSharingScreen(UserConnectionSignalrDto userMeetConnection)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/ShareScreen: UserConnectedToShareScreen(UserConnectionDto)");
@@ -21,18 +21,18 @@ namespace MeetingAppCore.SignalR
             bool isOnline = false;
             lock (usersSharingScreen)
             {
-                UserConnectionSignalrDto temp = usersSharingScreen.FirstOrDefault(x => x.UserName == user.UserName && x.RoomId == user.RoomId);
+                UserConnectionSignalrDto exsited = usersSharingScreen.FirstOrDefault(x => x.UserName == userMeetConnection.UserName && x.RoomId == userMeetConnection.RoomId);
 
-                if (temp == null)//chua co online
+                if (exsited == null)//chua co online
                 {
-                    usersSharingScreen.Add(user);
+                    usersSharingScreen.Add(userMeetConnection);
                     isOnline = true;
                 }
             }
             return Task.FromResult(isOnline);
         }
 
-        public Task<bool> RemoveUserShareScreen(UserConnectionSignalrDto user)
+        public Task<bool> RemoveUserShareScreen(UserConnectionSignalrDto userMeetConnection)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/ShareScreen: UserDisconnectedShareScreen(UserConnectionDto)");
@@ -40,7 +40,7 @@ namespace MeetingAppCore.SignalR
             bool isOffline = false;
             lock (usersSharingScreen)
             {
-                var temp = usersSharingScreen.FirstOrDefault(x => x.UserName == user.UserName && x.RoomId == user.RoomId);
+                var temp = usersSharingScreen.FirstOrDefault(x => x.UserName == userMeetConnection.UserName && x.RoomId == userMeetConnection.RoomId);
                 if (temp == null)
                     return Task.FromResult(isOffline);
                 else
@@ -52,7 +52,7 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(isOffline);
         }
 
-        public Task<bool> DisconnectedByUser(string username, int roomId)
+        public Task<bool> RemoveUserShareScreen(string username, int meetingId)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/ShareScreen: DisconnectedByUser(username, roomId)");
@@ -60,7 +60,7 @@ namespace MeetingAppCore.SignalR
             bool isOffline = false;
             lock (usersSharingScreen)
             {
-                var temp = usersSharingScreen.FirstOrDefault(x => x.UserName == username && x.RoomId == roomId);
+                var temp = usersSharingScreen.FirstOrDefault(x => x.UserName == username && x.RoomId == meetingId);
                 if(temp != null)
                 {
                     isOffline = true;
@@ -70,7 +70,7 @@ namespace MeetingAppCore.SignalR
             return Task.FromResult(isOffline);
         }
 
-        public Task<UserConnectionSignalrDto> GetUserIsSharingScreenForMeeting(int roomId)
+        public Task<UserConnectionSignalrDto> GetUserIsSharingScreenForMeeting(int meetingId)
         {
             //Console.WriteLine("4.         " + new String('~', 50));
             Console.WriteLine("4.         Tracker/ShareScreen: GetUserIsSharing(roomId)");
@@ -78,7 +78,7 @@ namespace MeetingAppCore.SignalR
             UserConnectionSignalrDto temp = null;
             lock (usersSharingScreen)
             {
-                temp = usersSharingScreen.FirstOrDefault(x => x.RoomId == roomId);                               
+                temp = usersSharingScreen.FirstOrDefault(x => x.RoomId == meetingId);                               
             }
             return Task.FromResult(temp);
         }

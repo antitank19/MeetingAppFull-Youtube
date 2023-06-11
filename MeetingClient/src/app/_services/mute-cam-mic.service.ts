@@ -8,12 +8,12 @@ import { MuteObject } from '../models/mute-object';
 })
 export class MuteCamMicService {
 
+    
   private muteMicro: MuteObject;
-  private muteCamera: MuteObject;
-
   private muteMicroSource = new Subject<MuteObject>();
   muteMicro$ = this.muteMicroSource.asObservable();
-
+  
+  private muteCamera: MuteObject;
   private muteCameraSource = new Subject<MuteObject>();
   muteCamera$ = this.muteCameraSource.asObservable();
 

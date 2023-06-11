@@ -54,10 +54,10 @@ namespace MeetingAppCore.SignalR
         IRepoWrapper repos;
         ShareScreenTracker shareScreenTracker;
 
-        public MeetingHub(IRepoWrapper unitOfWork, ShareScreenTracker shareScreenTracker, PresenceTracker presenceTracker, IHubContext<GroupHub> presenceHubContext)
+        public MeetingHub(IRepoWrapper repos, ShareScreenTracker shareScreenTracker, PresenceTracker presenceTracker, IHubContext<GroupHub> presenceHubContext)
         {
             //_mapper = mapper;
-            this.repos = unitOfWork;
+            this.repos = repos;
             this.presenceTracker = presenceTracker;
             this.groupHub = presenceHubContext;
             this.shareScreenTracker = shareScreenTracker;
@@ -80,15 +80,15 @@ namespace MeetingAppCore.SignalR
             string meetingIdString = httpContext.Request.Query["meetingId"].ToString();
             int meetingIdInt = int.Parse(meetingIdString);
             string username = Context.User.GetUsername();
+
             //Step 2: Add ContextConnection vào MeetingHub.Group(meetingId) và add (user, meeting) vào presenceTracker
             await presenceTracker.UserConnected(new UserConnectionSignalrDto(username, meetingIdInt), Context.ConnectionId);
-
             await Groups.AddToGroupAsync(Context.ConnectionId, meetingIdString);//khi user click vao room se join vao
             //await AddConnectionToGroup(meetingIdInt); // luu db DbSet<Connection> de khi disconnect biet
             
             //Step 3: Tạo Connect để lưu vào DB, ConnectionId
             #region lưu Db Connection
-            Meeting meeting = await repos.MeetingRepository.GetRoomById(meetingIdInt);
+            Meeting meeting = await repos.Meetings.GetMeetingByIdSignalr(meetingIdInt);
             Connection connection = new Connection(Context.ConnectionId, Context.User.GetUsername());
             if (meeting != null)
             {
@@ -104,28 +104,30 @@ namespace MeetingAppCore.SignalR
 
             //var usersOnline = await _unitOfWork.UserRepository.GetUsersOnlineAsync(currentUsers);
             //Step 4: Thông báo với meetHub.Group(meetingId) là mày đã online  SendAsync(UserOnlineInGroupMsg, MemberSignalrDto)
-            MemberSignalrDto currentUserDto = await repos.UserRepository.GetMemberAsync(username);
+            MemberSignalrDto currentUserDto = await repos.Accounts.GetMemberSignalrAsync(username);
             await Clients.Group(meetingIdString).SendAsync(UserOnlineInMeetingMsg, currentUserDto);
             Console.WriteLine("2.1     " + new String('+', 50));
             Console.WriteLine("2.1     Hub/ChatSend: UserOnlineInGroupMsg, MemberSignalrDto");
             FunctionTracker.Instance().AddHubFunc("Hub/ChatSend: UserOnlineInGroupMsg, MemberSignalrDto");
 
             //Step 5: Update số người trong meeting lên db
-            UserConnectionSignalrDto[] currentUsersInMeeting = await presenceTracker.GetOnlineUsersInRoom(meetingIdInt);
-            await repos.MeetingRepository.UpdateCountMember(meetingIdInt, currentUsersInMeeting.Length);
+            UserConnectionSignalrDto[] currentUsersInMeeting = await presenceTracker.GetOnlineUsersInMeet(meetingIdInt);
+            await repos.Meetings.UpdateCountMemberSignalr(meetingIdInt, currentUsersInMeeting.Length);
             await repos.Complete();
 
             //Test
             await Clients.Caller.SendAsync("OnConnectMeetHubSuccessfully", $"Connect meethub dc r! Fucck you! {username} vô dc r ae ơi!!!");
 
             // Step 6: Thông báo với groupHub.Group(groupId) số người ở trong phòng  
-            List<string> currentConnectionIds = await presenceTracker.GetConnectionIdsForUser(new UserConnectionSignalrDto(username, meetingIdInt));
+            List<string> currentUserConnectionIds = await presenceTracker.GetConnectionIdsForUser(new UserConnectionSignalrDto(username, meetingIdInt));
             Console.WriteLine("2.1     " + new String('+', 50));
             Console.WriteLine("2.1     Hub/PresenceSend: CountMemberInGroupMsg, { meetingId, countMember }");
             FunctionTracker.Instance().AddHubFunc("Hub/PresenceSend: CountMemberInGroupMsg, { meetingId, countMember }");
-            await groupHub.Clients.AllExcept(currentConnectionIds).SendAsync(GroupHub.CountMemberInGroupMsg,
-                   new { meetingId = meetingIdInt, countMember = currentUsersInMeeting.Length });
-            
+            //await groupHub.Clients.AllExcept(currentUserConnectionIds).SendAsync(GroupHub.CountMemberInGroupMsg,
+            //       new { meetingId = meetingIdInt, countMember = currentUsersInMeeting.Length });
+            await groupHub.Clients.Group("1").SendAsync(GroupHub.CountMemberInMeetingMsg,
+                  new { meetingId = meetingIdInt, countMember = currentUsersInMeeting.Length });
+
             //share screen cho user vao sau cung
             //step 7: Thông báo shareScreen cho user vào cuối 
             UserConnectionSignalrDto userIsSharing = await shareScreenTracker.GetUserIsSharingScreenForMeeting(meetingIdInt);
@@ -155,7 +157,7 @@ namespace MeetingAppCore.SignalR
             bool isOffline = await presenceTracker.UserDisconnected(new UserConnectionSignalrDto(username, meeting.RoomId), Context.ConnectionId);
 
             //step 4: Remove khỏi shareScreenTracker nếu có
-            await shareScreenTracker.DisconnectedByUser(username, meeting.RoomId);
+            await shareScreenTracker.RemoveUserShareScreen(username, meeting.RoomId);
 
             //step 5: Remove ContextConnectionId khỏi meetingHub.Group(meetingId)   chắc move ra khỏi if
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, meeting.RoomId.ToString());
@@ -165,24 +167,27 @@ namespace MeetingAppCore.SignalR
                 //await Groups.RemoveFromGroupAsync(Context.ConnectionId, meeting.RoomId.ToString());
 
                 //step 6: Nếu ko còn connect nào nữa thì Thông báo với meetingHub.Group(meetingId)
-                MemberSignalrDto offLineUser = await repos.UserRepository.GetMemberAsync(username);
+                MemberSignalrDto offLineUser = await repos.Accounts.GetMemberSignalrAsync(username);
                 await Clients.Group(meeting.RoomId.ToString()).SendAsync(UserOfflineInMeetingMsg, offLineUser);
 
                 //step 7: Update lại số người trong phòng
-                UserConnectionSignalrDto[] currentUsersInRoom = await presenceTracker.GetOnlineUsersInRoom(meeting.RoomId);
-                await repos.MeetingRepository.UpdateCountMember(meeting.RoomId, currentUsersInRoom.Length);
+                UserConnectionSignalrDto[] currentUsersInRoom = await presenceTracker.GetOnlineUsersInMeet(meeting.RoomId);
+                await repos.Meetings.UpdateCountMemberSignalr(meeting.RoomId, currentUsersInRoom.Length);
                 await repos.Complete();
 
                 //await presenceHub.Clients.All.SendAsync("CountMemberInGroup",
                 //       new { roomId = group.RoomId, countMember = currentUsers.Length });
-                
+
                 //step 8: Thông báo với groupHub.Group(groupId) số người ở trong phòng
-                await groupHub.Clients.All.SendAsync(GroupHub.CountMemberInGroupMsg,
+                //await groupHub.Clients.All.SendAsync(GroupHub.CountMemberInGroupMsg,
+                //       new { meetingId = meeting.RoomId, countMember = currentUsersInRoom.Length });
+                groupHub.Clients.Group("1").SendAsync(GroupHub.CountMemberInMeetingMsg,
                        new { meetingId = meeting.RoomId, countMember = currentUsersInRoom.Length });
             }
             //step 9: Disconnect khỏi meetHub
             await base.OnDisconnectedAsync(exception);
         }
+
         //FE gọi chatHubConnection.invoke('SendMessage', { content: string })
         public async Task SendMessage(MessageSignalrCreateDto createMessageDto)
         {
@@ -190,11 +195,11 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("2.   Hub/Chat: SendMessage(CreateMessageDto)");
             FunctionTracker.Instance().AddHubFunc("Hub/Chat: SendMessage(CreateMessageDto)");
             string userName = Context.User.GetUsername();
-            AppUser sender = await repos.UserRepository.GetUserByUsernameAsync(userName);
+            AppUser sender = await repos.Accounts.GetUserByUsernameSignalrAsync(userName);
 
-            Meeting group = await repos.MeetingRepository.GetMeetingForConnection(Context.ConnectionId);
+            Meeting meeting = await repos.Meetings.GetMeetingForConnectionSignalr(Context.ConnectionId);
 
-            if(group != null)
+            if(meeting != null)
             {
                 var message = new MessageSignalrGetDto
                 {
@@ -206,7 +211,7 @@ namespace MeetingAppCore.SignalR
                 //Luu message vao db
                 //code here
                 //send meaasge to group
-                await Clients.Group(group.RoomId.ToString()).SendAsync(NewMessageMsg, message);
+                await Clients.Group(meeting.RoomId.ToString()).SendAsync(NewMessageMsg, message);
             }
         }
         //FE gọi chatHubConnection.invoke('MuteMicro', mute)
@@ -215,7 +220,7 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: MuteMicro(bool)");
             FunctionTracker.Instance().AddHubFunc("Hub/Chat: MuteMicro(bool)");
-            var group = await repos.MeetingRepository.GetMeetingForConnection(Context.ConnectionId);
+            var group = await repos.Meetings.GetMeetingForConnectionSignalr(Context.ConnectionId);
             if (group != null)
             {
                 await Clients.Group(group.RoomId.ToString()).SendAsync(OnMuteMicroMsg, new { username = Context.User.GetUsername(), mute = muteMicro });
@@ -226,13 +231,13 @@ namespace MeetingAppCore.SignalR
             }
         }
 
-        // FE gọi chatHubConnection.invoke('MuteCamera', mute)
+        //sẽ dc gọi khi FE gọi chatHubConnection.invoke('MuteCamera', mute)
         public async Task MuteCamera(bool muteCamera)
         {
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: MuteCamera(bool)");
             FunctionTracker.Instance().AddHubFunc("Hub/Chat: MuteCamera(bool)");
-            var group = await repos.MeetingRepository.GetMeetingForConnection(Context.ConnectionId);
+            var group = await repos.Meetings.GetMeetingForConnectionSignalr(Context.ConnectionId);
             if(group != null)
             {
                 await Clients.Group(group.RoomId.ToString()).SendAsync(OnMuteCameraMsg, new { username = Context.User.GetUsername(), mute = muteCamera });
@@ -277,9 +282,9 @@ namespace MeetingAppCore.SignalR
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: RemoveConnectionFromMeeting()");
             FunctionTracker.Instance().AddHubFunc("Hub/Chat: RemoveConnectionFromMeeting()");
-            var meeting = await repos.MeetingRepository.GetMeetingForConnection(Context.ConnectionId);
+            var meeting = await repos.Meetings.GetMeetingForConnectionSignalr(Context.ConnectionId);
             var connection = meeting.Connections.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId);
-            repos.MeetingRepository.RemoveConnection(connection);
+            repos.Meetings.EndConnectionSignalr(connection);
 
             if (await repos.Complete()) return meeting;
 
