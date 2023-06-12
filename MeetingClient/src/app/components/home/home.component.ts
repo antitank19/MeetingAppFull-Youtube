@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     roomId: string;
     // myRTCPeer: any;
-    myRTCPeer: Peer;
+    //myRTCPeer: Peer;
     ngOnInit(): void {
         this.isMeeting = true
         this.isRecorded = this.configService.isRecorded;//enable or disable recorded
@@ -85,25 +85,25 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.chatHub.createHubConnection(this.currentUser, this.roomId)
 
         logForTrack('myRTCPeer = new Peer(id: currentUserName, PeerOptions)');
-        this.myRTCPeer = new Peer(this.currentUser.userName, {
-            config: {
-                'iceServers': [
-                    {
-                        urls: "stun:stun.l.google.com:19302",
-                    },
-                    {
-                        urls: "turn:numb.viagenie.ca",
-                        username: "webrtc@live.com",
-                        credential: "muazkh"
-                    },
-                ],
-            },
-        },);
+        // this.myRTCPeer = new Peer(this.currentUser.userName, {
+        //     config: {
+        //         'iceServers': [
+        //             {
+        //                 urls: "stun:stun.l.google.com:19302",
+        //             },
+        //             {
+        //                 urls: "turn:numb.viagenie.ca",
+        //                 username: "webrtc@live.com",
+        //                 credential: "muazkh"
+        //             },
+        //         ],
+        //     },
+        // },);
 
-        this.myRTCPeer.on('open', userId => {
-            logForTrack(`myRTCPeer.on('open', userId => {`);
-            console.log(userId)
-        });
+        // this.myRTCPeer.on('open', userId => {
+        //     logForTrack(`myRTCPeer.on('open', userId => {`);
+        //     console.log(userId)
+        // });
 
         this.shareScreenPeer = new Peer('share_' + this.currentUser.userName, {
             config: {
@@ -129,35 +129,35 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
 
         //call group
-        this.myRTCPeer.on('call', (call) => {
-            call.answer(this.stream);
+        // this.myRTCPeer.on('call', (call) => {
+        //     call.answer(this.stream);
 
-            call.on('stream', (otherUserVideoStream: MediaStream) => {
-                this.addOtherUserVideo(call.metadata.userId, otherUserVideoStream);
-            });
+        //     call.on('stream', (otherUserVideoStream: MediaStream) => {
+        //         this.addOtherUserVideo(call.metadata.userId, otherUserVideoStream);
+        //     });
 
-            call.on('error', (err) => {
-                console.error(err);
-            })
-        });
+        //     call.on('error', (err) => {
+        //         console.error(err);
+        //     })
+        // });
 
         this.subscriptions.add(
             this.chatHub.oneOnlineUser$.subscribe(member => {
                 if (this.currentUser.userName !== member.userName) {
                     // Let some time for new peers to be able to answer
                     setTimeout(() => {
-                        const call = this.myRTCPeer.call(member.userName, this.stream, {
-                            metadata: { userId: this.currentMember },
-                        });
-                        call.on('stream', (otherUserVideoStream: MediaStream) => {
-                            this.addOtherUserVideo(member, otherUserVideoStream);
-                        });
+                        // const call = this.myRTCPeer.call(member.userName, this.stream, {
+                        //     metadata: { userId: this.currentMember },
+                        // });
+                        // call.on('stream', (otherUserVideoStream: MediaStream) => {
+                        //     this.addOtherUserVideo(member, otherUserVideoStream);
+                        // });
 
-                        call.on('close', () => {
-                            this.videos = this.videos.filter((video) => video.user.userName !== member.userName);
-                            //xoa user nao offline tren man hinh hien thi cua current user
-                            this.tempvideos = this.tempvideos.filter(video => video.user.userName !== member.userName);
-                        });
+                        // call.on('close', () => {
+                        //     this.videos = this.videos.filter((video) => video.user.userName !== member.userName);
+                        //     //xoa user nao offline tren man hinh hien thi cua current user
+                        //     this.tempvideos = this.tempvideos.filter(video => video.user.userName !== member.userName);
+                        // });
                     }, 1000);
                 }
             })
@@ -359,7 +359,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.isMeeting = false;
 
-        this.myRTCPeer.disconnect();//dong ket noi nhung van giu nguyen cac ket noi khac
+        // this.myRTCPeer.disconnect();//dong ket noi nhung van giu nguyen cac ket noi khac
         this.shareScreenPeer.destroy();//dong tat ca cac ket noi
         this.chatHub.stopHubConnection();
         this.subscriptions.unsubscribe();
