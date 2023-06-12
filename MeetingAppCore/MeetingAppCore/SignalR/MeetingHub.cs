@@ -66,7 +66,7 @@ namespace MeetingAppCore.SignalR
         //FE sẽ connect qua hàm này
         //FE gọi:
         //this.chatHubConnection = new HubConnectionBuilder()
-        //    .withUrl(this.hubUrl + 'chathub?roomId=' + roomId, {
+        //    .withUrl(this.hubUrl + 'chathub?meetingId=' + roomId, {
         //        accessTokenFactory: () => user.token
         //    }).withAutomaticReconnect().build()
         //this.chatHubConnection.start().catch(err => console.log(err));
@@ -176,7 +176,7 @@ namespace MeetingAppCore.SignalR
                 await repos.Complete();
 
                 //await presenceHub.Clients.All.SendAsync("CountMemberInGroup",
-                //       new { roomId = group.RoomId, countMember = currentUsers.Length });
+                //       new { meetingId = group.RoomId, countMember = currentUsers.Length });
 
                 //step 8: Thông báo với groupHub.Group(groupId) số người ở trong phòng
                 //await groupHub.Clients.All.SendAsync(GroupHub.CountMemberInGroupMsg,
@@ -248,31 +248,31 @@ namespace MeetingAppCore.SignalR
             } 
         }
 
-        //sẽ dc gọi khi FE gọi chatHubConnection.invoke('ShareScreen', roomId, isShareScreen)
-        public async Task ShareScreen(int roomid, bool isShareScreen)
+        //sẽ dc gọi khi FE gọi chatHubConnection.invoke('ShareScreen', meetingId, isShareScreen)
+        public async Task ShareScreen(int meetingId, bool isShareScreen)
         {
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: ShareScreen(id, bool)");
             FunctionTracker.Instance().AddHubFunc("Hub/Chat: ShareScreen(id, bool)");
             if (isShareScreen)//true is doing share
             {
-                await shareScreenTracker.AddUserSharingScreen(new UserConnectionSignalrDto(Context.User.GetUsername(), roomid));
-                await Clients.Group(roomid.ToString()).SendAsync(OnUserIsSharingMsg, Context.User.GetUsername());
+                await shareScreenTracker.AddUserSharingScreen(new UserConnectionSignalrDto(Context.User.GetUsername(), meetingId));
+                await Clients.Group(meetingId.ToString()).SendAsync(OnUserIsSharingMsg, Context.User.GetUsername());
             }
             else
             {
-                await shareScreenTracker.RemoveUserShareScreen(new UserConnectionSignalrDto(Context.User.GetUsername(), roomid));
+                await shareScreenTracker.RemoveUserShareScreen(new UserConnectionSignalrDto(Context.User.GetUsername(), meetingId));
             }
-            await Clients.Group(roomid.ToString()).SendAsync(OnShareScreenMsg, isShareScreen);
+            await Clients.Group(meetingId.ToString()).SendAsync(OnShareScreenMsg, isShareScreen);
             //var group = await _unitOfWork.RoomRepository.GetRoomForConnection(Context.ConnectionId);
         }
-        //sẽ dc gọi khi FE gọi chatHubConnection.invoke('ShareScreenToUser', roomId, username, isShareScreen)
-        public async Task ShareScreenToUser(int roomid, string username, bool isShare)
+        //sẽ dc gọi khi FE gọi chatHubConnection.invoke('ShareScreenToUser', meetingId, username, isShareScreen)
+        public async Task ShareScreenToUser(int meetingId, string username, bool isShare)
         {
             Console.WriteLine("2.   " + new String('+', 50));
             Console.WriteLine("2.   Hub/Chat: ShareScreenToUser(id, username, bool)");
             FunctionTracker.Instance().AddHubFunc("Hub/Chat: ShareScreenToUser(id, username, bool)");
-            var currentBeginConnectionsUser = await presenceTracker.GetConnectionIdsForUser(new UserConnectionSignalrDto(username, roomid));
+            var currentBeginConnectionsUser = await presenceTracker.GetConnectionIdsForUser(new UserConnectionSignalrDto(username, meetingId));
             if(currentBeginConnectionsUser.Count > 0)
                 await Clients.Clients(currentBeginConnectionsUser).SendAsync(OnShareScreenMsg, isShare);
         }
@@ -291,7 +291,7 @@ namespace MeetingAppCore.SignalR
             throw new HubException("Fail to remove connection from room");
         }
 
-        //private async Task<Meeting> AddConnectionToGroup(int roomId)
+        //private async Task<Meeting> AddConnectionToGroup(int meetingId)
         //{
         //    Console.WriteLine("2.   " + new String('+', 50));
         //    Console.WriteLine("2.   Hub/Chat: AddConnectionToGroup(roomId)");

@@ -138,15 +138,15 @@ export class ChatHubService {
             .catch(error => console.log(error));
     }
 
-    async shareScreen(roomId: number, isShareScreen: boolean) {
-        logForTrack(`invoke('ShareScreen', roomId, isShareScreen)`);
-        return this.chatHubConnection.invoke('ShareScreen', roomId, isShareScreen)
+    async shareScreen(meetingId: number, isShareScreen: boolean) {
+        logForTrack(`invoke('ShareScreen', meetingId, isShareScreen)`);
+        return this.chatHubConnection.invoke('ShareScreen', meetingId, isShareScreen)
             .catch(error => console.log(error));
     }
 
-    async shareScreenToUser(roomId: number, username: string, isShareScreen: boolean) {
-        logForTrack(`invoke('ShareScreenToUser', roomId, username, isShareScreen)`);
-        return this.chatHubConnection.invoke('ShareScreenToUser', roomId, username, isShareScreen)
+    async shareScreenToUser(meetingId: number, receiverUsername: string, isShareScreen: boolean) {
+        logForTrack(`invoke('ShareScreenToUser', meetingId, receiverUsername, isShareScreen)`);
+        return this.chatHubConnection.invoke('ShareScreenToUser', meetingId, receiverUsername, isShareScreen)
             .catch(error => console.log(error));
     }
 }
