@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     chatForm: UntypedFormGroup;
     messageCount = 0;
     // shareScreenPeer: any;
-    shareScreenPeer: Peer;
+    //shareScreenPeer: Peer;
     @ViewChild('videoPlayer') localvideoPlayer: ElementRef;
     shareScreenStream: any;
     enableShareScreen = true;// enable or disable button sharescreen
@@ -105,28 +105,28 @@ export class HomeComponent implements OnInit, OnDestroy {
             console.log(userId)
         });
 
-        this.shareScreenPeer = new Peer('share_' + this.currentUser.userName, {
-            config: {
-                'iceServers': [{
-                    urls: this.configService.STUN_SERVER
-                }, {
-                    urls: this.configService.urlTurnServer,
-                    username: this.configService.username,
-                    credential: this.configService.password
-                }]
-            }
-        })
+        // this.shareScreenPeer = new Peer('share_' + this.currentUser.userName, {
+        //     config: {
+        //         'iceServers': [{
+        //             urls: this.configService.STUN_SERVER
+        //         }, {
+        //             urls: this.configService.urlTurnServer,
+        //             username: this.configService.username,
+        //             credential: this.configService.password
+        //         }]
+        //     }
+        // })
 
-        this.shareScreenPeer.on('call', (call) => {
-            call.answer(this.shareScreenStream);
-            call.on('stream', (otherUserVideoStream: MediaStream) => {
-                this.shareScreenStream = otherUserVideoStream;
-            });
+        // this.shareScreenPeer.on('call', (call) => {
+        //     call.answer(this.shareScreenStream);
+        //     call.on('stream', (otherUserVideoStream: MediaStream) => {
+        //         this.shareScreenStream = otherUserVideoStream;
+        //     });
 
-            call.on('error', (err) => {
-                console.error(err);
-            })
-        });
+        //     call.on('error', (err) => {
+        //         console.error(err);
+        //     })
+        // });
 
         //call group
         this.myRTCPeer.on('call', (call) => {
@@ -201,14 +201,14 @@ export class HomeComponent implements OnInit, OnDestroy {
         )
 
         // bắt đầu share stream tới user vao sau cùng từ user xuất phát stream
-        this.subscriptions.add(this.shareScreenService.lastShareScreen$.subscribe(val => {
-            if (val.isShare) {//true = share screen        
-                this.chatHub.shareScreenToUser(Number.parseInt(this.roomId), val.username, true)
-                setTimeout(() => {
-                    const call = this.shareScreenPeer.call('share_' + val.username, this.shareScreenStream);
-                }, 1000)
-            }
-        }))
+        // this.subscriptions.add(this.shareScreenService.lastShareScreen$.subscribe(val => {
+        //     if (val.isShare) {//true = share screen        
+        //         this.chatHub.shareScreenToUser(Number.parseInt(this.roomId), val.username, true)
+        //         setTimeout(() => {
+        //             const call = this.shareScreenPeer.call('share_' + val.username, this.shareScreenStream);
+        //         }, 1000)
+        //     }
+        // }))
 
         this.subscriptions.add(this.utility.kickedOutUser$.subscribe(val => {
             this.isMeeting = false
@@ -319,7 +319,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.enableShareScreen = false;
 
             this.videos.forEach(v => {
-                const call = this.shareScreenPeer.call('share_' + v.user.userName, mediaStream);
+                // const call = this.shareScreenPeer.call('share_' + v.user.userName, mediaStream);
                 //call.on('stream', (otherUserVideoStream: MediaStream) => { });
             })
 
@@ -360,7 +360,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.isMeeting = false;
 
         this.myRTCPeer.disconnect();//dong ket noi nhung van giu nguyen cac ket noi khac
-        this.shareScreenPeer.destroy();//dong tat ca cac ket noi
+        // this.shareScreenPeer.destroy();//dong tat ca cac ket noi
         this.chatHub.stopHubConnection();
         this.subscriptions.unsubscribe();
         localStorage.removeItem('share-screen');
