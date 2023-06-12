@@ -33,7 +33,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     statusScreen: eMeet;
     chatForm: UntypedFormGroup;
     messageCount = 0;
-    shareScreenPeer: any;
+    // shareScreenPeer: any;
+    shareScreenPeer: Peer;
     @ViewChild('videoPlayer') localvideoPlayer: ElementRef;
     shareScreenStream: any;
     enableShareScreen = true;// enable or disable button sharescreen
@@ -69,7 +70,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     roomId: string;
-    myRTCPeer: any;
+    // myRTCPeer: any;
+    myRTCPeer: Peer;
     ngOnInit(): void {
         this.isMeeting = true
         this.isRecorded = this.configService.isRecorded;//enable or disable recorded
