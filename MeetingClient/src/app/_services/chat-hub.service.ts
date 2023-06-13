@@ -35,7 +35,6 @@ export class ChatHubService {
         private muteCamMicService: MuteCamMicService) { }
 
     createHubConnection(user: User, roomId: string) {
-        alert(user.token);
         logForTrack('createHubConnection(user: User, roomId: string)');
         this.chatHubConnection = new HubConnectionBuilder()
             .withUrl(this.hubUrl + 'meetinghub?meetingId=' + roomId, {
