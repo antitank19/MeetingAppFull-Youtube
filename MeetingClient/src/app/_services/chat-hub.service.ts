@@ -95,9 +95,9 @@ export class ChatHubService {
         this.muteCamMicService.LastShareScreen = { username: usernameTo, isShare }
         })
 
-        this.chatHubConnection.on('OnUserIsSharing', currentUsername => {
+        this.chatHubConnection.on('OnUserIsSharing', sharerUsername => {
         logForTrack(`hubConnection.on('OnUserIsSharing', currentUsername =>`);
-        this.muteCamMicService.UserIsSharing = currentUsername
+        this.muteCamMicService.UserIsSharing = sharerUsername
         })
 
         //For tesOnly
